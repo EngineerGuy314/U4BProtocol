@@ -478,7 +478,8 @@ return voltageNum
 
 #### Decoding voltage assuming it represents 3.0 to 4.95v range at original measurement
 
-```uint16_t decodedVoltage(float encoded_value) {
+```
+uint16_t decodedVoltage(float encoded_value) {
 voltage = round((encoded_value * 0.05) + 2.00, 2)
 return voltage
 }
@@ -550,33 +551,23 @@ Identifies the telemetry format version.
 
 Encodes all basic telemetry fields into a WSPR message.
 
+```
 struct BasicTelemetryData {
-
 uint8_t grid5; // 0-23
-
 uint8_t grid6; // 0-23
-
 uint16_t altitude_meters; // 0-21340
-
 int16_t temperature_c; // -50 to 39
-
 float voltage_v; // 2.0-3.95 (or rollover ranges)
-
 uint16_t speed_knots; // 0-82
-
 bool gps_valid; // true/false
-
 uint8_t telemetry_type; // 1 for standard
-
 };
 
 bool encodeBasicTelemetry(
-
 const BasicTelemetryData& data,
-
 WSPRMessage& message
-
 );
+```
 
 #### decodeBasicTelemetry()
 
@@ -2060,6 +2051,7 @@ MEMORY_FULL // No more fields can be added
 - **Recommended**: C++14 or later for better template support
 
 - **Tested**: GCC 4.9+, Clang 3.5+, MSVC 2015+
+
 
 
 
