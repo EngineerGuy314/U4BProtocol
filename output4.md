@@ -573,76 +573,47 @@ WSPRMessage& message
 
 Decodes basic telemetry from a WSPR message.
 
+```
 bool decodeBasicTelemetry(
-
 const WSPRMessage& message,
-
 BasicTelemetryData& data
-
 );
+```
 
 ### Complete Example
 
+```
 #include <WsprEncoded/BasicTelemetry.h>
-
 void transmitBasicTelemetry() {
-
 // Collect sensor data
-
 BasicTelemetryData telemetry = {
-
 .grid5 = 12, // 'M'
-
 .grid6 = 7, // 'H'
-
 .altitude_meters = 1200,
-
 .temperature_c = 25,
-
 .voltage_v = 3.7,
-
 .speed_knots = 0,
-
 .gps_valid = true,
-
 .telemetry_type = 1
-
 };
-
 // Encode to WSPR message
-
 WSPRMessage message;
-
 if (encodeBasicTelemetry(telemetry, message)) {
-
 // Transmit WSPR message
-
 printf("Transmitting: %s %s %dn",
-
 message.callsign, message.grid, message.power);
-
 // Send via radio...
-
 transmitWSPR(message);
-
 }
-
 }
 
 void receiveBasicTelemetry(const WSPRMessage& received) {
-
 BasicTelemetryData telemetry;
-
 if (decodeBasicTelemetry(received, telemetry)) {
-
 printf("Decoded telemetry:n");
-
 printf(" Location: %c%c extensionn",
-
 'A' + telemetry.grid5, 'A' + telemetry.grid6);
-
 printf(" Altitude: %d metersn", telemetry.altitude_meters);
-
 printf(" Temperature: %d°Cn", telemetry.temperature_c);
 
 printf(" Voltage: %.2fVn", telemetry.voltage_v);
@@ -654,6 +625,7 @@ printf(" GPS Valid: %sn", telemetry.gps_valid ? "Yes" : "No");
 }
 
 }
+```
 
 ## Encoding Architecture
 
@@ -2051,6 +2023,7 @@ MEMORY_FULL // No more fields can be added
 - **Recommended**: C++14 or later for better template support
 
 - **Tested**: GCC 4.9+, Clang 3.5+, MSVC 2015+
+
 
 
 
