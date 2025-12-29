@@ -358,7 +358,8 @@ std::string full_grid = wspr_grid_4char + grid5_char + grid6_char;
 
 ```// WSPR Type 1 grid: "FN31"
 // Grid5 = 12 (M), Grid6 = 7 (H)
-// Complete grid: "FN31MH"```
+// Complete grid: "FN31MH"
+```
 
 ### Altitude Measurement
 
@@ -2087,6 +2088,7 @@ MEMORY_FULL // No more fields can be added
 - **Recommended**: C++14 or later for better template support
 
 - **Tested**: GCC 4.9+, Clang 3.5+, MSVC 2015+
+
 
 
 
