@@ -17,15 +17,15 @@ WsprEncoded Library v4.3.2
 - [License](#license)
 - [Basic Telemetry](#basic-telemetry)
   - [Overview](#overview)
-- [Message Format](#message-format)
-- [Telemetry Fields](#telemetry-fields)
-- [Field Specifications](#field-specifications)
-- [Grid Position Enhancement (Grid5 & Grid6)](#grid-position-enhancement-grid5-grid6)
-- [Purpose](#purpose)
-- [Resolution Improvement](#resolution-improvement)
-- [Encoding](#encoding)
-- [Example](#example)
-- [Altitude Measurement](#altitude-measurement)
+  - [Message Format](#message-format)
+  - [Telemetry Fields](#telemetry-fields)
+    - [Field Specifications](#field-specifications)
+    - [Grid Position Enhancement (Grid5 & Grid6)](#grid-position-enhancement-grid5-grid6)
+      - [Purpose](#purpose)
+      - [Resolution Improvement](#resolution-improvement)
+      - [Encoding](#encoding)
+      - [Example](#example)
+    - [Altitude Measurement](#altitude-measurement)
 - [Specification](#specification)
 - [Usage](#usage)
 - [Temperature Measurement](#temperature-measurement)
@@ -2118,6 +2118,7 @@ MEMORY_FULL // No more fields can be added
 - **Recommended**: C++14 or later for better template support
 
 - **Tested**: GCC 4.9+, Clang 3.5+, MSVC 2015+
+
 
 
 
