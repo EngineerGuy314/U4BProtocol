@@ -396,11 +396,11 @@ Basic Telemetry messages use the WSPR Type 1 format with specific field allocati
 
  
 
-**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">\`\`\`</span>**
+**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">```</span>**
 
-**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">\<callsign\> \<grid\> \<power\></span>**
+**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif"><callsign> <grid> <power></span>**
 
-**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">\`\`\`</span>**
+**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">```</span>**
 
 **<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Field Mapping:</span>**
 
@@ -453,7 +453,7 @@ Extends the 4-character WSPR grid to 6 characters for improved location precisio
 
  
 
-#### <span id="__RefHeading___Toc2139_1057631513"></span>\`\`\`
+#### <span id="__RefHeading___Toc2139_1057631513"></span>```
 
 #### // Grid5 and Grid6 encode characters A-X (values 0-23)
 
@@ -467,7 +467,7 @@ Extends the 4-character WSPR grid to 6 characters for improved location precisio
 
 #### std::string full_grid = wspr_grid_4char + grid5_char + grid6_char;
 
-#### \`\`\`
+#### ```
 
 #### Example
 
@@ -477,7 +477,7 @@ Extends the 4-character WSPR grid to 6 characters for improved location precisio
 
  
 
-### <span id="__RefHeading___Toc2141_1057631513"></span>\`\`\`
+### <span id="__RefHeading___Toc2141_1057631513"></span>```
 
 ### // WSPR Type 1 grid: "FN31"
 
@@ -485,7 +485,7 @@ Extends the 4-character WSPR grid to 6 characters for improved location precisio
 
 ### // Complete grid: "FN31MH"
 
-### \`\`\`
+### ```
 
 ### Altitude Measurement
 
@@ -527,7 +527,7 @@ Extends the 4-character WSPR grid to 6 characters for improved location precisio
 
  
 
-### <span id="__RefHeading___Toc2147_1057631513"></span>\`\`\`
+### <span id="__RefHeading___Toc2147_1057631513"></span>```
 
 ### uint16_t encodeAltitude(uint16_t altitude_meters) {
 
@@ -551,11 +551,11 @@ Extends the 4-character WSPR grid to 6 characters for improved location precisio
 
 ### uint16_t decodeAltitude(uint16_t encoded_value) {
 
-###     return encoded_value \* 20;  // Convert back to meters
+###     return encoded_value * 20;  // Convert back to meters
 
 ### }
 
-### \`\`\`
+### ```
 
 ### Temperature Measurement
 
@@ -591,7 +591,7 @@ Extends the 4-character WSPR grid to 6 characters for improved location precisio
 
  
 
-#### <span id="__RefHeading___Toc2153_1057631513"></span>\`\`\`
+#### <span id="__RefHeading___Toc2153_1057631513"></span>```
 
 #### int16_t encodeTemperature(int16_t temp_celsius) {
 
@@ -613,7 +613,7 @@ Extends the 4-character WSPR grid to 6 characters for improved location precisio
 
 #### }
 
-#### \`\`\`
+#### ```
 
 #### Rollover Example
 
@@ -623,7 +623,7 @@ Extends the 4-character WSPR grid to 6 characters for improved location precisio
 
  
 
-### <span id="__RefHeading___Toc2155_1057631513"></span>\`\`\`
+### <span id="__RefHeading___Toc2155_1057631513"></span>```
 
 ### // Both -45°C and +45°C encode to the same value (5)
 
@@ -631,7 +631,7 @@ Extends the 4-character WSPR grid to 6 characters for improved location precisio
 
 ### int16_t temp2 = 45;   // encodes to: (45 - (-50)) % 90 = 5
 
-### \`\`\`
+### ```
 
 ### Voltage Measurement
 
@@ -681,13 +681,13 @@ Possible examples:
 
  
 
-#### <span id="__RefHeading___Toc2163_1057631513"></span>\`\`\`
+#### <span id="__RefHeading___Toc2163_1057631513"></span>```
 
 #### uint16_t encodeVoltage(float voltage) {
 
 ####     uint16_t range = (uint16_t)((voltage - 2.0) / 2.0);
 
-####     float range_offset = voltage - (2.0 + range \* 2.0);
+####     float range_offset = voltage - (2.0 + range * 2.0);
 
 ####    
 
@@ -701,7 +701,7 @@ Possible examples:
 
 #### }
 
-#### \`\`\`
+#### ```
 
 #### Alternative Encoding example for only 3.0 to 4.95v with clamping
 
@@ -727,7 +727,7 @@ Possible examples:
 
  
 
-#### <span id="__RefHeading___Toc2165_1057631513"></span>\`\`\`
+#### <span id="__RefHeading___Toc2165_1057631513"></span>```
 
 #### uint16_t encodeVoltage(float voltage) {
 
@@ -737,9 +737,9 @@ Possible examples:
 
 ####     // 0 to 39 encodings
 
-####     if (voltage \> 4.95) voltage = 4.95;
+####     if (voltage > 4.95) voltage = 4.95;
 
-####     else if (voltage \< 3.00) voltage = 3.00;
+####     else if (voltage < 3.00) voltage = 3.00;
 
 ####     // should only be 3 to 4.95
 
@@ -751,7 +751,7 @@ Possible examples:
 
 #### }
 
-#### \`\`\`
+#### ```
 
 #### Decoding voltage assuming it represents 3.0 to 4.95v range at original measurement
 
@@ -763,17 +763,17 @@ Possible examples:
 
  
 
-### <span id="__RefHeading___Toc2167_1057631513"></span>\`\`\`
+### <span id="__RefHeading___Toc2167_1057631513"></span>```
 
 ### uint16_t decodedVoltage(float encoded_value) {
 
-###     voltage = round((encoded_value \* 0.05) + 2.00, 2)
+###     voltage = round((encoded_value * 0.05) + 2.00, 2)
 
 ###     return voltage
 
 ### }
 
-### \`\`\`
+### ```
 
 ### Speed Measurement
 
@@ -803,7 +803,7 @@ Possible examples:
 
  
 
-### <span id="__RefHeading___Toc2173_1057631513"></span>\`\`\`
+### <span id="__RefHeading___Toc2173_1057631513"></span>```
 
 ### uint16_t encodeSpeed(uint16_t speed_knots) {
 
@@ -815,11 +815,11 @@ Possible examples:
 
 ### uint16_t decodeSpeed(uint16_t encoded_value) {
 
-###     return encoded_value \* 2;  // Convert back to knots
+###     return encoded_value * 2;  // Convert back to knots
 
 ### }
 
-### \`\`\`
+### ```
 
 ### GPS Validity Flag
 
@@ -839,13 +839,13 @@ Indicates whether GPS-derived measurements (altitude, speed, grid position) are 
 
  
 
-### <span id="__RefHeading___Toc2181_1057631513"></span>\`\`\`
+### <span id="__RefHeading___Toc2181_1057631513"></span>```
 
 ### bool gps_valid = hasGpsLock();
 
 ### uint8_t gps_flag = gps_valid ? 1 : 0;
 
-### \`\`\`
+### ```
 
 ### Telemetry Type Header
 
@@ -863,21 +863,21 @@ Identifies the telemetry format version.
 
  
 
-## <span id="__RefHeading___Toc2189_1057631513"></span>\`\`\`
+## <span id="__RefHeading___Toc2189_1057631513"></span>```
 
 ## const uint8_t TELEMETRY_TYPE_STANDARD = 1;
 
-## \`\`\`
+## ```
 
 ## Encoding examples
 
 #### <span id="__RefHeading___Toc2191_1057631513"></span> 
 
-\`\`\`
+```
 
 encodeBasicTelemetry()
 
-\`\`\`
+```
 
 Encodes all basic telemetry fields into a WSPR message.
 
@@ -913,7 +913,7 @@ Encodes all basic telemetry fields into a WSPR message.
 
 #### <span id="__RefHeading___Toc2193_1057631513"></span> 
 
-\`\`\`
+```
 
 struct BasicTelemetryData {
 
@@ -947,7 +947,7 @@ bool encodeBasicTelemetry(
 
 decodeBasicTelemetry()
 
-\`\`\`
+```
 
 Decodes basic telemetry from a WSPR message.
 
@@ -959,7 +959,7 @@ Decodes basic telemetry from a WSPR message.
 
  
 
-### <span id="__RefHeading___Toc2195_1057631513"></span>\`\`\`
+### <span id="__RefHeading___Toc2195_1057631513"></span>```
 
 ### bool decodeBasicTelemetry(
 
@@ -969,7 +969,7 @@ Decodes basic telemetry from a WSPR message.
 
 ### );
 
-### \`\`\`
+### ```
 
 ### Complete Example
 
@@ -1055,9 +1055,9 @@ Decodes basic telemetry from a WSPR message.
 
  
 
-## <span id="__RefHeading___Toc2197_1057631513"></span>\`\`\`
+## <span id="__RefHeading___Toc2197_1057631513"></span>```
 
-## \#include \<WsprEncoded/BasicTelemetry.h\>
+## #include <WsprEncoded/BasicTelemetry.h>
 
 ##  
 
@@ -1095,7 +1095,7 @@ Decodes basic telemetry from a WSPR message.
 
 ##         // Transmit WSPR message
 
-##         printf("Transmitting: %s %s %d\n",
+##         printf("Transmitting: %s %s %dn",
 
 ##                message.callsign, message.grid, message.power);
 
@@ -1119,27 +1119,27 @@ Decodes basic telemetry from a WSPR message.
 
 ##     if (decodeBasicTelemetry(received, telemetry)) {
 
-##         printf("Decoded telemetry:\n");
+##         printf("Decoded telemetry:n");
 
-##         printf("  Location: %c%c extension\n",
+##         printf("  Location: %c%c extensionn",
 
 ##                'A' + telemetry.grid5, 'A' + telemetry.grid6);
 
-##         printf("  Altitude: %d meters\n", telemetry.altitude_meters);
+##         printf("  Altitude: %d metersn", telemetry.altitude_meters);
 
-##         printf("  Temperature: %d°C\n", telemetry.temperature_c);
+##         printf("  Temperature: %d°Cn", telemetry.temperature_c);
 
-##         printf("  Voltage: %.2fV\n", telemetry.voltage_v);
+##         printf("  Voltage: %.2fVn", telemetry.voltage_v);
 
-##         printf("  Speed: %d knots\n", telemetry.speed_knots);
+##         printf("  Speed: %d knotsn", telemetry.speed_knots);
 
-##         printf("  GPS Valid: %s\n", telemetry.gps_valid ? "Yes" : "No");
+##         printf("  GPS Valid: %sn", telemetry.gps_valid ? "Yes" : "No");
 
 ##     }
 
 ## }
 
-## \`\`\`
+## ```
 
 ## Encoding Architecture
 
@@ -1159,19 +1159,19 @@ Basic Telemetry uses a two-stage encoding process to fit all fields into WSPR me
 
  
 
-#### <span id="__RefHeading___Toc2203_1057631513"></span>\`\`\`
+#### <span id="__RefHeading___Toc2203_1057631513"></span>```
 
 #### // Encode Grid5, Grid6, and Altitude into callsign
 
 #### BigNumber callsign_data = 0;
 
-#### callsign_data = callsign_data \* 24 + grid5;
+#### callsign_data = callsign_data * 24 + grid5;
 
-#### callsign_data = callsign_data \* 24 + grid6;
+#### callsign_data = callsign_data * 24 + grid6;
 
-#### callsign_data = callsign_data \* 1068 + altitude_index;
+#### callsign_data = callsign_data * 1068 + altitude_index;
 
-#### \`\`\`
+#### ```
 
 #### Stage 2: Grid+Power Encoding
 
@@ -1189,23 +1189,23 @@ Basic Telemetry uses a two-stage encoding process to fit all fields into WSPR me
 
  
 
-### <span id="__RefHeading___Toc2205_1057631513"></span>\`\`\`
+### <span id="__RefHeading___Toc2205_1057631513"></span>```
 
 ### // Encode remaining fields into grid and power
 
 ### BigNumber grid_power_data = 0;
 
-### grid_power_data = grid_power_data \* 90 + temperature_index;
+### grid_power_data = grid_power_data * 90 + temperature_index;
 
-### grid_power_data = grid_power_data \* 40 + voltage_index;
+### grid_power_data = grid_power_data * 40 + voltage_index;
 
-### grid_power_data = grid_power_data \* 42 + speed_index;
+### grid_power_data = grid_power_data * 42 + speed_index;
 
-### grid_power_data = grid_power_data \* 2 + gps_valid;
+### grid_power_data = grid_power_data * 2 + gps_valid;
 
-### grid_power_data = grid_power_data \* 2 + telemetry_type;
+### grid_power_data = grid_power_data * 2 + telemetry_type;
 
-### \`\`\`
+### ```
 
 ### Rollover Considerations
 
@@ -1271,15 +1271,15 @@ Basic Telemetry uses a two-stage encoding process to fit all fields into WSPR me
 
  
 
-## <span id="__RefHeading___Toc2213_1057631513"></span>\`\`\`
+## <span id="__RefHeading___Toc2213_1057631513"></span>```
 
 ## // Implement bounds checking before encoding
 
 ## float clampVoltage(float voltage, float min_v, float max_v) {
 
-##     if (voltage \< min_v) return min_v;
+##     if (voltage < min_v) return min_v;
 
-##     if (voltage \> max_v) return max_v;
+##     if (voltage > max_v) return max_v;
 
 ##     return voltage;
 
@@ -1297,9 +1297,9 @@ Basic Telemetry uses a two-stage encoding process to fit all fields into WSPR me
 
 ##     // Apply context-based correction
 
-##     while (abs(base_temp - expected_range) \> 45) {
+##     while (abs(base_temp - expected_range) > 45) {
 
-##         if (base_temp \< expected_range) {
+##         if (base_temp < expected_range) {
 
 ##             base_temp += 90;  // Next rollover range
 
@@ -1317,7 +1317,7 @@ Basic Telemetry uses a two-stage encoding process to fit all fields into WSPR me
 
 ## }
 
-## \`\`\`
+## ```
 
 ## Implementation-Specific Behavior
 
@@ -1351,7 +1351,7 @@ Basic Telemetry uses a two-stage encoding process to fit all fields into WSPR me
 
  
 
-#### <span id="__RefHeading___Toc2219_1057631513"></span>\`\`\`
+#### <span id="__RefHeading___Toc2219_1057631513"></span>```
 
 #### // Traquito, for example, uses restricted voltage range
 
@@ -1363,15 +1363,15 @@ Basic Telemetry uses a two-stage encoding process to fit all fields into WSPR me
 
 #### float clampVoltage(float voltage) {
 
-####     if (voltage \< VOLTAGE_MIN) return VOLTAGE_MIN;
+####     if (voltage < VOLTAGE_MIN) return VOLTAGE_MIN;
 
-####     if (voltage \> VOLTAGE_MAX) return VOLTAGE_MAX;
+####     if (voltage > VOLTAGE_MAX) return VOLTAGE_MAX;
 
 ####     return voltage;
 
 #### }
 
-#### \`\`\`
+#### ```
 
 #### Behavior Differences
 
@@ -1397,7 +1397,7 @@ Basic Telemetry uses a two-stage encoding process to fit all fields into WSPR me
 
  
 
-## <span id="__RefHeading___Toc2221_1057631513"></span>\`\`\`
+## <span id="__RefHeading___Toc2221_1057631513"></span>```
 
 ## // Standard implementation with rollover
 
@@ -1413,15 +1413,15 @@ Basic Telemetry uses a two-stage encoding process to fit all fields into WSPR me
 
 ## int16_t encodeTemperatureClamp(int16_t temp) {
 
-##     if (temp \< -50) temp = -50;   // Clamp to minimum
+##     if (temp < -50) temp = -50;   // Clamp to minimum
 
-##     if (temp \> 39) temp = 39;     // Clamp to maximum
+##     if (temp > 39) temp = 39;     // Clamp to maximum
 
 ##     return temp - (-50);          // No rollover
 
 ## }
 
-## \`\`\`
+## ```
 
 ## Transmission Scheduling
 
@@ -1439,7 +1439,7 @@ Basic Telemetry transmission timing is coordinated with the U4B ChannelMap syste
 
  
 
-### <span id="__RefHeading___Toc2225_1057631513"></span>\`\`\`
+### <span id="__RefHeading___Toc2225_1057631513"></span>```
 
 ###  
 
@@ -1451,7 +1451,7 @@ Basic Telemetry transmission timing is coordinated with the U4B ChannelMap syste
 
 ### }
 
-### \`\`\`
+### ```
 
 ### Integration with Channel Map
 
@@ -1493,11 +1493,11 @@ Basic Telemetry transmission timing is coordinated with the U4B ChannelMap syste
 
 <span class="SourceText"> </span>
 
-## <span id="__RefHeading___Toc2227_1057631513"></span>\`\`\`
+## <span id="__RefHeading___Toc2227_1057631513"></span>```
 
-## \#include \<WsprEncoded/ChannelMap.h\>
+## #include <WsprEncoded/ChannelMap.h>
 
-## \#include \<WsprEncoded/BasicTelemetry.h\>
+## #include <WsprEncoded/BasicTelemetry.h>
 
 ##  
 
@@ -1533,7 +1533,7 @@ Basic Telemetry transmission timing is coordinated with the U4B ChannelMap syste
 
 ##  
 
-## \`\`\`
+## ```
 
 ## Error Handling
 
@@ -1561,21 +1561,21 @@ Basic Telemetry transmission timing is coordinated with the U4B ChannelMap syste
 
  
 
-### <span id="__RefHeading___Toc2231_1057631513"></span>\`\`\`
+### <span id="__RefHeading___Toc2231_1057631513"></span>```
 
 ### bool validateBasicTelemetry(const BasicTelemetryData& data) {
 
 ###     // Check field ranges
 
-###     if (data.grid5 \> 23 \|\| data.grid6 \> 23) return false;
+###     if (data.grid5 > 23 || data.grid6 > 23) return false;
 
-###     if (data.altitude_meters \> 21340) return false;
+###     if (data.altitude_meters > 21340) return false;
 
-###     if (data.temperature_c \< -50 \|\| data.temperature_c \> 39) return false;
+###     if (data.temperature_c < -50 || data.temperature_c > 39) return false;
 
-###     if (data.voltage_v \< 2.0 \|\| data.voltage_v \> 3.95) return false;
+###     if (data.voltage_v < 2.0 || data.voltage_v > 3.95) return false;
 
-###     if (data.speed_knots \> 82) return false;
+###     if (data.speed_knots > 82) return false;
 
 ###     if (data.telemetry_type != 1) return false;
 
@@ -1585,7 +1585,7 @@ Basic Telemetry transmission timing is coordinated with the U4B ChannelMap syste
 
 ### }
 
-### \`\`\`
+### ```
 
 ### Error Codes
 
@@ -1611,7 +1611,7 @@ Basic Telemetry transmission timing is coordinated with the U4B ChannelMap syste
 
  
 
-## <span id="__RefHeading___Toc2233_1057631513"></span>\`\`\`
+## <span id="__RefHeading___Toc2233_1057631513"></span>```
 
 ## enum class BasicTelemetryError {
 
@@ -1635,7 +1635,7 @@ Basic Telemetry transmission timing is coordinated with the U4B ChannelMap syste
 
 ## };
 
-## \`\`\`
+## ```
 
 ## Performance Characteristics
 
@@ -1698,7 +1698,7 @@ Channels provide a systematic approach to locate Telemetry messages by specifyin
 
  
 
-### <span id="__RefHeading___Toc2253_1057631513"></span>\`\`\`
+### <span id="__RefHeading___Toc2253_1057631513"></span>```
 
 ### {
 
@@ -1714,7 +1714,7 @@ Channels provide a systematic approach to locate Telemetry messages by specifyin
 
 ### }
 
-### \`\`\`
+### ```
 
 ### Telemetry Message Structure
 
@@ -1736,7 +1736,7 @@ Channels provide a systematic approach to locate Telemetry messages by specifyin
 
  
 
-## <span id="__RefHeading___Toc2255_1057631513"></span>\`\`\`
+## <span id="__RefHeading___Toc2255_1057631513"></span>```
 
 ## {
 
@@ -1756,7 +1756,7 @@ Channels provide a systematic approach to locate Telemetry messages by specifyin
 
 ## }
 
-## \`\`\`
+## ```
 
 ## Identification Methods
 
@@ -1784,17 +1784,17 @@ The <span class="SourceText">id13</span> value uniquely identifies channels and 
 
  
 
-### <span id="__RefHeading___Toc2261_1057631513"></span>\`\`\`
+### <span id="__RefHeading___Toc2261_1057631513"></span>```
 
 ### Channel 248: id13 = "12"
 
-### Blank callsign: \_ \_ \_ \_ \_ \_
+### Blank callsign: _ _ _ _ _ _
 
-### After id13 encoding: 1 \_ 2 \_ \_ \_
+### After id13 encoding: 1 _ 2 _ _ _
 
 ### After full encoding: 1 X 2 X X X
 
-### \`\`\`
+### ```
 
 ### 2. Time Slot Identification
 
@@ -1826,11 +1826,11 @@ Due to receiver calibration issues, implement fingerprinting for accurate associ
 
 ## <span class="SourceText"> </span>
 
-## <span id="__RefHeading___Toc2269_1057631513"></span>\`\`\`
+## <span id="__RefHeading___Toc2269_1057631513"></span>```
 
 ##  
 
-## \`\`\`
+## ```
 
 ## Implementation Notes
 
@@ -2057,25 +2057,25 @@ Extended Telemetry provides flexible transmission patterns:
 
  
 
-#### <span id="__RefHeading___Toc2305_1057631513"></span>\`\`\`
+#### <span id="__RefHeading___Toc2305_1057631513"></span>```
 
 #### Slot 0: Regular Type 1
 
 #### Slot 1: Basic Telemetry
 
-#### Slots 2-4: \[Available for Extended Telemetry\]
+#### Slots 2-4: [Available for Extended Telemetry]
 
-#### \`\`\`
+#### ```
 
 #### Extended Only
 
  
 
-#### <span id="__RefHeading___Toc2307_1057631513"></span>\`\`\`
+#### <span id="__RefHeading___Toc2307_1057631513"></span>```
 
-#### Slots 0-4: \[Extended Telemetry in any combination\]
+#### Slots 0-4: [Extended Telemetry in any combination]
 
-#### \`\`\`
+#### ```
 
 #### Mixed Mode
 
@@ -2085,7 +2085,7 @@ Extended Telemetry provides flexible transmission patterns:
 
  
 
-## <span id="__RefHeading___Toc2309_1057631513"></span>\`\`\`
+## <span id="__RefHeading___Toc2309_1057631513"></span>```
 
 ## Slot 0: Regular Type 1
 
@@ -2093,7 +2093,7 @@ Extended Telemetry provides flexible transmission patterns:
 
 ## Slots 2-4: Extended Telemetry
 
-## \`\`\`
+## ```
 
 ## Encoding Specification
 
@@ -2161,7 +2161,7 @@ Fields are packed into the big number in **<span style="font-family:&quot;Libera
 
  
 
-### <span id="__RefHeading___Toc2321_1057631513"></span>\`\`\`
+### <span id="__RefHeading___Toc2321_1057631513"></span>```
 
 ### Message Type: GPS Stats (HdrType = 2)
 
@@ -2191,7 +2191,7 @@ Fields are packed into the big number in **<span style="font-family:&quot;Libera
 
 ### - Remaining bits: 1.373 (4.71%)
 
-### \`\`\`
+### ```
 
 ### Packing Example
 
@@ -2217,7 +2217,7 @@ For GPS Stats message, packing order would be:
 
  
 
-## <span id="__RefHeading___Toc2323_1057631513"></span>\`\`\`
+## <span id="__RefHeading___Toc2323_1057631513"></span>```
 
 ## 1. hdop (message field - last defined)
 
@@ -2239,7 +2239,7 @@ For GPS Stats message, packing order would be:
 
 ## 10. HdrTelemetryType (header field - first)
 
-## \`\`\`
+## ```
 
 ## Integration Guidelines
 
@@ -2349,13 +2349,13 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
  
 
-### <span id="__RefHeading___Toc2353_1057631513"></span>\`\`\`
+### <span id="__RefHeading___Toc2353_1057631513"></span>```
 
-### \# Install via Arduino IDE Library Manager
+### # Install via Arduino IDE Library Manager
 
-### \# Search for "WsprEncoded" and click Install
+### # Search for "WsprEncoded" and click Install
 
-### \`\`\`
+### ```
 
 ### CMake Integration
 
@@ -2379,7 +2379,7 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
  
 
-#### <span id="__RefHeading___Toc2357_1057631513"></span>\`\`\`
+#### <span id="__RefHeading___Toc2357_1057631513"></span>```
 
 #### include(FetchContent)
 
@@ -2399,7 +2399,7 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
 #### target_link_libraries(YourExecutable WsprEncoded)
 
-#### \`\`\`
+#### ```
 
 #### Option 2: Git Submodules
 
@@ -2415,21 +2415,21 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
  
 
-#### <span id="__RefHeading___Toc2359_1057631513"></span>\`\`\`
+#### <span id="__RefHeading___Toc2359_1057631513"></span>```
 
-#### \# Add as submodule
+#### # Add as submodule
 
 #### git submodule add https://github.com/your-repo/WsprEncoded.git third-party/WsprEncoded
 
 ####  
 
-#### \# In CMakeLists.txt
+#### # In CMakeLists.txt
 
 #### add_subdirectory(third-party/WsprEncoded)
 
 #### target_link_libraries(YourExecutable WsprEncoded)
 
-#### \`\`\`
+#### ```
 
 #### Option 3: External Directory
 
@@ -2439,15 +2439,15 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
  
 
-## <span id="__RefHeading___Toc2361_1057631513"></span>\`\`\`
+## <span id="__RefHeading___Toc2361_1057631513"></span>```
 
-## \# If WsprEncoded is in a sibling directory
+## # If WsprEncoded is in a sibling directory
 
 ## add_subdirectory(../WsprEncoded WsprEncoded)
 
 ## target_link_libraries(YourExecutable WsprEncoded)
 
-## \`\`\`
+## ```
 
 ## API Reference
 
@@ -2459,15 +2459,15 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
  
 
-### <span id="__RefHeading___Toc2365_1057631513"></span>\`\`\`
+### <span id="__RefHeading___Toc2365_1057631513"></span>```
 
-### \#include \<WsprEncoded/TelemetryBasic.h\>      // Basic telemetry types
+### #include <WsprEncoded/TelemetryBasic.h>      // Basic telemetry types
 
-### \#include \<WsprEncoded/TelemetryExtended.h\>   // User-defined telemetry
+### #include <WsprEncoded/TelemetryExtended.h>   // User-defined telemetry
 
-### \#include \<WsprEncoded/ChannelMap.h\>          // Channel mapping utilities
+### #include <WsprEncoded/ChannelMap.h>          // Channel mapping utilities
 
-### \`\`\`
+### ```
 
 ### Basic Telemetry API
 
@@ -2513,7 +2513,7 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
  
 
-#### <span id="__RefHeading___Toc2369_1057631513"></span>\`\`\`
+#### <span id="__RefHeading___Toc2369_1057631513"></span>```
 
 #### namespace WsprEncoded {
 
@@ -2555,7 +2555,7 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
 #### }
 
-#### \`\`\`
+#### ```
 
 #### Encoding Functions
 
@@ -2603,7 +2603,7 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
  
 
-#### <span id="__RefHeading___Toc2371_1057631513"></span>\`\`\`
+#### <span id="__RefHeading___Toc2371_1057631513"></span>```
 
 #### class BasicTelemetryEncoder {
 
@@ -2611,7 +2611,7 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
 ####     // Encode single measurement
 
-####     template\<typename MeasurementType\>
+####     template<typename MeasurementType>
 
 ####     static bool encode(uint16_t value, uint8_t& encoded_index);
 
@@ -2621,9 +2621,9 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
 ####     static bool encodeToWSPR(
 
-####         const uint16_t\* values,
+####         const uint16_t* values,
 
-####         const uint8_t\* measurement_types,
+####         const uint8_t* measurement_types,
 
 ####         uint8_t count,
 
@@ -2639,9 +2639,9 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
 ####         const WSPRMessage& message,
 
-####         uint16_t\* values,
+####         uint16_t* values,
 
-####         uint8_t\* measurement_types,
+####         uint8_t* measurement_types,
 
 ####         uint8_t& count
 
@@ -2649,7 +2649,7 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
 #### };
 
-#### \`\`\`
+#### ```
 
 #### Usage Example
 
@@ -2709,9 +2709,9 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
  
 
-### <span id="__RefHeading___Toc2373_1057631513"></span>\`\`\`
+### <span id="__RefHeading___Toc2373_1057631513"></span>```
 
-### \#include \<WsprEncoded/TelemetryBasic.h\>
+### #include <WsprEncoded/TelemetryBasic.h>
 
 ###  
 
@@ -2741,9 +2741,9 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
 ###     // Encode measurements
 
-###     uint16_t values\[\] = {altitude, voltage, temperature};
+###     uint16_t values[] = {altitude, voltage, temperature};
 
-###     uint8_t types\[\] = {
+###     uint8_t types[] = {
 
 ###         MeasurementType::ALTITUDE,
 
@@ -2759,7 +2759,7 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
 ###         // Success - message ready for transmission
 
-###         printf("Encoded WSPR: %s %s %d\n",
+###         printf("Encoded WSPR: %s %s %dn",
 
 ###                message.callsign, message.grid, message.power);
 
@@ -2767,7 +2767,7 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
 ### }
 
-### \`\`\`
+### ```
 
 ### Extended Telemetry API
 
@@ -2811,7 +2811,7 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
  
 
-#### <span id="__RefHeading___Toc2377_1057631513"></span>\`\`\`
+#### <span id="__RefHeading___Toc2377_1057631513"></span>```
 
 #### class ExtendedTelemetryEncoder {
 
@@ -2841,17 +2841,17 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
 ####     // Encode custom telemetry
 
-####     bool encode(const uint16_t\* values, uint8_t count, WSPRMessage& message);
+####     bool encode(const uint16_t* values, uint8_t count, WSPRMessage& message);
 
 ####    
 
 ####     // Decode custom telemetry
 
-####     bool decode(const WSPRMessage& message, uint16_t\* values, uint8_t& count);
+####     bool decode(const WSPRMessage& message, uint16_t* values, uint8_t& count);
 
 #### };
 
-#### \`\`\`
+#### ```
 
 #### Custom Telemetry Example
 
@@ -2927,9 +2927,9 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
  
 
-### <span id="__RefHeading___Toc2379_1057631513"></span>\`\`\`
+### <span id="__RefHeading___Toc2379_1057631513"></span>```
 
-### \#include \<WsprEncoded/TelemetryExtended.h\>
+### #include <WsprEncoded/TelemetryExtended.h>
 
 ###  
 
@@ -2985,7 +2985,7 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
 ###     // Encode measurements
 
-###     uint16_t values\[\] = {1013, 65};  // 1013 hPa, 65% humidity
+###     uint16_t values[] = {1013, 65};  // 1013 hPa, 65% humidity
 
 ###     WSPRMessage message;
 
@@ -2995,13 +2995,13 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
 ###         // Success - custom telemetry encoded
 
-###         printf("Custom telemetry encoded successfully\n");
+###         printf("Custom telemetry encoded successfullyn");
 
 ###     }
 
 ### }
 
-### \`\`\`
+### ```
 
 ### Channel Map API
 
@@ -3043,7 +3043,7 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
  
 
-#### <span id="__RefHeading___Toc2383_1057631513"></span>\`\`\`
+#### <span id="__RefHeading___Toc2383_1057631513"></span>```
 
 #### class ChannelMap {
 
@@ -3071,7 +3071,7 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
 ####     // Get all channels for a band
 
-####     static uint8_t getChannelsForBand(uint8_t band, ChannelInfo\* channels, uint8_t max_count);
+####     static uint8_t getChannelsForBand(uint8_t band, ChannelInfo* channels, uint8_t max_count);
 
 ####    
 
@@ -3081,7 +3081,7 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
 #### };
 
-#### \`\`\`
+#### ```
 
 #### Channel Map Example
 
@@ -3123,9 +3123,9 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
  
 
-## <span id="__RefHeading___Toc2385_1057631513"></span>\`\`\`
+## <span id="__RefHeading___Toc2385_1057631513"></span>```
 
-## \#include \<WsprEncoded/ChannelMap.h\>
+## #include <WsprEncoded/ChannelMap.h>
 
 ##  
 
@@ -3141,7 +3141,7 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
 ##     if (ChannelMap::getChannelInfo(20, 13, info)) {
 
-##         printf("Channel 13: Start minute %d, Frequency %lu Hz\n",
+##         printf("Channel 13: Start minute %d, Frequency %lu Hzn",
 
 ##                info.start_minute, info.frequency_hz);
 
@@ -3155,7 +3155,7 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
 ##     if (ChannelMap::findOptimalChannel(20, 15, optimal)) {
 
-##         printf("Optimal channel: %d at %lu Hz\n",
+##         printf("Optimal channel: %d at %lu Hzn",
 
 ##                optimal.channel_id, optimal.frequency_hz);
 
@@ -3163,7 +3163,7 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
 ## }
 
-## \`\`\`
+## ```
 
 ## Complete Integration Example
 
@@ -3269,11 +3269,11 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
  
 
-### <span id="__RefHeading___Toc2389_1057631513"></span>\`\`\`
+### <span id="__RefHeading___Toc2389_1057631513"></span>```
 
-### \#include \<WsprEncoded/TelemetryBasic.h\>
+### #include <WsprEncoded/TelemetryBasic.h>
 
-### \#include \<WsprEncoded/ChannelMap.h\>
+### #include <WsprEncoded/ChannelMap.h>
 
 ###  
 
@@ -3295,9 +3295,9 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
 ###         WsprEncoded::WSPRMessage message;
 
-###         uint16_t values\[\] = {altitude, voltage, temp};
+###         uint16_t values[] = {altitude, voltage, temp};
 
-###         uint8_t types\[\] = {
+###         uint8_t types[] = {
 
 ###             WsprEncoded::MeasurementType::ALTITUDE,
 
@@ -3371,7 +3371,7 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
 ### };
 
-### \`\`\`
+### ```
 
 ### Desktop Application Integration
 
@@ -3435,11 +3435,11 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
  
 
-## <span id="__RefHeading___Toc2391_1057631513"></span>\`\`\`
+## <span id="__RefHeading___Toc2391_1057631513"></span>```
 
-## \#include \<WsprEncoded/TelemetryExtended.h\>
+## #include <WsprEncoded/TelemetryExtended.h>
 
-## \#include \<iostream\>
+## #include <iostream>
 
 ##  
 
@@ -3475,7 +3475,7 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
 ##     // Simulate weather readings
 
-##     uint16_t readings\[\] = {1013, 65, 12};  // 1013 hPa, 65%, 12 km/h
+##     uint16_t readings[] = {1013, 65, 12};  // 1013 hPa, 65%, 12 km/h
 
 ##     WSPRMessage message;
 
@@ -3483,11 +3483,11 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
 ##     if (encoder.encode(readings, 3, message)) {
 
-##         std::cout \<\< "Weather telemetry encoded: "
+##         std::cout << "Weather telemetry encoded: "
 
-##                   \<\< message.callsign \<\< " " \<\< message.grid \<\< " " \<\< message.power
+##                   << message.callsign << " " << message.grid << " " << message.power
 
-##                   \<\< std::endl;
+##                   << std::endl;
 
 ##     }
 
@@ -3497,7 +3497,7 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
 ## }
 
-## \`\`\`
+## ```
 
 ## Error Handling
 
@@ -3523,7 +3523,7 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
  
 
-### <span id="__RefHeading___Toc2395_1057631513"></span>\`\`\`
+### <span id="__RefHeading___Toc2395_1057631513"></span>```
 
 ### namespace WsprEncoded {
 
@@ -3545,7 +3545,7 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
 ### }
 
-### \`\`\`
+### ```
 
 ### Best Practices
 
@@ -3565,7 +3565,7 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
 <span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>No dynamic allocations - all memory usage is compile-time determined
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Typical memory footprint: \< 1KB for basic telemetry, \< 2KB for extended
+<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Typical memory footprint: < 1KB for basic telemetry, < 2KB for extended
 
 ### <span id="__RefHeading___Toc2401_1057631513"></span>Processing Speed
 
@@ -3573,7 +3573,7 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
 
 <span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Optimized for embedded systems with limited CPU resources
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Typical encoding time: \< 1ms on Arduino-class processors
+<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Typical encoding time: < 1ms on Arduino-class processors
 
 ## <span id="__RefHeading___Toc2403_1057631513"></span>Platform Support
 
@@ -3604,3 +3604,4 @@ WsprEncoded is a header-only C++ library that implements telemetry encoding and 
  
 
 </div>
+
