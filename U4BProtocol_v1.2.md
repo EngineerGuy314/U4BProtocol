@@ -58,8 +58,6 @@ WsprEncoded Library v4.3.2
       - [Stage 1: Callsign Encoding](#stage-1-callsign-encoding)
       - [Stage 2: Grid+Power Encoding](#stage-2-gridpower-encoding)
     - [Rollover Considerations](#rollover-considerations)
-
-
 - [Advantages](#advantages)
 - [Disadvantages](#disadvantages)
 - [Best Practices](#best-practices)
@@ -2120,6 +2118,7 @@ MEMORY_FULL // No more fields can be added
 - **Recommended**: C++14 or later for better template support
 
 - **Tested**: GCC 4.9+, Clang 3.5+, MSVC 2015+
+
 
 
 
