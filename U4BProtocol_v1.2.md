@@ -26,12 +26,12 @@ WsprEncoded Library v4.3.2
       - [Encoding](#encoding)
       - [Example](#example)
     - [Altitude Measurement](#altitude-measurement)
-- [Specification](#specification)
-- [Usage](#usage)
-- [Temperature Measurement](#temperature-measurement)
-- [Specification](#specification-1)
-- [Rollover Behavior](#rollover-behavior)
-- [Rollover Example](#rollover-example)
+      - [Specification](#specification)
+      - [Usage](#usage)
+    - [Temperature Measurement](#temperature-measurement)
+      - [Specification](#specification-1)
+      - [Rollover Behavior](#rollover-behavior)
+      - [Rollover Example](#rollover-example)
 - [Voltage Measurement](#voltage-measurement)
 - [Specification](#specification-2)
 - [Standard Rollover Ranges](#standard-rollover-ranges)
@@ -2118,6 +2118,7 @@ MEMORY_FULL // No more fields can be added
 - **Recommended**: C++14 or later for better template support
 
 - **Tested**: GCC 4.9+, Clang 3.5+, MSVC 2015+
+
 
 
 
