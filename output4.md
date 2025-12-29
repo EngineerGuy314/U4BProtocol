@@ -319,27 +319,16 @@ allocations:
 ## Telemetry Fields
 
 ### Field Specifications
-
-  ---------------------------------------------------------------------
-  Field Name         Unit        Min      Max      Step    Possible
-                                 Value    Value    Size    Values
-  ------------------ ----------- -------- -------- ------- ------------
-  Grid5              Character   0        23       1       24
-
-  Grid6              Character   0        23       1       24
-
-  Altitude           Meters      0        21,340   20      1,068
-
-  Temperature        Celsius     -50      39       1       90
-
-  Voltage            Volts       2.0      3.95     0.05    40
-
-  Speed              Knots       0        82       2       42
-
-  IsGpsValid         Boolean     0        1        1       2
-
-  HdrTelemetryType   Enum        0        1        1       2
-  ---------------------------------------------------------------------
+| Field Name       | Unit      | Min Value | Max Value | Step Size | Possible Values |
+|------------------|-----------|-----------|-----------|-----------|-----------------|
+| Grid5            | Character | 0         | 23        | 1         | 24              |
+| Grid6            | Character | 0         | 23        | 1         | 24              |
+| Altitude         | Meters    | 0         | 21,340    | 20        | 1,068           |
+| Temperature      | Celsius   | -50       | 39        | 1         | 90              |
+| Voltage          | Volts     | 2.0       | 3.95      | 0.05      | 40              |
+| Speed            | Knots     | 0         | 82        | 2         | 42              |
+| IsGpsValid       | Boolean   | 0         | 1         | 1         | 2               |
+| HdrTelemetryType | Enum      | 0         | 1         | 1         | 2               |
 
 ### 
 
@@ -2116,6 +2105,7 @@ MEMORY_FULL // No more fields can be added
 - **Recommended**: C++14 or later for better template support
 
 - **Tested**: GCC 4.9+, Clang 3.5+, MSVC 2015+
+
 
 
 
