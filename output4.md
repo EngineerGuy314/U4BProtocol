@@ -531,9 +531,8 @@ Identifies the telemetry format version.
 
 #### Usage
 
-```const uint8_t TELEMETRY_TYPE_STANDARD = 1;
+```const uint8_t TELEMETRY_TYPE_STANDARD = 1;```
 
-```
 
 
 ## Encoding examples
@@ -2052,6 +2051,7 @@ MEMORY_FULL // No more fields can be added
 - **Recommended**: C++14 or later for better template support
 
 - **Tested**: GCC 4.9+, Clang 3.5+, MSVC 2015+
+
 
 
 
