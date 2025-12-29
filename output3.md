@@ -394,11 +394,11 @@ A common case is accidentally decoding WB8ELK protocol telemetry. It will someti
 
 Basic Telemetry messages use the WSPR Type 1 format with specific field allocations:
 
-\`\`\`
+```
 
 \<callsign\> \<grid\> \<power\>
 
-\`\`\`
+```
 
 **<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Field Mapping:</span>**
 
@@ -2498,3 +2498,4 @@ namespace WsprEncoded {
  
 
 </div>
+
