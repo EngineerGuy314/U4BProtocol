@@ -1,8 +1,6 @@
-<div class="WordSection1">
+# U4BProtocol Specification
 
-# <span id="__RefHeading___Toc2111_1057631513"></span>U4BProtocol Specification
-
-# <span style="font-size:20.0pt">w/references to WsprEncoded C/Python Libraries </span>
+# w/references to WsprEncoded C/Python Libraries 
 
 Current versions
 
@@ -10,3598 +8,2129 @@ U4BProtocol Specification v1.1
 
 WsprEncoded Library v4.3.2
 
-Table of Contents
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">U4BProtocol &WsprEncoded C/Python Libraries Specification.............................................................. 1</span></span>](#__RefHeading___Toc2111_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Intent.......................................................................................................................................................... 4</span></span>](#__RefHeading___Toc2113_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Updates...................................................................................................................................................... 5</span></span>](#__RefHeading___Toc2115_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">History....................................................................................................................................................... 5</span></span>](#__RefHeading___Toc2117_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">License....................................................................................................................................................... 5</span></span>](#__RefHeading___Toc2119_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Basic Telemetry......................................................................................................................................... 6</span></span>](#__RefHeading___Toc2121_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Overview............................................................................................................................................... 6</span></span>](#__RefHeading___Toc2123_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Message Format.................................................................................................................................... 6</span></span>](#__RefHeading___Toc2125_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Telemetry Fields.................................................................................................................................... 7</span></span>](#__RefHeading___Toc2127_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Field Specifications.......................................................................................................................... 7</span></span>](#__RefHeading___Toc2129_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Grid Position Enhancement (Grid5 & Grid6).................................................................................. 7</span></span>](#__RefHeading___Toc2131_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Purpose........................................................................................................................................ 7</span></span>](#__RefHeading___Toc2133_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Resolution Improvement............................................................................................................. 7</span></span>](#__RefHeading___Toc2135_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Encoding...................................................................................................................................... 7</span></span>](#__RefHeading___Toc2137_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Example....................................................................................................................................... 7</span></span>](#__RefHeading___Toc2139_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Altitude Measurement...................................................................................................................... 7</span></span>](#__RefHeading___Toc2141_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Specification................................................................................................................................ 7</span></span>](#__RefHeading___Toc2143_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Usage........................................................................................................................................... 8</span></span>](#__RefHeading___Toc2145_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Temperature Measurement............................................................................................................... 8</span></span>](#__RefHeading___Toc2147_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Specification................................................................................................................................ 8</span></span>](#__RefHeading___Toc2149_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Rollover Behavior....................................................................................................................... 8</span></span>](#__RefHeading___Toc2151_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Rollover Example........................................................................................................................ 8</span></span>](#__RefHeading___Toc2153_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Voltage Measurement....................................................................................................................... 8</span></span>](#__RefHeading___Toc2155_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Specification................................................................................................................................ 8</span></span>](#__RefHeading___Toc2157_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Standard Rollover Ranges........................................................................................................... 9</span></span>](#__RefHeading___Toc2159_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Encoding...................................................................................................................................... 9</span></span>](#__RefHeading___Toc2161_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Alternative Encoding example for only 3.0 to 4.95v with clamping.......................................... 9</span></span>](#__RefHeading___Toc2163_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Decoding voltage assuming it represents 3.0 to 4.95v range at original measurement.............. 9</span></span>](#__RefHeading___Toc2165_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Speed Measurement......................................................................................................................... 9</span></span>](#__RefHeading___Toc2167_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Specification................................................................................................................................ 9</span></span>](#__RefHeading___Toc2169_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Usage......................................................................................................................................... 10</span></span>](#__RefHeading___Toc2171_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">GPS Validity Flag........................................................................................................................... 10</span></span>](#__RefHeading___Toc2173_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Purpose...................................................................................................................................... 10</span></span>](#__RefHeading___Toc2175_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Values........................................................................................................................................ 10</span></span>](#__RefHeading___Toc2177_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Usage......................................................................................................................................... 10</span></span>](#__RefHeading___Toc2179_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Telemetry Type Header.................................................................................................................. 10</span></span>](#__RefHeading___Toc2181_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Purpose...................................................................................................................................... 10</span></span>](#__RefHeading___Toc2183_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Values........................................................................................................................................ 10</span></span>](#__RefHeading___Toc2185_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Usage......................................................................................................................................... 10</span></span>](#__RefHeading___Toc2187_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Encoding examples............................................................................................................................. 10</span></span>](#__RefHeading___Toc2189_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">encodeBasicTelemetry()............................................................................................................ 10</span></span>](#__RefHeading___Toc2191_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">decodeBasicTelemetry()............................................................................................................ 11</span></span>](#__RefHeading___Toc2193_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Complete Example......................................................................................................................... 11</span></span>](#__RefHeading___Toc2195_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Encoding Architecture........................................................................................................................ 12</span></span>](#__RefHeading___Toc2197_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Two-Stage Encoding Process......................................................................................................... 12</span></span>](#__RefHeading___Toc2199_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Stage 1: Callsign Encoding....................................................................................................... 12</span></span>](#__RefHeading___Toc2201_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Stage 2: Grid+Power Encoding................................................................................................. 12</span></span>](#__RefHeading___Toc2203_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Rollover Considerations................................................................................................................. 12</span></span>](#__RefHeading___Toc2205_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Advantages................................................................................................................................ 12</span></span>](#__RefHeading___Toc2207_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Disadvantages............................................................................................................................ 12</span></span>](#__RefHeading___Toc2209_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Best Practices............................................................................................................................. 12</span></span>](#__RefHeading___Toc2211_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Implementation-Specific Behavior..................................................................................................... 13</span></span>](#__RefHeading___Toc2213_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Example:.................................................................................................................................... 13</span></span>](#__RefHeading___Toc2215_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Voltage Range Restriction......................................................................................................... 13</span></span>](#__RefHeading___Toc2217_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Behavior Differences................................................................................................................. 13</span></span>](#__RefHeading___Toc2219_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Transmission Scheduling.................................................................................................................... 13</span></span>](#__RefHeading___Toc2221_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Channel Selection........................................................................................................................... 13</span></span>](#__RefHeading___Toc2223_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Integration with Channel Map....................................................................................................... 14</span></span>](#__RefHeading___Toc2225_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Error Handling.................................................................................................................................... 14</span></span>](#__RefHeading___Toc2227_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Validation Functions....................................................................................................................... 14</span></span>](#__RefHeading___Toc2229_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Error Codes.................................................................................................................................... 14</span></span>](#__RefHeading___Toc2231_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Performance Characteristics............................................................................................................... 15</span></span>](#__RefHeading___Toc2233_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Encoding Efficiency....................................................................................................................... 15</span></span>](#__RefHeading___Toc2235_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Precision Trade-offs....................................................................................................................... 15</span></span>](#__RefHeading___Toc2237_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">ChannelMap Specification....................................................................................................................... 15</span></span>](#__RefHeading___Toc2239_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Overview............................................................................................................................................. 15</span></span>](#__RefHeading___Toc2241_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Core Concepts..................................................................................................................................... 15</span></span>](#__RefHeading___Toc2243_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Message Types............................................................................................................................... 15</span></span>](#__RefHeading___Toc2245_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Channel Identification.................................................................................................................... 15</span></span>](#__RefHeading___Toc2247_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Data Structures.................................................................................................................................... 15</span></span>](#__RefHeading___Toc2249_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Channel Object............................................................................................................................... 15</span></span>](#__RefHeading___Toc2251_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Telemetry Message Structure......................................................................................................... 16</span></span>](#__RefHeading___Toc2253_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Identification Methods........................................................................................................................ 16</span></span>](#__RefHeading___Toc2255_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">1. ID13 Encoding........................................................................................................................... 16</span></span>](#__RefHeading___Toc2257_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Example..................................................................................................................................... 16</span></span>](#__RefHeading___Toc2259_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">2. Time Slot Identification.............................................................................................................. 16</span></span>](#__RefHeading___Toc2261_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">3. Frequency Matching................................................................................................................... 16</span></span>](#__RefHeading___Toc2263_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Target Frequency....................................................................................................................... 16</span></span>](#__RefHeading___Toc2265_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Frequency Fingerprinting, Frequency binning or other mechanisms........................................ 16</span></span>](#__RefHeading___Toc2267_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Implementation Notes......................................................................................................................... 17</span></span>](#__RefHeading___Toc2269_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Receiver Calibration Challenges.................................................................................................... 17</span></span>](#__RefHeading___Toc2271_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Fingerprinting Algorithm............................................................................................................... 17</span></span>](#__RefHeading___Toc2273_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Performance Considerations.......................................................................................................... 17</span></span>](#__RefHeading___Toc2275_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Channel Map Integration.................................................................................................................... 17</span></span>](#__RefHeading___Toc2277_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Extended Telemetry Specification........................................................................................................... 18</span></span>](#__RefHeading___Toc2279_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Overview............................................................................................................................................. 18</span></span>](#__RefHeading___Toc2281_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Key Features................................................................................................................................... 18</span></span>](#__RefHeading___Toc2283_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Message Architecture.......................................................................................................................... 18</span></span>](#__RefHeading___Toc2285_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Message Structure.......................................................................................................................... 18</span></span>](#__RefHeading___Toc2287_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Header Fields.................................................................................................................................. 18</span></span>](#__RefHeading___Toc2289_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Header Field Details.................................................................................................................. 18</span></span>](#__RefHeading___Toc2291_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Message Types.................................................................................................................................... 19</span></span>](#__RefHeading___Toc2293_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Planned Enumerated Types (Examples)......................................................................................... 19</span></span>](#__RefHeading___Toc2295_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Time Slot Management....................................................................................................................... 19</span></span>](#__RefHeading___Toc2297_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">10-Minute Window Structure......................................................................................................... 19</span></span>](#__RefHeading___Toc2299_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Transmission Patterns..................................................................................................................... 19</span></span>](#__RefHeading___Toc2301_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Backward Compatible............................................................................................................... 19</span></span>](#__RefHeading___Toc2303_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Extended Only........................................................................................................................... 20</span></span>](#__RefHeading___Toc2305_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Mixed Mode.............................................................................................................................. 20</span></span>](#__RefHeading___Toc2307_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Encoding Specification....................................................................................................................... 20</span></span>](#__RefHeading___Toc2309_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Data Encoding................................................................................................................................ 20</span></span>](#__RefHeading___Toc2311_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Packing Order................................................................................................................................. 20</span></span>](#__RefHeading___Toc2313_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Value Processing............................................................................................................................ 20</span></span>](#__RefHeading___Toc2315_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Example Implementation.................................................................................................................... 20</span></span>](#__RefHeading___Toc2317_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">GPS Stats Message (Hypothetical)................................................................................................ 20</span></span>](#__RefHeading___Toc2319_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Packing Example............................................................................................................................ 21</span></span>](#__RefHeading___Toc2321_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Integration Guidelines......................................................................................................................... 21</span></span>](#__RefHeading___Toc2323_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Receiver Implementation............................................................................................................... 21</span></span>](#__RefHeading___Toc2325_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Sender Implementation.................................................................................................................. 21</span></span>](#__RefHeading___Toc2327_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Fingerprinting Logic...................................................................................................................... 21</span></span>](#__RefHeading___Toc2329_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Error Handling.................................................................................................................................... 21</span></span>](#__RefHeading___Toc2331_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Invalid Messages............................................................................................................................ 21</span></span>](#__RefHeading___Toc2333_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Backward Compatibility................................................................................................................ 22</span></span>](#__RefHeading___Toc2335_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Future Extensions................................................................................................................................ 22</span></span>](#__RefHeading___Toc2337_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">WsprEncoded C++ Library...................................................................................................................... 22</span></span>](#__RefHeading___Toc2339_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Overview............................................................................................................................................. 22</span></span>](#__RefHeading___Toc2341_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Features............................................................................................................................................... 22</span></span>](#__RefHeading___Toc2343_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Core Capabilities............................................................................................................................ 22</span></span>](#__RefHeading___Toc2345_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Design Principles............................................................................................................................ 22</span></span>](#__RefHeading___Toc2347_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Installation........................................................................................................................................... 23</span></span>](#__RefHeading___Toc2349_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Arduino Library Manager.............................................................................................................. 23</span></span>](#__RefHeading___Toc2351_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">CMake Integration.......................................................................................................................... 23</span></span>](#__RefHeading___Toc2353_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Option 1: FetchContent (Recommended).................................................................................. 23</span></span>](#__RefHeading___Toc2355_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Option 2: Git Submodules......................................................................................................... 23</span></span>](#__RefHeading___Toc2357_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Option 3: External Directory..................................................................................................... 23</span></span>](#__RefHeading___Toc2359_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">API Reference..................................................................................................................................... 23</span></span>](#__RefHeading___Toc2361_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Core Headers.................................................................................................................................. 23</span></span>](#__RefHeading___Toc2363_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Basic Telemetry API....................................................................................................................... 23</span></span>](#__RefHeading___Toc2365_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Common Measurement Types................................................................................................... 23</span></span>](#__RefHeading___Toc2367_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Encoding Functions................................................................................................................... 24</span></span>](#__RefHeading___Toc2369_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Usage Example.......................................................................................................................... 24</span></span>](#__RefHeading___Toc2371_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Extended Telemetry API................................................................................................................ 25</span></span>](#__RefHeading___Toc2373_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Custom Field Definition............................................................................................................ 25</span></span>](#__RefHeading___Toc2375_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Custom Telemetry Example...................................................................................................... 25</span></span>](#__RefHeading___Toc2377_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Channel Map API........................................................................................................................... 26</span></span>](#__RefHeading___Toc2379_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Channel Information.................................................................................................................. 26</span></span>](#__RefHeading___Toc2381_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Channel Map Example.............................................................................................................. 26</span></span>](#__RefHeading___Toc2383_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Complete Integration Example........................................................................................................... 27</span></span>](#__RefHeading___Toc2385_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Arduino Tracker Implementation................................................................................................... 27</span></span>](#__RefHeading___Toc2387_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Desktop Application Integration.................................................................................................... 27</span></span>](#__RefHeading___Toc2389_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Error Handling.................................................................................................................................... 28</span></span>](#__RefHeading___Toc2391_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Common Error Codes..................................................................................................................... 28</span></span>](#__RefHeading___Toc2393_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Best Practices................................................................................................................................. 28</span></span>](#__RefHeading___Toc2395_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Performance Notes.............................................................................................................................. 29</span></span>](#__RefHeading___Toc2397_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Memory Usage............................................................................................................................... 29</span></span>](#__RefHeading___Toc2399_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Processing Speed............................................................................................................................ 29</span></span>](#__RefHeading___Toc2401_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Platform Support................................................................................................................................. 29</span></span>](#__RefHeading___Toc2403_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Tested Platforms............................................................................................................................. 29</span></span>](#__RefHeading___Toc2405_1057631513)
-
-[<span class="IndexLink"><span style="color:windowtext;text-decoration:none">Compiler Requirements................................................................................................................. 29</span></span>](#__RefHeading___Toc2407_1057631513)
-
- 
-
-# <span id="__RefHeading___Toc2113_1057631513"></span>Intent
-
-QRPLabs for some time has sold a tracker <https://www.qrp-labs.com/u4b.html> that has a behavior for transmitting WSPR packets to convey information from a balloon in flight over planet Earth. This info is received by worldwide WSPR receivers, and the data uploaded to accessible databases like wsprlive and wsprnet.
-
-A number of trackers have been produced, some open-source and available on github.com that have behavior compatible with the QRPLabs U4B “protocol”. Additionally, websites have been created, or other software, that interprets the WSPR data and creates various analysis or visualizations.
-
-The behavior of this protocol has changed over time, and various software may or may not support what is considered the “current definition”. That is fine. There is a discussion process at <https://groups.io/g/picoballoon> that attempts to keep all interested parties in alignment over time, with the benefit of shared software or website use, and to avoid conflict..i.e. one person’s tracker garbling correct reception of information from another person’s tracker.
-
-QRPLabs has graciously allowed this compatible reverse-engineering. Hans G0UPL, over time, has released details of the U4B behaviors, which can be considered “U4B Protocol”.
-
- QRPLabs is under no agreement to comply in the future with anything here, and this spec does not cover all behaviors of a QRPLabs U4B tracker.
-
-The goal is to serve a common interest for all people in the u4b or u4b-compatible world, and create more fun!
-
-Part of the fun is innovation. Change over time should be slow to minimize chaos in the U4B-compatible world,  but hopefully it continues to happen. Important changes will be highlighted in the Updates section.
-
-Some specification detail available on [https://www.qrp-labs.com](https://www.qrp-labs.com/) may be out of date and not reflect the true current behavior of U4B trackers.
-
-This spec should be considered the current community consensus. Issues or Discussion can be posted at
-
-<span class="MsoHyperlink">https://github.com/traquito/WsprEncoded</span>
-
-<https://github.com/traquito/WsprEncodedPython>  
+**Table of Contents**
+
+- [U4BProtocol &WsprEncoded C/Python Libraries Specification](#u4bprotocol-specification)
+- [Intent](#intent)
+- [Updates](#updates)
+- [History](#history)
+- [License](#license)
+- [Basic Telemetry](#basic-telemetry)
+  - [Overview](#overview)
+  - [Message Format](#message-format)
+  - [Telemetry Fields](#telemetry-fields)
+    - [Field Specifications](#field-specifications)
+    - [Grid Position Enhancement (Grid5 & Grid6)](#grid-position-enhancement-grid5-grid6)
+      - [Purpose](#purpose)
+      - [Resolution Improvement](#resolution-improvement)
+      - [Encoding](#encoding)
+      - [Example](#example)
+    - [Altitude Measurement](#altitude-measurement)
+      - [Specification](#specification)
+      - [Usage](#usage)
+    - [Temperature Measurement](#temperature-measurement)
+      - [Specification](#specification-1)
+      - [Rollover Behavior](#rollover-behavior)
+      - [Rollover Example](#rollover-example)
+    - [Voltage Measurement](#voltage-measurement)
+      - [Specification](#specification-2)
+      - [Standard Rollover Ranges](#standard-rollover-ranges)
+      - [Encoding](#encoding-1)
+      - [Alternative Encoding example for only 3.0 to 4.95v with clamping](#alternative-encoding-example-for-only-3.0-to-4.95v-with-clamping)
+      - [Decoding voltage assuming it represents 3.0 to 4.95v range at original measurement](#decoding-voltage-assuming-it-represents-3.0-to-4.95v-range-at-original-measurement)
+    - [Speed Measurement](#speed-measurement)
+      - [Specification](#specification-3)
+      - [Usage](#usage-1)
+    - [GPS Validity Flag](#gps-validity-flag)
+      - [Purpose](#purpose-1)
+      - [Values](#values)
+      - [Usage](#usage-2)
+    - [Telemetry Type Header](#telemetry-type-header)
+      - [Purpose](#purpose-2)
+      - [Values](#values-1)
+      - [Usage](#usage-3)
+  - [Encoding examples](#encoding-examples)
+      - [encodeBasicTelemetry()](#encodebasictelemetry)
+      - [decodeBasicTelemetry()](#decodebasictelemetry)
+      - [Complete Example](#complete-example)
+  - [Encoding Architecture](#encoding-architecture)
+    - [Two-Stage Encoding Process](#two-stage-encoding-process)
+      - [Stage 1: Callsign Encoding](#stage-1-callsign-encoding)
+      - [Stage 2: Grid+Power Encoding](#stage-2-gridpower-encoding)
+    - [Rollover Considerations](#rollover-considerations)
+      - [Advantages](#advantages)
+      - [Disadvantages](#disadvantages)
+      - [Best Practices](#best-practices)
+  - [Implementation-Specific Behavior](#implementation-specific-behavior)
+    - [Example:](#example-1)
+    - [Voltage Range Restriction](#voltage-range-restriction)
+    - [Behavior Differences](#behavior-differences)
+  - [Transmission Scheduling](#transmission-scheduling)
+    - [Channel Selection](#channel-selection)
+    - [Integration with Channel Map](#integration-with-channel-map)
+   - [Error Handling](#error-handling)
+    - [Validation Functions](#validation-functions)
+    - [Error Codes](#error-codes)
+  - [Performance Characteristics](#performance-characteristics)
+    - [Encoding Efficiency](#encoding-efficiency)
+    - [Precision Trade-offs](#precision-trade-offs)
+- [ChannelMap Specification](#channelmap-specification)
+  - [Overview](#overview-1)
+  - [Core Concepts](#core-concepts)
+    - [Message Types](#message-types)
+    - [Channel Identification](#channel-identification)
+  - [Data Structures](#data-structures)
+    - [Channel Object](#channel-object)
+    - [Telemetry Message Structure](#telemetry-message-structure)
+  - [Identification Methods](#identification-methods)
+    - [1. ID13 Encoding](#id13-encoding)
+      - [Example](#example-2)
+    - [2. Time Slot Identification](#time-slot-identification)
+    - [3. Frequency Matching](#frequency-matching)
+      - [Target Frequency](#target-frequency)
+      - [Frequency Fingerprinting, Frequency binning or other mechanisms](#frequency-fingerprinting-frequency-binning-or-other-mechanisms)
+  - [Implementation Notes](#implementation-notes)
+    - [Receiver Calibration Challenges](#receiver-calibration-challenges)
+    - [Fingerprinting Algorithm](#fingerprinting-algorithm)
+    - [Performance Considerations](#performance-considerations)
+  - [Channel Map Integration](#channel-map-integration)
+- [Extended Telemetry Specification](#extended-telemetry-specification)
+  - [Overview](#overview-2)
+    - [Key Features](#key-features)
+  - [Message Architecture](#message-architecture)
+    - [Message Structure](#message-structure)
+    - [Header Fields](#header-fields)
+      - [Header Field Details](#header-field-details)
+  - [Message Types](#message-types-1)
+    - [Planned Enumerated Types (Examples)](#planned-enumerated-types-examples)
+  - [Time Slot Management](#time-slot-management)
+    - [10-Minute Window Structure](#minute-window-structure)
+    - [Transmission Patterns](#transmission-patterns)
+      - [Backward Compatible](#backward-compatible)
+      - [Extended Only](#extended-only)
+      - [Mixed Mode](#mixed-mode)
+  - [Encoding Specification](#encoding-specification)
+    - [Data Encoding](#data-encoding)
+    - [Packing Order](#packing-order)
+    - [Value Processing](#value-processing)
+  - [Example Implementation](#example-implementation)
+    - [GPS Stats Message (Hypothetical)](#gps-stats-message-hypothetical)
+    - [Packing Example](#packing-example)
+  - [Integration Guidelines](#integration-guidelines)
+    - [Receiver Implementation](#receiver-implementation)
+    - [Sender Implementation](#sender-implementation)
+    - [Fingerprinting Logic](#fingerprinting-logic)
+  - [Error Handling](#error-handling-1)
+    - [Invalid Messages](#invalid-messages)
+    - [Backward Compatibility](#backward-compatibility)
+  - [Future Extensions](#future-extensions)
+- [WsprEncoded C++ Library](#wsprencoded-c-library)
+  - [Overview](#overview-3)
+  - [Features](#features)
+    - [Core Capabilities](#core-capabilities)
+    - [Design Principles](#design-principles)
+  - [Installation](#installation)
+    - [Arduino Library Manager](#arduino-library-manager)
+    - [CMake Integration](#cmake-integration)
+      - [Option 1: FetchContent (Recommended)](#option-1-fetchcontent-recommended)
+      - [Option 2: Git Submodules](#option-2-git-submodules)
+      - [Option 3: External Directory](#option-3-external-directory)
+  - [API Reference](#api-reference)
+    - [Core Headers](#core-headers)
+    - [Basic Telemetry API](#basic-telemetry-api)
+      - [Common Measurement Types](#common-measurement-types)
+      - [Encoding Functions](#encoding-functions)
+      - [Usage Example](#usage-example)
+    - [Extended Telemetry API](#extended-telemetry-api)
+      - [Custom Field Definition](#custom-field-definition)
+      - [Custom Telemetry Example](#custom-telemetry-example)
+  - [Channel Map API](#channel-map-api)
+    - [Channel Information](#channel-information)
+    - [Channel Map Example](#channel-map-example)
+- [Complete Integration Example](#complete-integration-example)
+  - [Arduino Tracker Implementation](#arduino-tracker-implementation)
+  - [Desktop Application Integration](#desktop-application-integration)
+- [Error Handling](#error-handling-2)
+  - [Common Error Codes](#common-error-codes)
+  - [Best Practices](#best-practices-1)
+- [Performance Notes](#performance-notes)
+  - [Memory Usage](#memory-usage)
+  - [Processing Speed](#processing-speed)
+- [Platform Support](#platform-support)
+  - [Tested Platforms](#tested-platforms)
+  - [Compiler Requirements](#compiler-requirements)
   
-The intent is easy understanding by non-English speakers. It may take some time to get to a good spec, so revisions may happen more quickly during 2025.
+# Intent
 
-# <span id="__RefHeading___Toc2115_1057631513"></span>Updates
+QRPLabs for some time has sold a tracker
+<https://www.qrp-labs.com/u4b.html> that has a behavior for transmitting
+WSPR packets to convey information from a balloon in flight over planet
+Earth. This info is received by worldwide WSPR receivers, and the data
+uploaded to accessible databases like wsprlive and wsprnet.
 
-V1.1 Initial release at the current repo: [https://github.com/knormoyle/U4BProtocol](https://github.com/knormoyle/WsprEncoded)
+A number of trackers have been produced, some open-source and available
+on github.com that have behavior compatible with the QRPLabs U4B
+"protocol". Additionally, websites have been created, or other software,
+that interprets the WSPR data and creates various analysis or
+visualizations.
 
-# <span id="__RefHeading___Toc2117_1057631513"></span>History
+The behavior of this protocol has changed over time, and various
+software may or may not support what is considered the "current
+definition". That is fine. There is a discussion process at
+<https://groups.io/g/picoballoon> that attempts to keep all interested
+parties in alignment over time, with the benefit of shared software or
+website use, and to avoid conflict..i.e. one person's tracker garbling
+correct reception of information from another person's tracker.
 
-U3B and U3S WSPR on balloons appeared around 2015, with U4B development after that by Hans G0UPL and Dave VE3KCL.
+QRPLabs has graciously allowed this compatible reverse-engineering. Hans
+G0UPL, over time, has released details of the U4B behaviors, which can
+be considered "U4B Protocol".
 
-Some other trackers reverse-engineered U4B protocol, but Doug KD2KDD did extensive work in that area starting in 2023. This was called the Traquito project.
+QRPLabs is under no agreement to comply in the future with anything
+here, and this spec does not cover all behaviors of a QRPLabs U4B
+tracker.
 
-Doug KD2KDD organized a collaborative effort to extend U4B protocol in 12/24 and made the extensions (Extended Telemetry) available under AGPL.
+The goal is to serve a common interest for all people in the u4b or
+u4b-compatible world, and create more fun!
 
-The original U4B protocol before 12/24 is considered to be Basic Telemetry. The extensions are considered to be Extended Telemery. Hans G0UPL aligned QRPLabs U4B firmware to the Extended Telemetry spec around 7/25.
+Part of the fun is innovation. Change over time should be slow to
+minimize chaos in the U4B-compatible world, but hopefully it continues
+to happen. Important changes will be highlighted in the Updates section.
 
-The supporting library and clarity of definition here, are all because of Doug’s work, and the community thanks him for his time and commitment to the idea.
+Some specification detail available on
+[https://www.qrp-labs.com](https://www.qrp-labs.com/) may be out of date
+and not reflect the true current behavior of U4B trackers.
 
-# <span id="__RefHeading___Toc2119_1057631513"></span>License
+This spec should be considered the current community consensus. Issues
+or Discussion can be posted at
+
+[https://github.com/traquito/WsprEncoded]()
+
+<https://github.com/traquito/WsprEncodedPython>
+
+The intent is easy understanding by non-English speakers. It may take
+some time to get to a good spec, so revisions may happen more quickly
+during 2025.
+
+# Updates
+
+V1.1 Initial release at the current repo:
+[https://github.com/knormoyle/U4BProtocol](https://github.com/knormoyle/WsprEncoded)
+
+# History
+
+U3B and U3S WSPR on balloons appeared around 2015, with U4B development
+after that by Hans G0UPL and Dave VE3KCL.
+
+Some other trackers reverse-engineered U4B protocol, but Doug KD2KDD did
+extensive work in that area starting in 2023. This was called the
+Traquito project.
+
+Doug KD2KDD organized a collaborative effort to extend U4B protocol in
+12/24 and made the extensions (Extended Telemetry) available under AGPL.
+
+The original U4B protocol before 12/24 is considered to be Basic
+Telemetry. The extensions are considered to be Extended Telemery. Hans
+G0UPL aligned QRPLabs U4B firmware to the Extended Telemetry spec around
+7/25.
+
+The supporting library and clarity of definition here, are all because
+of Doug's work, and the community thanks him for his time and commitment
+to the idea.
+
+# License
 
 This specification and the WsprEncoded library is under AGPL license.
 
-This document provides specification for Basic and Extended U4B protocol, definition of channels to isolate telemetry from different transmitters, and a description of the WsprEncoded library available at** ** <https://github.com/traquito/WsprEncoded><span class="MsoHyperlink"> </span>to simplify implementation of the protocol.
+This document provides specification for Basic and Extended U4B
+protocol, definition of channels to isolate telemetry from different
+transmitters, and a description of the WsprEncoded library available at
+<https://github.com/traquito/WsprEncoded> to simplify implementation of
+the protocol.
 
-Contributions, modifications and extensions are encouraged and merges will be accepted via <https://github.com/knormoyle/U4BProtocol> repo.
+Contributions, modifications and extensions are encouraged and merges
+will be accepted via <https://github.com/knormoyle/U4BProtocol> repo.
 
-U4BProtocol includes Basic Telemetry and Extended Telemetry. QRPLabs has some alternative transmissions with its legacy TELE instruction that are not part of this spec. The QRPLabs TELEX command meets the Extended Telemetry spec.
+U4BProtocol includes Basic Telemetry and Extended Telemetry. QRPLabs has
+some alternative transmissions with its legacy TELE instruction that are
+not part of this spec. The QRPLabs TELEX command meets the Extended
+Telemetry spec.
 
-# <span id="__RefHeading___Toc2121_1057631513"></span>Basic Telemetry
+# Basic Telemetry
 
-## <span id="__RefHeading___Toc2123_1057631513"></span>Overview
+## Overview
 
-The Basic Telemetry API provides a standardized method for encoding common tracker measurements into WSPR Type 1 messages. This system enables transmission of GPS location, environmental sensors, and system status information through the WSPR protocol's 50-bit data capacity. 
+The Basic Telemetry API provides a standardized method for encoding
+common tracker measurements into WSPR Type 1 messages. This system
+enables transmission of GPS location, environmental sensors, and system
+status information through the WSPR protocol's 50-bit data capacity.
 
-<span style="color:#333333">Note that there can be bad GPS data on altitude, latitude and longitude, and voltage measurement can be bad also.</span>
+Note that there can be bad GPS data on altitude, latitude and longitude,
+and voltage measurement can be bad also.
 
-<span style="color:#333333">For example, if the tracker is not getting 3.3v to an rp2040 and rp2040 voltage measurement is only "right" if supply voltage to the rp2040 and the temperature ADC is getting a correct 3.3v compare voltage. A tracker may implement additional filtering or clamping to deal with those issues. </span>
+For example, if the tracker is not getting 3.3v to an rp2040 and rp2040
+voltage measurement is only "right" if supply voltage to the rp2040
+and the temperature ADC is getting a correct 3.3v compare voltage. A
+tracker may implement additional filtering or clamping to deal with
+those issues.
 
-<span style="color:#333333">The language below governs what result happens on a website if no such filtering happens, i.e. what values are reported from particular encoded values.</span>
+The language below governs what result happens on a website if no such
+filtering happens, i.e. what values are reported from particular encoded
+values.
 
-<span style="color:#333333">Note there is no such thing as Nan or Invalid encodings. So it’s important to understand that Basic Telemetry will always decode to something. You always get an answer. The validity of that answer depends on an understanding of all of U4B Protocol.</span>
+Note there is no such thing as Nan or Invalid encodings. So it's
+important to understand that Basic Telemetry will always decode to
+something. You always get an answer. The validity of that answer depends
+on an understanding of all of U4B Protocol.
 
-<span style="color:#333333">Decoding of random unused callsign space spots from wsprlive will show that everything can decode to something (even it's out of the valid range of the intermediate "big number" for U4B protocol, if there is no checking for that).</span>
+Decoding of random unused callsign space spots from wsprlive will show
+that everything can decode to something (even it's out of the valid
+range of the intermediate "big number" for U4B protocol, if there is
+no checking for that).
 
-<span style="color:#333333">The current basic telemetry doesn't fully occupy the space allowed by the wspr big-number encoding process. So just being able to decode something doesn’t validate that it’s U4B Protocol information.</span>
+The current basic telemetry doesn't fully occupy the space allowed by
+the wspr big-number encoding process. So just being able to decode
+something doesn't validate that it's U4B Protocol information.
 
-It’s possible that unused big number space could be used for "anything" like NaN or None. Place holder for the future.
+It's possible that unused big number space could be used for
+"anything" like NaN or None. Place holder for the future.
 
- 
+A common case is accidentally decoding WB8ELK protocol telemetry. It
+will sometimes have a intermediate big number range that's illegal
+relative to U4B protocol telemetry. A website could detect that. It can
+be discovered by looking at the big number being out-of-expected-range,
+or having a remainder left over after decoding all known U4B protocol
+subfields from the big number.
 
-A common case is accidentally decoding WB8ELK protocol telemetry. It will sometimes have a intermediate big number range that’s illegal relative to U4B protocol telemetry. A website could detect that. It can be discovered by looking at the big number being out-of-expected-range, or having a remainder left over after decoding all known U4B protocol subfields from the big number.
+## Message Format
 
- 
+Basic Telemetry messages use the WSPR Type 1 format with specific field
+allocations:
 
-## <span id="__RefHeading___Toc2125_1057631513"></span>Message Format
+```<callsign> <grid> <power>```
 
-Basic Telemetry messages use the WSPR Type 1 format with specific field allocations:
+**Field Mapping:**
 
- 
+- **Callsign**: Encodes Grid5, Grid6, and Altitude
+- **Grid**: Encodes Temperature, Voltage, Speed, GPS validity, and
+  telemetry type
+- **Power**: Part of the encoding scheme
 
-**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">```</span>**
+## Telemetry Fields
 
-**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif"><callsign> <grid> <power></span>**
+### Field Specifications
 
-**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">```</span>**
+  ---------------------------------------------------------------------
+  Field Name         Unit        Min      Max      Step    Possible
+                                 Value    Value    Size    Values
+  ------------------ ----------- -------- -------- ------- ------------
+  Grid5              Character   0        23       1       24
 
-**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Field Mapping:</span>**
+  Grid6              Character   0        23       1       24
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Callsign</span>**: Encodes Grid5, Grid6, and Altitude
+  Altitude           Meters      0        21,340   20      1,068
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Grid</span>**: Encodes Temperature, Voltage, Speed, GPS validity, and telemetry type
+  Temperature        Celsius     -50      39       1       90
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Power</span>**: Part of the encoding scheme
+  Voltage            Volts       2.0      3.95     0.05    40
 
-## <span id="__RefHeading___Toc2127_1057631513"></span>Telemetry Fields
+  Speed              Knots       0        82       2       42
 
-### <span id="__RefHeading___Toc2129_1057631513"></span>Field Specifications
+  IsGpsValid         Boolean     0        1        1       2
 
-| Field Name       | Unit      | Min Value | Max Value | Step Size | Possible Values |
-|------------------|-----------|-----------|-----------|-----------|-----------------|
-| Grid5            | Character | 0         | 23        | 1         | 24              |
-| Grid6            | Character | 0         | 23        | 1         | 24              |
-| Altitude         | Meters    | 0         | 21,340    | 20        | 1,068           |
-| Temperature      | Celsius   | -50       | 39        | 1         | 90              |
-| Voltage          | Volts     | 2.0       | 3.95      | 0.05      | 40              |
-| Speed            | Knots     | 0         | 82        | 2         | 42              |
-| IsGpsValid       | Boolean   | 0         | 1         | 1         | 2               |
-| HdrTelemetryType | Enum      | 0         | 1         | 1         | 2               |
+  HdrTelemetryType   Enum        0        1        1       2
+  ---------------------------------------------------------------------
 
-###  
+### 
 
-### <span id="__RefHeading___Toc2131_1057631513"></span>Grid Position Enhancement (Grid5 & Grid6)
+### Grid Position Enhancement (Grid5 & Grid6)
 
-#### <span id="__RefHeading___Toc2133_1057631513"></span>Purpose
+#### Purpose
 
-Extends the 4-character WSPR grid to 6 characters for improved location precision.
+Extends the 4-character WSPR grid to 6 characters for improved location
+precision.
 
-#### <span id="__RefHeading___Toc2135_1057631513"></span>Resolution Improvement
+#### Resolution Improvement
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">4-character grid</span>**: 70 × 140 miles resolution
+- **4-character grid**: 70 × 140 miles resolution
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">6-character grid</span>**: 3 × 3 miles resolution
+- **6-character grid**: 3 × 3 miles resolution
 
-#### <span id="__RefHeading___Toc2137_1057631513"></span>Encoding
+#### Encoding
 
- 
+// Grid5 and Grid6 encode characters A-X (values 0-23)
 
- 
+char grid5_char = 'A' + grid5_value; // grid5_value: 0-23
 
- 
+char grid6_char = 'A' + grid6_value; // grid6_value: 0-23
 
- 
+// Complete 6-character grid formation
 
- 
-
- 
-
-#### <span id="__RefHeading___Toc2139_1057631513"></span>```
-
-#### // Grid5 and Grid6 encode characters A-X (values 0-23)
-
-#### char grid5_char = 'A' + grid5_value;  // grid5_value: 0-23
-
-#### char grid6_char = 'A' + grid6_value;  // grid6_value: 0-23
-
-####  
-
-#### // Complete 6-character grid formation
-
-#### std::string full_grid = wspr_grid_4char + grid5_char + grid6_char;
-
-#### ```
+std::string full_grid = wspr_grid_4char + grid5_char + grid6_char;
 
 #### Example
 
- 
+// WSPR Type 1 grid: "FN31"
 
- 
+// Grid5 = 12 (M), Grid6 = 7 (H)
 
- 
-
-### <span id="__RefHeading___Toc2141_1057631513"></span>```
-
-### // WSPR Type 1 grid: "FN31"
-
-### // Grid5 = 12 (M), Grid6 = 7 (H)
-
-### // Complete grid: "FN31MH"
-
-### ```
+// Complete grid: "FN31MH"
 
 ### Altitude Measurement
 
-#### <span id="__RefHeading___Toc2143_1057631513"></span>Specification
+#### Specification
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Source</span>**: GPS-derived elevation
+- **Source**: GPS-derived elevation
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Range</span>**: 0 to 21,340 meters
+- **Range**: 0 to 21,340 meters
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Resolution</span>**: 20-meter steps
+- **Resolution**: 20-meter steps
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Encoding</span>**: Linear quantization with rollover support
+- **Encoding**: Linear quantization with rollover support
 
-#### <span id="__RefHeading___Toc2145_1057631513"></span>Usage
+#### Usage
 
- 
+uint16_t encodeAltitude(uint16_t altitude_meters) {
 
- 
+// Rollover at 21340m.
 
- 
+// Trackers may optionally clamp to min/max range
 
- 
+// Negative numbers should also be filtered, in case of bad gps data
 
- 
+altitude_meters = altitude_meters % 21340;
 
- 
+// Quantize to 20m steps
 
- 
+return altitude_meters / 20;
 
- 
+}
 
- 
+uint16_t decodeAltitude(uint16_t encoded_value) {
 
- 
+return encoded_value * 20; // Convert back to meters
 
- 
-
- 
-
- 
-
-### <span id="__RefHeading___Toc2147_1057631513"></span>```
-
-### uint16_t encodeAltitude(uint16_t altitude_meters) {
-
-###     // Rollover at 21340m.
-
-###     // Trackers may optionally clamp to min/max range
-
-###     // Negative numbers should also be filtered, in case of bad gps data
-
-###     altitude_meters = altitude_meters % 21340;
-
-###    
-
-###     // Quantize to 20m steps
-
-###     return altitude_meters / 20;
-
-### }
-
-###  
-
-### uint16_t decodeAltitude(uint16_t encoded_value) {
-
-###     return encoded_value * 20;  // Convert back to meters
-
-### }
-
-### ```
+}
 
 ### Temperature Measurement
 
-#### <span id="__RefHeading___Toc2149_1057631513"></span>Specification
+#### Specification
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Source</span>**: Environmental sensor or onboard temperature sensor
+- **Source**: Environmental sensor or onboard temperature sensor
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Range</span>**: -50°C to +39°C
+- **Range**: -50°C to +39°C
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Resolution</span>**: 1°C steps
+- **Resolution**: 1°C steps
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Encoding</span>**: Offset binary with rollover
+- **Encoding**: Offset binary with rollover
 
-#### <span id="__RefHeading___Toc2151_1057631513"></span>Rollover Behavior
+#### Rollover Behavior
 
- 
+int16_t encodeTemperature(int16_t temp_celsius) {
 
- 
+// Apply offset and rollover.
 
- 
+// Trackers should filter for negative results and do something (clamp?)
 
- 
+return (temp_celsius - (-50)) % 90;
 
- 
+}
 
- 
+int16_t decodeTemperature(uint16_t encoded_value) {
 
- 
+// Note: Rollover means ambiguous decoding
 
- 
+return encoded_value + (-50);
 
- 
-
- 
-
-#### <span id="__RefHeading___Toc2153_1057631513"></span>```
-
-#### int16_t encodeTemperature(int16_t temp_celsius) {
-
-####     // Apply offset and rollover.
-
-####     // Trackers should filter for negative results and do something (clamp?)
-
-####     return (temp_celsius - (-50)) % 90;
-
-#### }
-
-####  
-
-#### int16_t decodeTemperature(uint16_t encoded_value) {
-
-####     // Note: Rollover means ambiguous decoding
-
-####     return encoded_value + (-50);
-
-#### }
-
-#### ```
+}
 
 #### Rollover Example
 
- 
+// Both -45°C and +45°C encode to the same value (5)
 
- 
+int16_t temp1 = -45; // encodes to: (-45 - (-50)) % 90 = 5
 
- 
-
-### <span id="__RefHeading___Toc2155_1057631513"></span>```
-
-### // Both -45°C and +45°C encode to the same value (5)
-
-### int16_t temp1 = -45;  // encodes to: (-45 - (-50)) % 90 = 5
-
-### int16_t temp2 = 45;   // encodes to: (45 - (-50)) % 90 = 5
-
-### ```
+int16_t temp2 = 45; // encodes to: (45 - (-50)) % 90 = 5
 
 ### Voltage Measurement
 
-#### <span id="__RefHeading___Toc2157_1057631513"></span>Specification
+#### Specification
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Source</span>**: System input voltage monitoring
+- **Source**: System input voltage monitoring
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Range</span>**: 3.0 to 4.95v is considered the standard range, although a tracker can do continual wraparound, so there is no range limits, or pick a different 1.95v range
+- **Range**: 3.0 to 4.95v is considered the standard range, although a
+  tracker can do continual wraparound, so there is no range limits, or
+  pick a different 1.95v range
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Resolution</span>**: 0.05V steps
+- **Resolution**: 0.05V steps
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Purpose</span>**: Monitor solar panel or battery performance
+- **Purpose**: Monitor solar panel or battery performance
 
-#### <span id="__RefHeading___Toc2159_1057631513"></span>Standard Rollover Ranges
+#### Standard Rollover Ranges
 
-The voltage field can support multiple 1.95V ranges. There is no standard for how to decide what range a tracker is using though. 3.0 to 4.95v is considered the standard range. A tracker may clamp to min/max values for the range or not. Website viewers typically do not have a way of visualizing voltages correctly outside of the 3.0v to 4.95v range.
+The voltage field can support multiple 1.95V ranges. There is no
+standard for how to decide what range a tracker is using though. 3.0 to
+4.95v is considered the standard range. A tracker may clamp to min/max
+values for the range or not. Website viewers typically do not have a way
+of visualizing voltages correctly outside of the 3.0v to 4.95v range.
 
-It's possible website developers could have a configurable "base voltage" so that balloons with different known voltage ranges could be supported and visualized easily. But 3-4.95v is the consensus, non-configurable range that websites should report.
+It's possible website developers could have a configurable "base
+voltage" so that balloons with different known voltage ranges could be
+supported and visualized easily. But 3-4.95v is the consensus,
+non-configurable range that websites should report.
 
 Possible examples:
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>2.0V to 3.95V
+- 2.0V to 3.95V
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>4.0V to 5.95V
+- 4.0V to 5.95V
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>6.0V to 7.95V
+- 6.0V to 7.95V
 
- 
+#### Encoding
 
-#### <span id="__RefHeading___Toc2161_1057631513"></span>Encoding
+uint16_t encodeVoltage(float voltage) {
 
- 
+uint16_t range = (uint16_t)((voltage - 2.0) / 2.0);
 
- 
+float range_offset = voltage - (2.0 + range * 2.0);
 
- 
+// Quantize within range
 
- 
+uint16_t step = (uint16_t)(range_offset / 0.05);
 
- 
+return step % 40; // Rollover within 40 possible values
 
- 
-
- 
-
- 
-
- 
-
-#### <span id="__RefHeading___Toc2163_1057631513"></span>```
-
-#### uint16_t encodeVoltage(float voltage) {
-
-####     uint16_t range = (uint16_t)((voltage - 2.0) / 2.0);
-
-####     float range_offset = voltage - (2.0 + range * 2.0);
-
-####    
-
-####     // Quantize within range
-
-####     uint16_t step = (uint16_t)(range_offset / 0.05);
-
-####    
-
-####     return step % 40;  // Rollover within 40 possible values
-
-#### }
-
-#### ```
+}
 
 #### Alternative Encoding example for only 3.0 to 4.95v with clamping
 
- 
+uint16_t encodeVoltage(float voltage) {
 
- 
+// voltage encodings:
 
- 
+// 20 to 39, 0 to 19 for 3.00 to 4.95V with a resolution of 0.05V
 
- 
+// 0 to 39 encodings
 
- 
+if (voltage > 4.95) voltage = 4.95;
 
- 
+else if (voltage < 3.00) voltage = 3.00;
 
- 
+// should only be 3 to 4.95
 
- 
+uint16_t voltageNum = (int)(round ((voltage - 3.00) / .05) + 20) % 40;
 
- 
+return voltageNum
 
- 
-
- 
-
-#### <span id="__RefHeading___Toc2165_1057631513"></span>```
-
-#### uint16_t encodeVoltage(float voltage) {
-
-####     // voltage encodings:
-
-####     // 20 to 39, 0 to 19 for 3.00 to 4.95V with a resolution of 0.05V
-
-####     // 0 to 39 encodings
-
-####     if (voltage > 4.95) voltage = 4.95;
-
-####     else if (voltage < 3.00) voltage = 3.00;
-
-####     // should only be 3 to 4.95
-
-####     uint16_t voltageNum = (int)(round ((voltage - 3.00) / .05) + 20) % 40;
-
-####     return voltageNum
-
-####            
-
-#### }
-
-#### ```
+}
 
 #### Decoding voltage assuming it represents 3.0 to 4.95v range at original measurement
 
- 
+uint16_t decodedVoltage(float encoded_value) {
 
- 
+voltage = round((encoded_value * 0.05) + 2.00, 2)
 
- 
+return voltage
 
- 
-
-### <span id="__RefHeading___Toc2167_1057631513"></span>```
-
-### uint16_t decodedVoltage(float encoded_value) {
-
-###     voltage = round((encoded_value * 0.05) + 2.00, 2)
-
-###     return voltage
-
-### }
-
-### ```
+}
 
 ### Speed Measurement
 
-#### <span id="__RefHeading___Toc2169_1057631513"></span>Specification
+#### Specification
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Source</span>**: GPS-derived ground speed
+- **Source**: GPS-derived ground speed
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Range</span>**: 0 to 82 knots
+- **Range**: 0 to 82 knots
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Resolution</span>**: 2-knot steps
+- **Resolution**: 2-knot steps
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Encoding</span>**: Linear quantization with rollover
+- **Encoding**: Linear quantization with rollover
 
-#### <span id="__RefHeading___Toc2171_1057631513"></span>Usage
+#### Usage
 
- 
+uint16_t encodeSpeed(uint16_t speed_knots) {
 
- 
+return (speed_knots / 2) % 42; // Rollover support
 
- 
+}
 
- 
+uint16_t decodeSpeed(uint16_t encoded_value) {
 
- 
+return encoded_value * 2; // Convert back to knots
 
- 
-
- 
-
-### <span id="__RefHeading___Toc2173_1057631513"></span>```
-
-### uint16_t encodeSpeed(uint16_t speed_knots) {
-
-###     return (speed_knots / 2) % 42;  // Rollover support
-
-### }
-
-###  
-
-### uint16_t decodeSpeed(uint16_t encoded_value) {
-
-###     return encoded_value * 2;  // Convert back to knots
-
-### }
-
-### ```
+}
 
 ### GPS Validity Flag
 
-#### <span id="__RefHeading___Toc2175_1057631513"></span>Purpose
+#### Purpose
 
-Indicates whether GPS-derived measurements (altitude, speed, grid position) are valid. Some trackers may only send callsign+telemetry when GPS is valid, so this may always be 1. QRPLabs u4b can send callsign+telemetry when GPS is not valid. Old values are used for telemetry then, although it’s possible some data should be ignored if GPS is not valid.
+Indicates whether GPS-derived measurements (altitude, speed, grid
+position) are valid. Some trackers may only send callsign+telemetry when
+GPS is valid, so this may always be 1. QRPLabs u4b can send
+callsign+telemetry when GPS is not valid. Old values are used for
+telemetry then, although it's possible some data should be ignored if
+GPS is not valid.
 
-#### <span id="__RefHeading___Toc2177_1057631513"></span>Values
+#### Values
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">0 (false)</span>**: GPS lock not available, position/speed data invalid
+- **0 (false)**: GPS lock not available, position/speed data invalid
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">1 (true)</span>**: GPS lock acquired, position/speed data valid
+- **1 (true)**: GPS lock acquired, position/speed data valid
 
-#### <span id="__RefHeading___Toc2179_1057631513"></span>Usage
+#### Usage
 
- 
+bool gps_valid = hasGpsLock();
 
- 
-
-### <span id="__RefHeading___Toc2181_1057631513"></span>```
-
-### bool gps_valid = hasGpsLock();
-
-### uint8_t gps_flag = gps_valid ? 1 : 0;
-
-### ```
+uint8_t gps_flag = gps_valid ? 1 : 0;
 
 ### Telemetry Type Header
 
-#### <span id="__RefHeading___Toc2183_1057631513"></span>Purpose
+#### Purpose
 
 Identifies the telemetry format version.
 
-#### <span id="__RefHeading___Toc2185_1057631513"></span>Values
+#### Values
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">0</span>**: Reserved
+- **0**: Reserved
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">1</span>**: Standard Basic Telemetry format
+- **1**: Standard Basic Telemetry format
 
-#### <span id="__RefHeading___Toc2187_1057631513"></span>Usage
+#### Usage
 
- 
-
-## <span id="__RefHeading___Toc2189_1057631513"></span>```
-
-## const uint8_t TELEMETRY_TYPE_STANDARD = 1;
-
-## ```
+const uint8_t TELEMETRY_TYPE_STANDARD = 1;
 
 ## Encoding examples
 
-#### <span id="__RefHeading___Toc2191_1057631513"></span> 
-
-```
-
-encodeBasicTelemetry()
-
-```
+#### encodeBasicTelemetry()
 
 Encodes all basic telemetry fields into a WSPR message.
 
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
-#### <span id="__RefHeading___Toc2193_1057631513"></span> 
-
-```
-
 struct BasicTelemetryData {
 
-    uint8_t grid5;              // 0-23
+uint8_t grid5; // 0-23
 
-    uint8_t grid6;              // 0-23
+uint8_t grid6; // 0-23
 
-    uint16_t altitude_meters;   // 0-21340
+uint16_t altitude_meters; // 0-21340
 
-    int16_t temperature_c;      // -50 to 39
+int16_t temperature_c; // -50 to 39
 
-    float voltage_v;            // 2.0-3.95 (or rollover ranges)
+float voltage_v; // 2.0-3.95 (or rollover ranges)
 
-    uint16_t speed_knots;       // 0-82
+uint16_t speed_knots; // 0-82
 
-    bool gps_valid;             // true/false
+bool gps_valid; // true/false
 
-    uint8_t telemetry_type;     // 1 for standard
+uint8_t telemetry_type; // 1 for standard
 
 };
 
- 
-
 bool encodeBasicTelemetry(
 
-    const BasicTelemetryData& data,
+const BasicTelemetryData& data,
 
-    WSPRMessage& message
+WSPRMessage& message
 
 );
 
-decodeBasicTelemetry()
-
-```
+#### decodeBasicTelemetry()
 
 Decodes basic telemetry from a WSPR message.
 
- 
+bool decodeBasicTelemetry(
 
- 
+const WSPRMessage& message,
 
- 
+BasicTelemetryData& data
 
- 
-
-### <span id="__RefHeading___Toc2195_1057631513"></span>```
-
-### bool decodeBasicTelemetry(
-
-###     const WSPRMessage& message,
-
-###     BasicTelemetryData& data
-
-### );
-
-### ```
+);
 
 ### Complete Example
 
- 
+#include <WsprEncoded/BasicTelemetry.h>
 
- 
+void transmitBasicTelemetry() {
 
- 
+// Collect sensor data
 
- 
+BasicTelemetryData telemetry = {
 
- 
+.grid5 = 12, // 'M'
 
- 
+.grid6 = 7, // 'H'
 
- 
+.altitude_meters = 1200,
 
- 
+.temperature_c = 25,
 
- 
+.voltage_v = 3.7,
 
- 
+.speed_knots = 0,
 
- 
+.gps_valid = true,
 
- 
+.telemetry_type = 1
 
- 
+};
 
- 
+// Encode to WSPR message
 
- 
+WSPRMessage message;
 
- 
+if (encodeBasicTelemetry(telemetry, message)) {
 
- 
+// Transmit WSPR message
 
- 
+printf("Transmitting: %s %s %dn",
 
- 
+message.callsign, message.grid, message.power);
 
- 
+// Send via radio...
 
- 
+transmitWSPR(message);
 
- 
+}
 
- 
+}
 
- 
+void receiveBasicTelemetry(const WSPRMessage& received) {
 
- 
+BasicTelemetryData telemetry;
 
- 
+if (decodeBasicTelemetry(received, telemetry)) {
 
- 
+printf("Decoded telemetry:n");
 
- 
+printf(" Location: %c%c extensionn",
 
- 
+'A' + telemetry.grid5, 'A' + telemetry.grid6);
 
- 
+printf(" Altitude: %d metersn", telemetry.altitude_meters);
 
- 
+printf(" Temperature: %d°Cn", telemetry.temperature_c);
 
- 
+printf(" Voltage: %.2fVn", telemetry.voltage_v);
 
- 
+printf(" Speed: %d knotsn", telemetry.speed_knots);
 
- 
+printf(" GPS Valid: %sn", telemetry.gps_valid ? "Yes" : "No");
 
- 
+}
 
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
-## <span id="__RefHeading___Toc2197_1057631513"></span>```
-
-## #include <WsprEncoded/BasicTelemetry.h>
-
-##  
-
-## void transmitBasicTelemetry() {
-
-##     // Collect sensor data
-
-##     BasicTelemetryData telemetry = {
-
-##         .grid5 = 12,           // 'M'
-
-##         .grid6 = 7,            // 'H'
-
-##         .altitude_meters = 1200,
-
-##         .temperature_c = 25,
-
-##         .voltage_v = 3.7,
-
-##         .speed_knots = 0,
-
-##         .gps_valid = true,
-
-##         .telemetry_type = 1
-
-##     };
-
-##    
-
-##     // Encode to WSPR message
-
-##     WSPRMessage message;
-
-##     if (encodeBasicTelemetry(telemetry, message)) {
-
-##         // Transmit WSPR message
-
-##         printf("Transmitting: %s %s %dn",
-
-##                message.callsign, message.grid, message.power);
-
-##        
-
-##         // Send via radio...
-
-##         transmitWSPR(message);
-
-##     }
-
-## }
-
-##  
-
-## void receiveBasicTelemetry(const WSPRMessage& received) {
-
-##     BasicTelemetryData telemetry;
-
-##    
-
-##     if (decodeBasicTelemetry(received, telemetry)) {
-
-##         printf("Decoded telemetry:n");
-
-##         printf("  Location: %c%c extensionn",
-
-##                'A' + telemetry.grid5, 'A' + telemetry.grid6);
-
-##         printf("  Altitude: %d metersn", telemetry.altitude_meters);
-
-##         printf("  Temperature: %d°Cn", telemetry.temperature_c);
-
-##         printf("  Voltage: %.2fVn", telemetry.voltage_v);
-
-##         printf("  Speed: %d knotsn", telemetry.speed_knots);
-
-##         printf("  GPS Valid: %sn", telemetry.gps_valid ? "Yes" : "No");
-
-##     }
-
-## }
-
-## ```
+}
 
 ## Encoding Architecture
 
-### <span id="__RefHeading___Toc2199_1057631513"></span>Two-Stage Encoding Process
+### Two-Stage Encoding Process
 
-Basic Telemetry uses a two-stage encoding process to fit all fields into WSPR message components:
+Basic Telemetry uses a two-stage encoding process to fit all fields into
+WSPR message components:
 
-#### <span id="__RefHeading___Toc2201_1057631513"></span>Stage 1: Callsign Encoding
+#### Stage 1: Callsign Encoding
 
- 
+// Encode Grid5, Grid6, and Altitude into callsign
 
- 
+BigNumber callsign_data = 0;
 
- 
+callsign_data = callsign_data * 24 + grid5;
 
- 
+callsign_data = callsign_data * 24 + grid6;
 
- 
-
-#### <span id="__RefHeading___Toc2203_1057631513"></span>```
-
-#### // Encode Grid5, Grid6, and Altitude into callsign
-
-#### BigNumber callsign_data = 0;
-
-#### callsign_data = callsign_data * 24 + grid5;
-
-#### callsign_data = callsign_data * 24 + grid6;
-
-#### callsign_data = callsign_data * 1068 + altitude_index;
-
-#### ```
+callsign_data = callsign_data * 1068 + altitude_index;
 
 #### Stage 2: Grid+Power Encoding
 
- 
+// Encode remaining fields into grid and power
 
- 
+BigNumber grid_power_data = 0;
 
- 
+grid_power_data = grid_power_data * 90 + temperature_index;
 
- 
+grid_power_data = grid_power_data * 40 + voltage_index;
 
- 
+grid_power_data = grid_power_data * 42 + speed_index;
 
- 
+grid_power_data = grid_power_data * 2 + gps_valid;
 
- 
-
-### <span id="__RefHeading___Toc2205_1057631513"></span>```
-
-### // Encode remaining fields into grid and power
-
-### BigNumber grid_power_data = 0;
-
-### grid_power_data = grid_power_data * 90 + temperature_index;
-
-### grid_power_data = grid_power_data * 40 + voltage_index;
-
-### grid_power_data = grid_power_data * 42 + speed_index;
-
-### grid_power_data = grid_power_data * 2 + gps_valid;
-
-### grid_power_data = grid_power_data * 2 + telemetry_type;
-
-### ```
+grid_power_data = grid_power_data * 2 + telemetry_type;
 
 ### Rollover Considerations
 
-#### <span id="__RefHeading___Toc2207_1057631513"></span>Advantages
+#### Advantages
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Measurements not strictly limited to defined ranges
+- Measurements not strictly limited to defined ranges
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Handles sensor readings outside nominal ranges
+- Handles sensor readings outside nominal ranges
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Continuous operation during extreme conditions
+- Continuous operation during extreme conditions
 
-#### <span id="__RefHeading___Toc2209_1057631513"></span>Disadvantages
+#### Disadvantages
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Ambiguous decoding</span>**: Multiple input values map to same encoded value
+- **Ambiguous decoding**: Multiple input values map to same encoded
+  value
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Requires context</span>**: Additional information needed for correct interpretation
+- **Requires context**: Additional information needed for correct
+  interpretation
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Data loss</span>**: Precision lost due to quantization and rollover
+- **Data loss**: Precision lost due to quantization and rollover
 
-#### <span id="__RefHeading___Toc2211_1057631513"></span>Best Practices
+#### Best Practices
 
- 
+// Implement bounds checking before encoding
 
- 
+float clampVoltage(float voltage, float min_v, float max_v) {
 
- 
+if (voltage < min_v) return min_v;
 
- 
+if (voltage > max_v) return max_v;
 
- 
+return voltage;
 
- 
+}
 
- 
+// Use application-specific knowledge for decoding
 
- 
+int16_t decodeTemperatureWithContext(uint16_t encoded, int16_t
+expected_range) {
 
- 
+int16_t base_temp = encoded - 50;
 
- 
+// Apply context-based correction
 
- 
+while (abs(base_temp - expected_range) > 45) {
 
- 
+if (base_temp < expected_range) {
 
- 
+base_temp += 90; // Next rollover range
 
- 
+} else {
 
- 
+base_temp -= 90; // Previous rollover range
 
- 
+}
 
- 
+}
 
- 
+return base_temp;
 
- 
-
- 
-
- 
-
- 
-
-## <span id="__RefHeading___Toc2213_1057631513"></span>```
-
-## // Implement bounds checking before encoding
-
-## float clampVoltage(float voltage, float min_v, float max_v) {
-
-##     if (voltage < min_v) return min_v;
-
-##     if (voltage > max_v) return max_v;
-
-##     return voltage;
-
-## }
-
-##  
-
-## // Use application-specific knowledge for decoding
-
-## int16_t decodeTemperatureWithContext(uint16_t encoded, int16_t expected_range) {
-
-##     int16_t base_temp = encoded - 50;
-
-##    
-
-##     // Apply context-based correction
-
-##     while (abs(base_temp - expected_range) > 45) {
-
-##         if (base_temp < expected_range) {
-
-##             base_temp += 90;  // Next rollover range
-
-##         } else {
-
-##             base_temp -= 90;  // Previous rollover range
-
-##         }
-
-##     }
-
-##    
-
-##     return base_temp;
-
-## }
-
-## ```
+}
 
 ## Implementation-Specific Behavior
 
-#### <span id="__RefHeading___Toc2215_1057631513"></span>Example:
+#### Example:
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Temperature</span>**: Uses onboard RP2040 temperature sensor
+- **Temperature**: Uses onboard RP2040 temperature sensor
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Voltage</span>**: Samples during high-load TX conditions for worst-case readings
+- **Voltage**: Samples during high-load TX conditions for worst-case
+  readings
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">GPS Validity</span>**: Always true (GPS lock required for transmission)
+- **GPS Validity**: Always true (GPS lock required for transmission)
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Rollover</span>**: Not implemented - values are clamped to ranges
+- **Rollover**: Not implemented - values are clamped to ranges
 
-#### <span id="__RefHeading___Toc2217_1057631513"></span>Voltage Range Restriction
+#### Voltage Range Restriction
 
- 
+// Traquito, for example, uses restricted voltage range
 
- 
+const float VOLTAGE_MIN = 3.0;
 
- 
+const float VOLTAGE_MAX = 4.95;
 
- 
+float clampVoltage(float voltage) {
 
- 
+if (voltage < VOLTAGE_MIN) return VOLTAGE_MIN;
 
- 
+if (voltage > VOLTAGE_MAX) return VOLTAGE_MAX;
 
- 
+return voltage;
 
- 
-
- 
-
-#### <span id="__RefHeading___Toc2219_1057631513"></span>```
-
-#### // Traquito, for example, uses restricted voltage range
-
-#### const float VOLTAGE_MIN = 3.0;
-
-#### const float VOLTAGE_MAX = 4.95;
-
-####  
-
-#### float clampVoltage(float voltage) {
-
-####     if (voltage < VOLTAGE_MIN) return VOLTAGE_MIN;
-
-####     if (voltage > VOLTAGE_MAX) return VOLTAGE_MAX;
-
-####     return voltage;
-
-#### }
-
-#### ```
+}
 
 #### Behavior Differences
 
- 
+// Standard implementation with rollover
 
- 
+int16_t encodeTemperatureStandard(int16_t temp) {
 
- 
+return (temp - (-50)) % 90; // Rollover enabled
 
- 
+}
 
- 
+// Implementation with clamping
 
- 
+int16_t encodeTemperatureClamp(int16_t temp) {
 
- 
+if (temp < -50) temp = -50; // Clamp to minimum
 
- 
+if (temp > 39) temp = 39; // Clamp to maximum
 
- 
+return temp - (-50); // No rollover
 
- 
-
- 
-
-## <span id="__RefHeading___Toc2221_1057631513"></span>```
-
-## // Standard implementation with rollover
-
-## int16_t encodeTemperatureStandard(int16_t temp) {
-
-##     return (temp - (-50)) % 90;  // Rollover enabled
-
-## }
-
-##  
-
-## // Implementation with clamping
-
-## int16_t encodeTemperatureClamp(int16_t temp) {
-
-##     if (temp < -50) temp = -50;   // Clamp to minimum
-
-##     if (temp > 39) temp = 39;     // Clamp to maximum
-
-##     return temp - (-50);          // No rollover
-
-## }
-
-## ```
+}
 
 ## Transmission Scheduling
 
-### <span id="__RefHeading___Toc2223_1057631513"></span>Channel Selection
+### Channel Selection
 
-Basic Telemetry transmission timing is coordinated with the U4B ChannelMap system. The channel selection implies a starting minute for the callsign transmission. There are 5 possible starting minutes within each 10 minute interval.
+Basic Telemetry transmission timing is coordinated with the U4B
+ChannelMap system. The channel selection implies a starting minute for
+the callsign transmission. There are 5 possible starting minutes within
+each 10 minute interval.
 
-<span class="SourceText"> </span>
+// Check if current time slot is appropriate for Basic Telemetry
 
- 
+bool canTransmitBasicTelemetry(uint8_t current_minute, uint8_t channel)
+{
 
- 
+return isBasicTelemetrySlot(current_minute, channel);
 
- 
-
- 
-
-### <span id="__RefHeading___Toc2225_1057631513"></span>```
-
-###  
-
-### // Check if current time slot is appropriate for Basic Telemetry
-
-### bool canTransmitBasicTelemetry(uint8_t current_minute, uint8_t channel) {
-
-###     return isBasicTelemetrySlot(current_minute, channel);
-
-### }
-
-### ```
+}
 
 ### Integration with Channel Map
 
- 
+#include <WsprEncoded/ChannelMap.h>
 
- 
+#include <WsprEncoded/BasicTelemetry.h>
 
- 
+void scheduleBasicTelemetry() {
 
- 
+uint8_t current_minute = getCurrentMinute();
 
- 
+// Find appropriate channel for Basic Telemetry
 
- 
+ChannelMap::ChannelInfo channel;
 
- 
+if (ChannelMap::findBasicTelemetryChannel(20, current_minute, channel))
+{
 
- 
+// Encode and transmit
 
- 
+BasicTelemetryData data = collectSensorData();
 
- 
+WSPRMessage message;
 
- 
+if (encodeBasicTelemetry(data, message)) {
 
- 
+transmitWSPR(message, channel.frequency_hz);
 
- 
+}
 
- 
+}
 
- 
-
- 
-
- 
-
- 
-
-<span class="SourceText"> </span>
-
-## <span id="__RefHeading___Toc2227_1057631513"></span>```
-
-## #include <WsprEncoded/ChannelMap.h>
-
-## #include <WsprEncoded/BasicTelemetry.h>
-
-##  
-
-## void scheduleBasicTelemetry() {
-
-##     uint8_t current_minute = getCurrentMinute();
-
-##    
-
-##     // Find appropriate channel for Basic Telemetry
-
-##     ChannelMap::ChannelInfo channel;
-
-##     if (ChannelMap::findBasicTelemetryChannel(20, current_minute, channel)) {
-
-##         // Encode and transmit
-
-##         BasicTelemetryData data = collectSensorData();
-
-##         WSPRMessage message;
-
-##        
-
-##         if (encodeBasicTelemetry(data, message)) {
-
-##             transmitWSPR(message, channel.frequency_hz);
-
-##         }
-
-##     }
-
-## }
-
-##  
-
-## ```
+}
 
 ## Error Handling
 
-### <span id="__RefHeading___Toc2229_1057631513"></span>Validation Functions
+### Validation Functions
 
- 
+bool validateBasicTelemetry(const BasicTelemetryData& data) {
 
- 
+// Check field ranges
 
- 
+if (data.grid5 > 23 || data.grid6 > 23) return false;
 
- 
+if (data.altitude_meters > 21340) return false;
 
- 
+if (data.temperature_c < -50 || data.temperature_c > 39) return
+false;
 
- 
+if (data.voltage_v < 2.0 || data.voltage_v > 3.95) return false;
 
- 
+if (data.speed_knots > 82) return false;
 
- 
+if (data.telemetry_type != 1) return false;
 
- 
+return true;
 
- 
-
- 
-
-### <span id="__RefHeading___Toc2231_1057631513"></span>```
-
-### bool validateBasicTelemetry(const BasicTelemetryData& data) {
-
-###     // Check field ranges
-
-###     if (data.grid5 > 23 || data.grid6 > 23) return false;
-
-###     if (data.altitude_meters > 21340) return false;
-
-###     if (data.temperature_c < -50 || data.temperature_c > 39) return false;
-
-###     if (data.voltage_v < 2.0 || data.voltage_v > 3.95) return false;
-
-###     if (data.speed_knots > 82) return false;
-
-###     if (data.telemetry_type != 1) return false;
-
-###    
-
-###     return true;
-
-### }
-
-### ```
+}
 
 ### Error Codes
 
- 
+enum class BasicTelemetryError {
 
- 
+SUCCESS = 0,
 
- 
+INVALID_GRID_VALUES,
 
- 
+ALTITUDE_OUT_OF_RANGE,
 
- 
+TEMPERATURE_OUT_OF_RANGE,
 
- 
+VOLTAGE_OUT_OF_RANGE,
 
- 
+SPEED_OUT_OF_RANGE,
 
- 
+INVALID_TELEMETRY_TYPE,
 
- 
+ENCODING_FAILED,
 
- 
+DECODING_FAILED
 
- 
-
-## <span id="__RefHeading___Toc2233_1057631513"></span>```
-
-## enum class BasicTelemetryError {
-
-##     SUCCESS = 0,
-
-##     INVALID_GRID_VALUES,
-
-##     ALTITUDE_OUT_OF_RANGE,
-
-##     TEMPERATURE_OUT_OF_RANGE,
-
-##     VOLTAGE_OUT_OF_RANGE,
-
-##     SPEED_OUT_OF_RANGE,
-
-##     INVALID_TELEMETRY_TYPE,
-
-##     ENCODING_FAILED,
-
-##     DECODING_FAILED
-
-## };
-
-## ```
+};
 
 ## Performance Characteristics
 
-### <span id="__RefHeading___Toc2235_1057631513"></span>Encoding Efficiency
+### Encoding Efficiency
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Total fields</span>**: 8 telemetry values
+- **Total fields**: 8 telemetry values
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Bit utilization</span>**: ~48 of 50 available WSPR bits 
+- **Bit utilization**: ~48 of 50 available WSPR bits
 
-### <span id="__RefHeading___Toc2237_1057631513"></span>Precision Trade-offs
+### Precision Trade-offs
 
-| Field       | Original Precision | Encoded Precision | Efficiency          |
-|-------------|--------------------|-------------------|---------------------|
-| Altitude    | 1m                 | 20m               | 95% bit utilization |
-| Temperature | 0.1°C              | 1°C               | 90% bit utilization |
-| Voltage     | 0.001V             | 0.05V             | 98% bit utilization |
-| Speed       | 0.1 knots          | 2 knots           | 95% bit utilization |
+  ---------------------------------------------------------
+  Field         Original       Encoded        Efficiency
+                Precision      Precision      
+  ------------- -------------- -------------- -------------
+  Altitude      1m             20m            95% bit
+                                              utilization
 
-##  
+  Temperature   0.1°C          1°C            90% bit
+                                              utilization
 
-# <span id="__RefHeading___Toc2239_1057631513"></span>ChannelMap Specification
+  Voltage       0.001V         0.05V          98% bit
+                                              utilization
 
-## <span id="__RefHeading___Toc2241_1057631513"></span>Overview
+  Speed         0.1 knots      2 knots        95% bit
+                                              utilization
+  ---------------------------------------------------------
 
-The ChannelMap specification enables identification and association of Telemetry messages with their corresponding Regular Type 1 messages within repeating 10-minute transmission windows. This specification defines the data structures and identification mechanisms used to locate and correlate WSPR telemetry transmissions.
+## 
 
-## <span id="__RefHeading___Toc2243_1057631513"></span>Core Concepts
+# ChannelMap Specification
 
-### <span id="__RefHeading___Toc2245_1057631513"></span>Message Types
+## Overview
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Regular Type 1 Messages</span>**: Standard WSPR messages transmitted at the start of each 10-minute window
+The ChannelMap specification enables identification and association of
+Telemetry messages with their corresponding Regular Type 1 messages
+within repeating 10-minute transmission windows. This specification
+defines the data structures and identification mechanisms used to locate
+and correlate WSPR telemetry transmissions.
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Telemetry Messages</span>**: Encoded data transmissions that must be associated with their corresponding Regular messages
+## Core Concepts
 
-### <span id="__RefHeading___Toc2247_1057631513"></span>Channel Identification
+### Message Types
 
-Channels provide a systematic approach to locate Telemetry messages by specifying:
+- **Regular Type 1 Messages**: Standard WSPR messages transmitted at the
+  start of each 10-minute window
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Unique identifier encoding (<span class="SourceText">id13</span>)
+- **Telemetry Messages**: Encoded data transmissions that must be
+  associated with their corresponding Regular messages
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Transmission time slots
+### Channel Identification
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Target frequencies
+Channels provide a systematic approach to locate Telemetry messages by
+specifying:
 
-## <span id="__RefHeading___Toc2249_1057631513"></span>Data Structures
+- Unique identifier encoding (id13)
 
-### <span id="__RefHeading___Toc2251_1057631513"></span>Channel Object
+- Transmission time slots
 
- 
+- Target frequencies
 
- 
+## Data Structures
 
- 
+### Channel Object
 
- 
+{
 
- 
+"channel_number": 248,
 
- 
+"id13": "12",
 
- 
+"time_slot": 4,
 
-### <span id="__RefHeading___Toc2253_1057631513"></span>```
+"frequency": 14095600,
 
-### {
+"band": "20m"
 
-###   "channel_number": 248,
-
-###   "id13": "12",
-
-###   "time_slot": 4,
-
-###   "frequency": 14095600,
-
-###   "band": "20m"
-
-### }
-
-### ```
+}
 
 ### Telemetry Message Structure
 
- 
+{
 
- 
+"callsign": "1X2XXX",
 
- 
+"grid": "AA00",
 
- 
+"power": 37,
 
- 
+"frequency": 14095598,
 
- 
+"timestamp": "2025-01-15T12:04:00Z",
 
- 
+"id13_char1": "1",
 
- 
+"id13_char3": "2"
 
- 
-
-## <span id="__RefHeading___Toc2255_1057631513"></span>```
-
-## {
-
-##   "callsign": "1X2XXX",
-
-##   "grid": "AA00",
-
-##   "power": 37,
-
-##   "frequency": 14095598,
-
-##   "timestamp": "2025-01-15T12:04:00Z",
-
-##   "id13_char1": "1",
-
-##   "id13_char3": "2"
-
-## }
-
-## ```
+}
 
 ## Identification Methods
 
-### <span id="__RefHeading___Toc2257_1057631513"></span>1. ID13 Encoding
+### 1. ID13 Encoding
 
-The <span class="SourceText">id13</span> value uniquely identifies channels and is encoded into Telemetry message callsigns:
+The id13 value uniquely identifies channels and is encoded into
+Telemetry message callsigns:
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Format</span>**: Two-character identifier (00-Q9)
+- **Format**: Two-character identifier (00-Q9)
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Encoding</span>**:
+- **Encoding**:
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Character 1 → Callsign position 1
+  - Character 1 → Callsign position 1
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Character 2 → Callsign position 3
+  - Character 2 → Callsign position 3
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Purpose</span>**: Differentiates Telemetry messages sharing frequency or time slots
+- **Purpose**: Differentiates Telemetry messages sharing frequency or
+  time slots
 
-#### <span id="__RefHeading___Toc2259_1057631513"></span>Example
+#### Example
 
- 
+Channel 248: id13 = "12"
 
- 
+Blank callsign: _ _ _ _ _ _
 
- 
+After id13 encoding: 1 _ 2 _ _ _
 
- 
-
-### <span id="__RefHeading___Toc2261_1057631513"></span>```
-
-### Channel 248: id13 = "12"
-
-### Blank callsign: _ _ _ _ _ _
-
-### After id13 encoding: 1 _ 2 _ _ _
-
-### After full encoding: 1 X 2 X X X
-
-### ```
+After full encoding: 1 X 2 X X X
 
 ### 2. Time Slot Identification
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Definition</span>**: Specific minute within the 10-minute window when Telemetry is transmitted
+- **Definition**: Specific minute within the 10-minute window when
+  Telemetry is transmitted
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Purpose</span>**: Differentiates Telemetry messages sharing the same <span class="SourceText">id13</span> value
+- **Purpose**: Differentiates Telemetry messages sharing the same id13
+  value
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Range</span>**: 0-9 minutes within each transmission window
+- **Range**: 0-9 minutes within each transmission window
 
-### <span id="__RefHeading___Toc2263_1057631513"></span>3. Frequency Matching
+### 3. Frequency Matching
 
-#### <span id="__RefHeading___Toc2265_1057631513"></span>Target Frequency
+#### Target Frequency
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Specified in Channel Map for each channel
+- Specified in Channel Map for each channel
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Used as baseline for transmission and reception
+- Used as baseline for transmission and reception
 
-#### <span id="__RefHeading___Toc2267_1057631513"></span>Frequency Fingerprinting, Frequency binning or other mechanisms
+#### Frequency Fingerprinting, Frequency binning or other mechanisms 
 
-Due to receiver calibration issues, implement fingerprinting for accurate association:
+Due to receiver calibration issues, implement fingerprinting for
+accurate association:
 
-1.<span style="font:7.0pt &quot;Times New Roman&quot;">    </span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Locate Regular Message</span>**: Find Regular Type 1 message for target callsign
+1.  **Locate Regular Message**: Find Regular Type 1 message for target
+    callsign
 
-2.<span style="font:7.0pt &quot;Times New Roman&quot;">    </span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Extract Reported Frequency</span>**: Use actual received frequency (not target frequency)
+2.  **Extract Reported Frequency**: Use actual received frequency (not
+    target frequency)
 
-3.<span style="font:7.0pt &quot;Times New Roman&quot;">    </span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Match Telemetry</span>**: Search for Telemetry messages at the reported frequency
+3.  **Match Telemetry**: Search for Telemetry messages at the reported
+    frequency
 
-4.<span style="font:7.0pt &quot;Times New Roman&quot;">    </span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Validate Association</span>**: Confirm <span class="SourceText">id13</span> and time slot match
+4.  **Validate Association**: Confirm id13 and time slot match
 
-## <span class="SourceText"> </span>
-
-## <span id="__RefHeading___Toc2269_1057631513"></span>```
-
-##  
-
-## ```
+## 
 
 ## Implementation Notes
 
-### <span id="__RefHeading___Toc2271_1057631513"></span>Receiver Calibration Challenges
+### Receiver Calibration Challenges
 
-Many WSPR receivers have poorly calibrated frequency references, leading to:
+Many WSPR receivers have poorly calibrated frequency references, leading
+to:
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Inaccurate frequency reports
+- Inaccurate frequency reports
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Difficulty in message association
+- Difficulty in message association
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Need for fingerprinting techniques, frequency binning, frequency binning with rx frequency error correction, or possibly even no filtering based on frequency (can have no errors, if no balloon rx spots cause conflicts on channels solely differentiated by frequency.
+- Need for fingerprinting techniques, frequency binning, frequency
+  binning with rx frequency error correction, or possibly even no
+  filtering based on frequency (can have no errors, if no balloon rx
+  spots cause conflicts on channels solely differentiated by frequency.
 
-### <span id="__RefHeading___Toc2273_1057631513"></span>Fingerprinting Algorithm
+### Fingerprinting Algorithm
 
-1.<span style="font:7.0pt &quot;Times New Roman&quot;">    </span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Baseline Establishment</span>**: Use Regular message reported frequency as reference
+1.  **Baseline Establishment**: Use Regular message reported frequency
+    as reference
 
-2.<span style="font:7.0pt &quot;Times New Roman&quot;">    </span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Frequency Clustering</span>**: Group Telemetry messages by similar frequency deviations
+2.  **Frequency Clustering**: Group Telemetry messages by similar
+    frequency deviations
 
-3.<span style="font:7.0pt &quot;Times New Roman&quot;">    </span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Temporal Correlation</span>**: Validate time slot alignment
+3.  **Temporal Correlation**: Validate time slot alignment
 
-4.<span style="font:7.0pt &quot;Times New Roman&quot;">    </span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">ID13 Verification</span>**: Confirm identifier encoding matches channel specification
+4.  **ID13 Verification**: Confirm identifier encoding matches channel
+    specification
 
-### <span id="__RefHeading___Toc2275_1057631513"></span>Performance Considerations
+### Performance Considerations
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Cache Channel Map data for frequent lookups
+- Cache Channel Map data for frequent lookups
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Implement frequency tolerance ranges for matching
+- Implement frequency tolerance ranges for matching
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Use time-based indexing for efficient searches
+- Use time-based indexing for efficient searches
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Consider batch processing for large datasets
+- Consider batch processing for large datasets
 
-## <span id="__RefHeading___Toc2277_1057631513"></span>Channel Map Integration
+## Channel Map Integration
 
 This API integrates with the Channel Map system to provide:
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Channel number to frequency mapping
+- Channel number to frequency mapping
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Time slot scheduling information
+- Time slot scheduling information
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>ID13 identifier assignments
+- ID13 identifier assignments
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Band allocation details
+- Band allocation details
 
-Refer to the Channel Map Help documentation for detailed mapping information and scheduling specifics.
+Refer to the Channel Map Help documentation for detailed mapping
+information and scheduling specifics.
 
- 
+# Extended Telemetry Specification
 
-# <span id="__RefHeading___Toc2279_1057631513"></span>Extended Telemetry Specification
+## Overview
 
-## <span id="__RefHeading___Toc2281_1057631513"></span>Overview
+Extended Telemetry is an enhanced protocol that extends the Basic
+Telemetry scheme while maintaining full backward compatibility. It
+provides a flexible framework for transmitting structured telemetry data
+with improved encoding capabilities and extensible message types.
 
-Extended Telemetry is an enhanced protocol that extends the Basic Telemetry scheme while maintaining full backward compatibility. It provides a flexible framework for transmitting structured telemetry data with improved encoding capabilities and extensible message types.
+### Key Features
 
-### <span id="__RefHeading___Toc2283_1057631513"></span>Key Features
+- **16 message types** including user-defined and vendor-defined types
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">16 message types</span>** including user-defined and vendor-defined types
+- **Up to 5 messages per 10-minute window** with flexible scheduling
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Up to 5 messages per 10-minute window</span>** with flexible scheduling
+- **Backward compatibility** with Basic Telemetry and Regular Type 1
+  messages
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Backward compatibility</span>** with Basic Telemetry and Regular Type 1 messages
+- **Enhanced encoding** supporting up to 29.180 bits (608,212,404
+  values) per field
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Enhanced encoding</span>** supporting up to 29.180 bits (608,212,404 values) per field
+- **Collision-free transmission** with sender identification
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Collision-free transmission</span>** with sender identification
+- **Extensible message structure** for future growth
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Extensible message structure</span>** for future growth
+## Message Architecture
 
-## <span id="__RefHeading___Toc2285_1057631513"></span>Message Architecture
-
-### <span id="__RefHeading___Toc2287_1057631513"></span>Message Structure
+### Message Structure
 
 All Extended Telemetry messages consist of two parts:
 
-1.<span style="font:7.0pt &quot;Times New Roman&quot;">    </span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Header Fields</span>** - Common structure across all message types
+1.  **Header Fields** - Common structure across all message types
 
-2.<span style="font:7.0pt &quot;Times New Roman&quot;">    </span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Message Fields</span>** - Type-specific data payload
+2.  **Message Fields** - Type-specific data payload
 
-### <span id="__RefHeading___Toc2289_1057631513"></span>Header Fields
+### Header Fields
 
-Every Extended Telemetry message includes these header fields (listed in unpacking order):
+Every Extended Telemetry message includes these header fields (listed in
+unpacking order):
 
-<table class="MsoNormalTable" data-border="0" data-cellspacing="0" data-cellpadding="0" width="583" style="border-collapse:collapse">
-<colgroup>
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
-</colgroup>
-<thead>
-<tr>
-<th width="162" style="width: 121.2pt; padding: 1.4pt 1.4pt 1.4pt 1.4pt"><p>Field Name</p></th>
-<th width="45" style="width: 33.95pt; padding: 1.4pt 1.4pt 1.4pt 1.4pt"><p>Type</p></th>
-<th width="51" style="width: 38.0pt; padding: 1.4pt 1.4pt 1.4pt 1.4pt"><p>Range</p></th>
-<th width="37" style="width: 27.95pt; padding: 1.4pt 1.4pt 1.4pt 1.4pt"><p>Step</p></th>
-<th width="52" style="width: 38.85pt; padding: 1.4pt 1.4pt 1.4pt 1.4pt"><p>Values</p></th>
-<th width="237" style="width: 177.5pt; padding: 1.4pt 1.4pt 1.4pt 1.4pt"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td width="162" style="width: 121.2pt; padding: 1.4pt 1.4pt 1.4pt 1.4pt"><p> </p></td>
-<td width="45" style="width: 33.95pt; padding: 1.4pt 1.4pt 1.4pt 1.4pt"><p>```</p>
-<p>HdrTelemetryType</p>
-<p>```</p>
-<p>Enum</p></td>
-<td width="51" style="width: 38.0pt; padding: 1.4pt 1.4pt 1.4pt 1.4pt"><p>0-1</p></td>
-<td width="37" style="width: 27.95pt; padding: 1.4pt 1.4pt 1.4pt 1.4pt"><p>1</p></td>
-<td width="52" style="width: 38.85pt; padding: 1.4pt 1.4pt 1.4pt 1.4pt"><p>2</p></td>
-<td width="237" style="width: 177.5pt; padding: 1.4pt 1.4pt 1.4pt 1.4pt"><p>Always 0 for Extended Telemetry</p></td>
-</tr>
-<tr>
-<td width="162" style="width: 121.2pt; padding: 1.4pt 1.4pt 1.4pt 1.4pt"><p> </p></td>
-<td width="45" style="width: 33.95pt; padding: 1.4pt 1.4pt 1.4pt 1.4pt"><p>```</p>
-<p>HdrRESERVED</p>
-<p>```</p>
-<p>Enum</p></td>
-<td width="51" style="width: 38.0pt; padding: 1.4pt 1.4pt 1.4pt 1.4pt"><p>0-3</p></td>
-<td width="37" style="width: 27.95pt; padding: 1.4pt 1.4pt 1.4pt 1.4pt"><p>1</p></td>
-<td width="52" style="width: 38.85pt; padding: 1.4pt 1.4pt 1.4pt 1.4pt"><p>4</p></td>
-<td width="237" style="width: 177.5pt; padding: 1.4pt 1.4pt 1.4pt 1.4pt"><p>Reserved for future use (must be 0)</p></td>
-</tr>
-<tr>
-<td width="162" style="width: 121.2pt; padding: 1.4pt 1.4pt 1.4pt 1.4pt"><p> </p></td>
-<td width="45" style="width: 33.95pt; padding: 1.4pt 1.4pt 1.4pt 1.4pt"><p>```</p>
-<p>HdrType</p>
-<p>```</p>
-<p>Enum</p></td>
-<td width="51" style="width: 38.0pt; padding: 1.4pt 1.4pt 1.4pt 1.4pt"><p>0-15</p></td>
-<td width="37" style="width: 27.95pt; padding: 1.4pt 1.4pt 1.4pt 1.4pt"><p>1</p></td>
-<td width="52" style="width: 38.85pt; padding: 1.4pt 1.4pt 1.4pt 1.4pt"><p>16</p></td>
-<td width="237" style="width: 177.5pt; padding: 1.4pt 1.4pt 1.4pt 1.4pt"><p>Message type identifier</p></td>
-</tr>
-<tr>
-<td width="162" style="width: 121.2pt; padding: 1.4pt 1.4pt 1.4pt 1.4pt"><p> </p></td>
-<td width="45" style="width: 33.95pt; padding: 1.4pt 1.4pt 1.4pt 1.4pt"><p>```</p>
-<p>HdrSlot</p>
-<p>```</p>
-<p>Enum</p></td>
-<td width="51" style="width: 38.0pt; padding: 1.4pt 1.4pt 1.4pt 1.4pt"><p>0-4</p></td>
-<td width="37" style="width: 27.95pt; padding: 1.4pt 1.4pt 1.4pt 1.4pt"><p>1</p></td>
-<td width="52" style="width: 38.85pt; padding: 1.4pt 1.4pt 1.4pt 1.4pt"><p>5</p></td>
-<td width="237" style="width: 177.5pt; padding: 1.4pt 1.4pt 1.4pt 1.4pt"><p>Time slot identifier</p></td>
-</tr>
-</tbody>
-</table>
+  ---------------------------------------------------------------------------
+  Field Name         Type   Range   Step   Values   Description
+  ------------------ ------ ------- ------ -------- -------------------------
+  HdrTelemetryType   Enum   0-1     1      2        Always 0 for Extended
+                                                    Telemetry
 
-#### <span id="__RefHeading___Toc2291_1057631513"></span>Header Field Details
+  HdrRESERVED        Enum   0-3     1      4        Reserved for future use
+                                                    (must be 0)
 
-**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">HdrTelemetryType</span>**
+  HdrType            Enum   0-15    1      16       Message type identifier
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Must be set to <span class="SourceText">0</span> to identify Extended Telemetry messages
+  HdrSlot            Enum   0-4     1      5        Time slot identifier
+  ---------------------------------------------------------------------------
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Used to distinguish from other telemetry types
+#### Header Field Details
 
-**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">HdrRESERVED</span>**
+**HdrTelemetryType**
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Must be set to <span class="SourceText">0b00</span>
+- Must be set to 0 to identify Extended Telemetry messages
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Reserved for future protocol extensions
+- Used to distinguish from other telemetry types
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Receivers must ignore messages with non-zero values
+**HdrRESERVED**
 
-**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">HdrType</span>**
+- Must be set to 0b00
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Identifies the specific Extended Telemetry message type
+- Reserved for future protocol extensions
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Default value: <span class="SourceText">0b0000</span>
+- Receivers must ignore messages with non-zero values
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>See [Message Types](https://claude.ai/chat/4d21dbd6-0e7d-409e-8ab2-ab2ed59f85d8#message-types) for valid values
+**HdrType**
 
-**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">HdrSlot</span>**
+- Identifies the specific Extended Telemetry message type
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Identifies the sender and time slot (0-4)
+- Default value: 0b0000
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Maps to 2-minute intervals within a 10-minute window
+- See [Message
+  Types](https://claude.ai/chat/4d21dbd6-0e7d-409e-8ab2-ab2ed59f85d8#message-types)
+  for valid values
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Default value: <span class="SourceText">0b00</span>
+**HdrSlot**
 
-## <span id="__RefHeading___Toc2293_1057631513"></span>Message Types
+- Identifies the sender and time slot (0-4)
+
+- Maps to 2-minute intervals within a 10-minute window
+
+- Default value: 0b00
+
+## Message Types
 
 Extended Telemetry supports 16 different message types:
 
-| HdrType | Type           | Description                                      |
-|---------|----------------|--------------------------------------------------|
-| 0       | User-Defined   | Custom structure for testing and experimentation |
-| 1-14    | Enumerated     | Standardized message types (to be defined)       |
-| 15      | Vendor-Defined | Vendor-specific structure and scheduling         |
+  -------------------------------------------------------------
+  HdrType   Type             Description
+  --------- ---------------- ----------------------------------
+  0         User-Defined     Custom structure for testing and
+                             experimentation
 
-### <span id="__RefHeading___Toc2295_1057631513"></span>Planned Enumerated Types (Examples)
+  1-14      Enumerated       Standardized message types (to be
+                             defined)
 
-| HdrType | Type              | Purpose                                |
-|---------|-------------------|----------------------------------------|
-| 1       | Basic Telemetry 2 | Extended ranges and higher resolution  |
-| 2       | GPS Stats         | GPS behavior and satellite information |
-| 3-14    | TBD               | Future standardized types              |
+  15        Vendor-Defined   Vendor-specific structure and
+                             scheduling
+  -------------------------------------------------------------
 
-## <span id="__RefHeading___Toc2297_1057631513"></span>Time Slot Management
+### Planned Enumerated Types (Examples)
 
-### <span id="__RefHeading___Toc2299_1057631513"></span>10-Minute Window Structure
+  ---------------------------------------------------
+  HdrType   Type          Purpose
+  --------- ------------- ---------------------------
+  1         Basic         Extended ranges and higher
+            Telemetry 2   resolution
 
-Extended Telemetry operates within established 10-minute transmission windows, divided into 5 time slots:
+  2         GPS Stats     GPS behavior and satellite
+                          information
 
-| Slot | Timing        | Usage          |
-|------|---------------|----------------|
-| 0    | Start minute  | Primary slot   |
-| 1    | Start + 2 min | Secondary slot |
-| 2    | Start + 4 min | Extended slot  |
-| 3    | Start + 6 min | Extended slot  |
-| 4    | Start + 8 min | Extended slot  |
+  3-14      TBD           Future standardized types
+  ---------------------------------------------------
 
-### <span id="__RefHeading___Toc2301_1057631513"></span>Transmission Patterns
+## Time Slot Management
+
+### 10-Minute Window Structure
+
+Extended Telemetry operates within established 10-minute transmission
+windows, divided into 5 time slots:
+
+  ----------------------------
+  Slot   Timing    Usage
+  ------ --------- -----------
+  0      Start     Primary
+         minute    slot
+
+  1      Start + 2 Secondary
+         min       slot
+
+  2      Start + 4 Extended
+         min       slot
+
+  3      Start + 6 Extended
+         min       slot
+
+  4      Start + 8 Extended
+         min       slot
+  ----------------------------
+
+### Transmission Patterns
 
 Extended Telemetry provides flexible transmission patterns:
 
-#### <span id="__RefHeading___Toc2303_1057631513"></span>Backward Compatible
+#### Backward Compatible
 
- 
+Slot 0: Regular Type 1
 
- 
+Slot 1: Basic Telemetry
 
- 
-
-#### <span id="__RefHeading___Toc2305_1057631513"></span>```
-
-#### Slot 0: Regular Type 1
-
-#### Slot 1: Basic Telemetry
-
-#### Slots 2-4: [Available for Extended Telemetry]
-
-#### ```
+Slots 2-4: [Available for Extended Telemetry]
 
 #### Extended Only
 
- 
-
-#### <span id="__RefHeading___Toc2307_1057631513"></span>```
-
-#### Slots 0-4: [Extended Telemetry in any combination]
-
-#### ```
+Slots 0-4: [Extended Telemetry in any combination]
 
 #### Mixed Mode
 
- 
+Slot 0: Regular Type 1
 
- 
+Slot 1: Extended Telemetry (replacing Basic)
 
- 
-
-## <span id="__RefHeading___Toc2309_1057631513"></span>```
-
-## Slot 0: Regular Type 1
-
-## Slot 1: Extended Telemetry (replacing Basic)
-
-## Slots 2-4: Extended Telemetry
-
-## ```
+Slots 2-4: Extended Telemetry
 
 ## Encoding Specification
 
-### <span id="__RefHeading___Toc2311_1057631513"></span>Data Encoding
+### Data Encoding
 
 Extended Telemetry uses a unified encoding algorithm that:
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Supports field values up to 29.180 bits (608,212,404 values)
+- Supports field values up to 29.180 bits (608,212,404 values)
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Allows fields to span the entire WSPR message space
+- Allows fields to span the entire WSPR message space
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Implements defined clamping and rounding behaviors
+- Implements defined clamping and rounding behaviors
 
-### <span id="__RefHeading___Toc2313_1057631513"></span>Packing Order
+### Packing Order
 
-Fields are packed into the big number in **<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">reverse order</span>** from their definition:
+Fields are packed into the big number in **reverse order** from their
+definition:
 
-1.<span style="font:7.0pt &quot;Times New Roman&quot;">    </span>Message fields (last defined → first defined)
+1.  Message fields (last defined → first defined)
 
-2.<span style="font:7.0pt &quot;Times New Roman&quot;">    </span>Header fields (HdrSlot → HdrType → HdrRESERVED → HdrTelemetryType)
+2.  Header fields (HdrSlot → HdrType → HdrRESERVED → HdrTelemetryType)
 
-### <span id="__RefHeading___Toc2315_1057631513"></span>Value Processing
+### Value Processing
 
-**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Clamping Behavior</span>**
+**Clamping Behavior**
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>No rollover occurs
+- No rollover occurs
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>All values are clamped to their defined ranges before encoding
+- All values are clamped to their defined ranges before encoding
 
-**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Rounding Behavior</span>**
+**Rounding Behavior**
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Field values are rounded to the closest multiple of step size within range
+- Field values are rounded to the closest multiple of step size within
+  range
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Rounding occurs during encoding process
+- Rounding occurs during encoding process
 
-## <span id="__RefHeading___Toc2317_1057631513"></span>Example Implementation
+## Example Implementation
 
-### <span id="__RefHeading___Toc2319_1057631513"></span>GPS Stats Message (Hypothetical)
+### GPS Stats Message (Hypothetical)
 
- 
+Message Type: GPS Stats (HdrType = 2)
 
- 
+Field Definitions:
 
- 
+- SatsUSA: 0-128, step 4 (33 values, 5.044 bits)
 
- 
+- SatsChina: 0-128, step 4 (33 values, 5.044 bits)
 
- 
+- SatsRussia: 0-128, step 4 (33 values, 5.044 bits)
 
- 
+- SatsEU: 0-128, step 4 (33 values, 5.044 bits)
 
- 
+- SatsIndia: 0-128, step 4 (33 values, 5.044 bits)
 
- 
+- hdop: 0-10, step 2 (6 values, 2.585 bits)
 
- 
+Encoding Analysis:
 
- 
+- Available bits: 29.180
 
- 
+- Used bits: 27.807 (95.29%)
 
- 
-
- 
-
- 
-
-### <span id="__RefHeading___Toc2321_1057631513"></span>```
-
-### Message Type: GPS Stats (HdrType = 2)
-
-###  
-
-### Field Definitions:
-
-### - SatsUSA: 0-128, step 4 (33 values, 5.044 bits)
-
-### - SatsChina: 0-128, step 4 (33 values, 5.044 bits)
-
-### - SatsRussia: 0-128, step 4 (33 values, 5.044 bits)
-
-### - SatsEU: 0-128, step 4 (33 values, 5.044 bits)
-
-### - SatsIndia: 0-128, step 4 (33 values, 5.044 bits)
-
-### - hdop: 0-10, step 2 (6 values, 2.585 bits)
-
-###  
-
-### Encoding Analysis:
-
-### - Available bits: 29.180
-
-### - Used bits: 27.807 (95.29%)
-
-### - Remaining bits: 1.373 (4.71%)
-
-### ```
+- Remaining bits: 1.373 (4.71%)
 
 ### Packing Example
 
 For GPS Stats message, packing order would be:
 
- 
+1. hdop (message field - last defined)
 
- 
+2. SatsIndia
 
- 
+3. SatsEU
 
- 
+4. SatsRussia
 
- 
+5. SatsChina
 
- 
+6. SatsUSA (message field - first defined)
 
- 
+7. HdrSlot (header field)
 
- 
+8. HdrType
 
- 
+9. HdrRESERVED
 
- 
-
-## <span id="__RefHeading___Toc2323_1057631513"></span>```
-
-## 1. hdop (message field - last defined)
-
-## 2. SatsIndia
-
-## 3. SatsEU
-
-## 4. SatsRussia
-
-## 5. SatsChina
-
-## 6. SatsUSA (message field - first defined)
-
-## 7. HdrSlot (header field)
-
-## 8. HdrType
-
-## 9. HdrRESERVED
-
-## 10. HdrTelemetryType (header field - first)
-
-## ```
+10. HdrTelemetryType (header field - first)
 
 ## Integration Guidelines
 
-### <span id="__RefHeading___Toc2325_1057631513"></span>Receiver Implementation
+### Receiver Implementation
 
-1.<span style="font:7.0pt &quot;Times New Roman&quot;">    </span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Message Detection</span>**: Check HdrTelemetryType = 0
+1.  **Message Detection**: Check HdrTelemetryType = 0
 
-2.<span style="font:7.0pt &quot;Times New Roman&quot;">    </span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Version Compatibility</span>**: Ignore messages with HdrRESERVED ≠ 0
+2.  **Version Compatibility**: Ignore messages with HdrRESERVED ≠ 0
 
-3.<span style="font:7.0pt &quot;Times New Roman&quot;">    </span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Type Handling</span>**: Use HdrType to determine message structure
+3.  **Type Handling**: Use HdrType to determine message structure
 
-4.<span style="font:7.0pt &quot;Times New Roman&quot;">    </span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Slot Management</span>**: Use HdrSlot for sender identification
+4.  **Slot Management**: Use HdrSlot for sender identification
 
-### <span id="__RefHeading___Toc2327_1057631513"></span>Sender Implementation
+### Sender Implementation
 
-1.<span style="font:7.0pt &quot;Times New Roman&quot;">    </span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Header Setup</span>**: Always set HdrTelemetryType = 0, HdrRESERVED = 0
+1.  **Header Setup**: Always set HdrTelemetryType = 0, HdrRESERVED = 0
 
-2.<span style="font:7.0pt &quot;Times New Roman&quot;">    </span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Type Selection</span>**: Choose appropriate HdrType for message content
+2.  **Type Selection**: Choose appropriate HdrType for message content
 
-3.<span style="font:7.0pt &quot;Times New Roman&quot;">    </span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Slot Assignment</span>**: Select HdrSlot based on transmission schedule
+3.  **Slot Assignment**: Select HdrSlot based on transmission schedule
 
-4.<span style="font:7.0pt &quot;Times New Roman&quot;">    </span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Value Processing</span>**: Apply clamping and rounding before encoding
+4.  **Value Processing**: Apply clamping and rounding before encoding
 
-### <span id="__RefHeading___Toc2329_1057631513"></span>Fingerprinting Logic
+### Fingerprinting Logic
 
-For websites that use a variety of “fingerprinting” algos, it is useful to be similar for deciding how to fingerprint when Basic and Extended Telemetry exists.
+For websites that use a variety of "fingerprinting" algos, it is useful
+to be similar for deciding how to fingerprint when Basic and Extended
+Telemetry exists.
 
 For telemetry detection in any 10-minute window:
 
-1.<span style="font:7.0pt &quot;Times New Roman&quot;">    </span>Check slot 0 for both Regular and Extended messages
+1.  Check slot 0 for both Regular and Extended messages
 
-2.<span style="font:7.0pt &quot;Times New Roman&quot;">    </span>If only Regular found: use as reference frequency
+2.  If only Regular found: use as reference frequency
 
-3.<span style="font:7.0pt &quot;Times New Roman&quot;">    </span>If only Extended found: use as reference frequency
+3.  If only Extended found: use as reference frequency
 
-4.<span style="font:7.0pt &quot;Times New Roman&quot;">    </span>If both found: prefer Regular message as reference
-
-## <span id="__RefHeading___Toc2331_1057631513"></span>Error Handling
-
-### <span id="__RefHeading___Toc2333_1057631513"></span>Invalid Messages
-
-Receivers should ignore messages with:
-
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>HdrTelemetryType ≠ 0
-
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>HdrRESERVED ≠ 0
-
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Unknown HdrType values (beyond implemented range)
-
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Invalid field values outside defined ranges
-
-### <span id="__RefHeading___Toc2335_1057631513"></span>Backward Compatibility
-
-Extended Telemetry maintains compatibility by:
-
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Using existing WSPR message format
-
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Preserving Regular Type 1 and Basic Telemetry timing
-
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Not interfering with existing transmission patterns
-
-## <span id="__RefHeading___Toc2337_1057631513"></span>Future Extensions
-
-The protocol supports future growth through:
-
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Extensible message types (add fields to existing types)
-
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>HdrRESERVED field for protocol enhancements
-
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>User-defined and vendor-defined message types
-
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Flexible transmission scheduling
-
- 
-
-# <span id="__RefHeading___Toc2339_1057631513"></span>WsprEncoded C++ Library
-
-## <span id="__RefHeading___Toc2341_1057631513"></span>Overview
-
-WsprEncoded is a header-only C++ library that implements telemetry encoding and decoding functionality for the WSPR (Weak Signal Propagation Reporter) protocol. This library enables developers to build trackers and other telemetry systems that can transmit sensor data through WSPR's minimal bandwidth constraints.
-
-## <span id="__RefHeading___Toc2343_1057631513"></span>Features
-
-### <span id="__RefHeading___Toc2345_1057631513"></span>Core Capabilities
-
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Basic Telemetry</span>**: Encode/decode common measurements (altitude, voltage, temperature, etc.)
-
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Extended Telemetry</span>**: Define and encode arbitrary telemetry fields
-
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Channel Mapping</span>**: Look up WSPR channel details by band and frequency
-
-### <span id="__RefHeading___Toc2347_1057631513"></span>Design Principles
-
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Memory Efficient</span>**: No dynamic memory allocations (<span class="SourceText">malloc</span>, <span class="SourceText">new</span>, or STL containers)
-
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Widely Compatible</span>**: C++11 language standard for older compiler support
-
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Header-Only</span>**: Simple integration without separate compilation
-
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Cross-Platform</span>**: Works on Arduino, embedded systems, and desktop platforms
-
-## <span id="__RefHeading___Toc2349_1057631513"></span>Installation
-
-### <span id="__RefHeading___Toc2351_1057631513"></span>Arduino Library Manager
-
- 
-
- 
-
-### <span id="__RefHeading___Toc2353_1057631513"></span>```
-
-### # Install via Arduino IDE Library Manager
-
-### # Search for "WsprEncoded" and click Install
-
-### ```
-
-### CMake Integration
-
-#### <span id="__RefHeading___Toc2355_1057631513"></span>Option 1: FetchContent (Recommended)
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
-#### <span id="__RefHeading___Toc2357_1057631513"></span>```
-
-#### include(FetchContent)
-
-#### FetchContent_Declare(
-
-####   WsprEncoded
-
-####   GIT_REPOSITORY https://github.com/your-repo/WsprEncoded.git
-
-####   GIT_TAG        v1.0.0
-
-#### )
-
-#### FetchContent_MakeAvailable(WsprEncoded)
-
-####  
-
-#### target_link_libraries(YourExecutable WsprEncoded)
-
-#### ```
-
-#### Option 2: Git Submodules
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
-#### <span id="__RefHeading___Toc2359_1057631513"></span>```
-
-#### # Add as submodule
-
-#### git submodule add https://github.com/your-repo/WsprEncoded.git third-party/WsprEncoded
-
-####  
-
-#### # In CMakeLists.txt
-
-#### add_subdirectory(third-party/WsprEncoded)
-
-#### target_link_libraries(YourExecutable WsprEncoded)
-
-#### ```
-
-#### Option 3: External Directory
-
- 
-
- 
-
- 
-
-## <span id="__RefHeading___Toc2361_1057631513"></span>```
-
-## # If WsprEncoded is in a sibling directory
-
-## add_subdirectory(../WsprEncoded WsprEncoded)
-
-## target_link_libraries(YourExecutable WsprEncoded)
-
-## ```
-
-## API Reference
-
-### <span id="__RefHeading___Toc2363_1057631513"></span>Core Headers
-
- 
-
- 
-
- 
-
-### <span id="__RefHeading___Toc2365_1057631513"></span>```
-
-### #include <WsprEncoded/TelemetryBasic.h>      // Basic telemetry types
-
-### #include <WsprEncoded/TelemetryExtended.h>   // User-defined telemetry
-
-### #include <WsprEncoded/ChannelMap.h>          // Channel mapping utilities
-
-### ```
-
-### Basic Telemetry API
-
-#### <span id="__RefHeading___Toc2367_1057631513"></span>Common Measurement Types
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
-#### <span id="__RefHeading___Toc2369_1057631513"></span>```
-
-#### namespace WsprEncoded {
-
-####     // Predefined measurement types
-
-####     struct AltitudeMeasurement {
-
-####         static constexpr uint16_t min_value = 0;
-
-####         static constexpr uint16_t max_value = 21000;  // meters
-
-####         static constexpr uint16_t resolution = 20;     // 20m steps
-
-####     };
-
-####    
-
-####     struct VoltageMeasurement {
-
-####         static constexpr uint16_t min_value = 0;
-
-####         static constexpr uint16_t max_value = 5000;    // millivolts
-
-####         static constexpr uint16_t resolution = 10;     // 10mV steps
-
-####     };
-
-####    
-
-####     struct TemperatureMeasurement {
-
-####         static constexpr int16_t min_value = -40;
-
-####         static constexpr int16_t max_value = 80;       // celsius
-
-####         static constexpr uint16_t resolution = 1;      // 1°C steps
-
-####     };
-
-#### }
-
-#### ```
-
-#### Encoding Functions
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
-#### <span id="__RefHeading___Toc2371_1057631513"></span>```
-
-#### class BasicTelemetryEncoder {
-
-#### public:
-
-####     // Encode single measurement
-
-####     template<typename MeasurementType>
-
-####     static bool encode(uint16_t value, uint8_t& encoded_index);
-
-####    
-
-####     // Encode multiple measurements into WSPR message
-
-####     static bool encodeToWSPR(
-
-####         const uint16_t* values,
-
-####         const uint8_t* measurement_types,
-
-####         uint8_t count,
-
-####         WSPRMessage& message
-
-####     );
-
-####    
-
-####     // Decode from WSPR message
-
-####     static bool decodeFromWSPR(
-
-####         const WSPRMessage& message,
-
-####         uint16_t* values,
-
-####         uint8_t* measurement_types,
-
-####         uint8_t& count
-
-####     );
-
-#### };
-
-#### ```
-
-#### Usage Example
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
-### <span id="__RefHeading___Toc2373_1057631513"></span>```
-
-### #include <WsprEncoded/TelemetryBasic.h>
-
-###  
-
-### void encodeBasicTelemetry() {
-
-###     using namespace WsprEncoded;
-
-###    
-
-###     // Prepare measurements
-
-###     uint16_t altitude = 1200;  // meters
-
-###     uint16_t voltage = 3300;   // millivolts
-
-###     int16_t temperature = 25;  // celsius
-
-###    
-
-###     // Create encoder
-
-###     BasicTelemetryEncoder encoder;
-
-###     WSPRMessage message;
-
-###    
-
-###     // Encode measurements
-
-###     uint16_t values[] = {altitude, voltage, temperature};
-
-###     uint8_t types[] = {
-
-###         MeasurementType::ALTITUDE,
-
-###         MeasurementType::VOLTAGE,
-
-###         MeasurementType::TEMPERATURE
-
-###     };
-
-###    
-
-###     if (encoder.encodeToWSPR(values, types, 3, message)) {
-
-###         // Success - message ready for transmission
-
-###         printf("Encoded WSPR: %s %s %dn",
-
-###                message.callsign, message.grid, message.power);
-
-###     }
-
-### }
-
-### ```
-
-### Extended Telemetry API
-
-#### <span id="__RefHeading___Toc2375_1057631513"></span>Custom Field Definition
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
-#### <span id="__RefHeading___Toc2377_1057631513"></span>```
-
-#### class ExtendedTelemetryEncoder {
-
-#### public:
-
-####     // Define custom measurement field
-
-####     struct FieldDefinition {
-
-####         uint16_t min_value;
-
-####         uint16_t max_value;
-
-####         uint16_t resolution;
-
-####         uint8_t bit_count;
-
-####     };
-
-####    
-
-####     // Add field to encoder
-
-####     bool addField(const FieldDefinition& field);
-
-####    
-
-####     // Encode custom telemetry
-
-####     bool encode(const uint16_t* values, uint8_t count, WSPRMessage& message);
-
-####    
-
-####     // Decode custom telemetry
-
-####     bool decode(const WSPRMessage& message, uint16_t* values, uint8_t& count);
-
-#### };
-
-#### ```
-
-#### Custom Telemetry Example
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
-### <span id="__RefHeading___Toc2379_1057631513"></span>```
-
-### #include <WsprEncoded/TelemetryExtended.h>
-
-###  
-
-### void encodeCustomTelemetry() {
-
-###     using namespace WsprEncoded;
-
-###    
-
-###     ExtendedTelemetryEncoder encoder;
-
-###    
-
-###     // Define custom pressure field (800-1200 hPa, 1 hPa resolution)
-
-###     ExtendedTelemetryEncoder::FieldDefinition pressure_field = {
-
-###         .min_value = 800,
-
-###         .max_value = 1200,
-
-###         .resolution = 1,
-
-###         .bit_count = 9  // 2^9 = 512 values (enough for 400 hPa range)
-
-###     };
-
-###    
-
-###     // Define custom humidity field (0-100%, 1% resolution)
-
-###     ExtendedTelemetryEncoder::FieldDefinition humidity_field = {
-
-###         .min_value = 0,
-
-###         .max_value = 100,
-
-###         .resolution = 1,
-
-###         .bit_count = 7  // 2^7 = 128 values (enough for 100% range)
-
-###     };
-
-###    
-
-###     // Add fields to encoder
-
-###     encoder.addField(pressure_field);
-
-###     encoder.addField(humidity_field);
-
-###    
-
-###     // Encode measurements
-
-###     uint16_t values[] = {1013, 65};  // 1013 hPa, 65% humidity
-
-###     WSPRMessage message;
-
-###    
-
-###     if (encoder.encode(values, 2, message)) {
-
-###         // Success - custom telemetry encoded
-
-###         printf("Custom telemetry encoded successfullyn");
-
-###     }
-
-### }
-
-### ```
-
-### Channel Map API
-
-#### <span id="__RefHeading___Toc2381_1057631513"></span>Channel Information
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
-#### <span id="__RefHeading___Toc2383_1057631513"></span>```
-
-#### class ChannelMap {
-
-#### public:
-
-####     struct ChannelInfo {
-
-####         uint8_t channel_id;
-
-####         uint8_t start_minute;     // Minute within 2-hour window
-
-####         uint32_t frequency_hz;    // Exact frequency in Hz
-
-####         uint8_t band;            // Amateur radio band
-
-####     };
-
-####    
-
-####     // Get channel info by band and channel
-
-####     static bool getChannelInfo(uint8_t band, uint8_t channel, ChannelInfo& info);
-
-####    
-
-####     // Get all channels for a band
-
-####     static uint8_t getChannelsForBand(uint8_t band, ChannelInfo* channels, uint8_t max_count);
-
-####    
-
-####     // Find optimal channel for current time
-
-####     static bool findOptimalChannel(uint8_t band, uint8_t current_minute, ChannelInfo& info);
-
-#### };
-
-#### ```
-
-#### Channel Map Example
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
-## <span id="__RefHeading___Toc2385_1057631513"></span>```
-
-## #include <WsprEncoded/ChannelMap.h>
-
-##  
-
-## void useChannelMap() {
-
-##     using namespace WsprEncoded;
-
-##    
-
-##     // Get 20m band, channel 13 information
-
-##     ChannelMap::ChannelInfo info;
-
-##     if (ChannelMap::getChannelInfo(20, 13, info)) {
-
-##         printf("Channel 13: Start minute %d, Frequency %lu Hzn",
-
-##                info.start_minute, info.frequency_hz);
-
-##     }
-
-##    
-
-##     // Find optimal channel for current time (assuming minute 15)
-
-##     ChannelMap::ChannelInfo optimal;
-
-##     if (ChannelMap::findOptimalChannel(20, 15, optimal)) {
-
-##         printf("Optimal channel: %d at %lu Hzn",
-
-##                optimal.channel_id, optimal.frequency_hz);
-
-##     }
-
-## }
-
-## ```
-
-## Complete Integration Example
-
-### <span id="__RefHeading___Toc2387_1057631513"></span>Arduino Tracker Implementation
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
-<span class="SourceText"> </span>
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
-### <span id="__RefHeading___Toc2389_1057631513"></span>```
-
-### #include <WsprEncoded/TelemetryBasic.h>
-
-### #include <WsprEncoded/ChannelMap.h>
-
-###  
-
-### class WSPRTracker {
-
-### private:
-
-###     WsprEncoded::BasicTelemetryEncoder encoder;
-
-###     WsprEncoded::ChannelMap channelMap;
-
-###    
-
-### public:
-
-###     bool transmitTelemetry(uint16_t altitude, uint16_t voltage, int16_t temp) {
-
-###         // Encode telemetry
-
-###         WsprEncoded::WSPRMessage message;
-
-###         uint16_t values[] = {altitude, voltage, temp};
-
-###         uint8_t types[] = {
-
-###             WsprEncoded::MeasurementType::ALTITUDE,
-
-###             WsprEncoded::MeasurementType::VOLTAGE,
-
-###             WsprEncoded::MeasurementType::TEMPERATURE
-
-###         };
-
-###        
-
-###         if (!encoder.encodeToWSPR(values, types, 3, message)) {
-
-###             return false;
-
-###         }
-
-###        
-
-###  
-
-###         // Find optimal transmission channel.
-
-###            // Usually a tracker will be configured to use a single channel.
-
-###         WsprEncoded::ChannelMap::ChannelInfo channel;
-
-###         uint8_t current_minute = getCurrentMinute();
-
-###        
-
-###         if (!channelMap.findOptimalChannel(20, current_minute, channel)) {
-
-###             return false;
-
-###         }
-
-###        
-
-###         // Transmit WSPR message
-
-###         return transmitWSPR(message, channel.frequency_hz);
-
-###     }
-
-###    
-
-### private:
-
-###     bool transmitWSPR(const WsprEncoded::WSPRMessage& msg, uint32_t freq) {
-
-###         // Platform-specific WSPR transmission implementation
-
-###         // ...
-
-###         return true;
-
-###     }
-
-###    
-
-###     uint8_t getCurrentMinute() {
-
-###         // Get current minute within 2-hour WSPR window
-
-###         // ...
-
-###         return 0;
-
-###     }
-
-### };
-
-### ```
-
-### Desktop Application Integration
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
-## <span id="__RefHeading___Toc2391_1057631513"></span>```
-
-## #include <WsprEncoded/TelemetryExtended.h>
-
-## #include <iostream>
-
-##  
-
-## int main() {
-
-##     using namespace WsprEncoded;
-
-##    
-
-##     // Create extended telemetry encoder for weather station
-
-##     ExtendedTelemetryEncoder encoder;
-
-##    
-
-##     // Define weather measurements
-
-##     ExtendedTelemetryEncoder::FieldDefinition pressure = {800, 1200, 1, 9};
-
-##     ExtendedTelemetryEncoder::FieldDefinition humidity = {0, 100, 1, 7};
-
-##     ExtendedTelemetryEncoder::FieldDefinition wind_speed = {0, 200, 1, 8};
-
-##    
-
-##     encoder.addField(pressure);
-
-##     encoder.addField(humidity);
-
-##     encoder.addField(wind_speed);
-
-##    
-
-##     // Simulate weather readings
-
-##     uint16_t readings[] = {1013, 65, 12};  // 1013 hPa, 65%, 12 km/h
-
-##     WSPRMessage message;
-
-##    
-
-##     if (encoder.encode(readings, 3, message)) {
-
-##         std::cout << "Weather telemetry encoded: "
-
-##                   << message.callsign << " " << message.grid << " " << message.power
-
-##                   << std::endl;
-
-##     }
-
-##    
-
-##     return 0;
-
-## }
-
-## ```
+4.  If both found: prefer Regular message as reference
 
 ## Error Handling
 
-### <span id="__RefHeading___Toc2393_1057631513"></span>Common Error Codes
+### Invalid Messages
 
- 
+Receivers should ignore messages with:
 
- 
+- HdrTelemetryType ≠ 0
 
- 
+- HdrRESERVED ≠ 0
 
- 
+- Unknown HdrType values (beyond implemented range)
 
- 
+- Invalid field values outside defined ranges
 
- 
+### Backward Compatibility
 
- 
+Extended Telemetry maintains compatibility by:
 
- 
+- Using existing WSPR message format
 
- 
+- Preserving Regular Type 1 and Basic Telemetry timing
 
- 
+- Not interfering with existing transmission patterns
 
-### <span id="__RefHeading___Toc2395_1057631513"></span>```
+## Future Extensions
 
-### namespace WsprEncoded {
+The protocol supports future growth through:
 
-###     enum class ErrorCode {
+- Extensible message types (add fields to existing types)
 
-###         SUCCESS = 0,
+- HdrRESERVED field for protocol enhancements
 
-###         INVALID_RANGE,          // Value outside measurement range
+- User-defined and vendor-defined message types
 
-###         INSUFFICIENT_BITS,      // Not enough bits for encoding
+- Flexible transmission scheduling
 
-###         DECODE_FAILED,          // Decoding operation failed
+# WsprEncoded C++ Library 
 
-###         INVALID_CHANNEL,        // Channel not found
+## Overview
 
-###         MEMORY_FULL             // No more fields can be added
+WsprEncoded is a header-only C++ library that implements telemetry
+encoding and decoding functionality for the WSPR (Weak Signal
+Propagation Reporter) protocol. This library enables developers to build
+trackers and other telemetry systems that can transmit sensor data
+through WSPR's minimal bandwidth constraints.
 
-###     };
+## Features
 
-### }
+### Core Capabilities
 
-### ```
+- **Basic Telemetry**: Encode/decode common measurements (altitude,
+  voltage, temperature, etc.)
+
+- **Extended Telemetry**: Define and encode arbitrary telemetry fields
+
+- **Channel Mapping**: Look up WSPR channel details by band and
+  frequency
+
+### Design Principles
+
+- **Memory Efficient**: No dynamic memory allocations (malloc, new, or
+  STL containers)
+
+- **Widely Compatible**: C++11 language standard for older compiler
+  support
+
+- **Header-Only**: Simple integration without separate compilation
+
+- **Cross-Platform**: Works on Arduino, embedded systems, and desktop
+  platforms
+
+## Installation
+
+### Arduino Library Manager
+
+# Install via Arduino IDE Library Manager
+
+# Search for "WsprEncoded" and click Install
+
+### CMake Integration
+
+#### Option 1: FetchContent (Recommended)
+
+include(FetchContent)
+
+FetchContent_Declare(
+
+WsprEncoded
+
+GIT_REPOSITORY https://github.com/your-repo/WsprEncoded.git
+
+GIT_TAG v1.0.0
+
+)
+
+FetchContent_MakeAvailable(WsprEncoded)
+
+target_link_libraries(YourExecutable WsprEncoded)
+
+#### Option 2: Git Submodules
+
+# Add as submodule
+
+git submodule add https://github.com/your-repo/WsprEncoded.git
+third-party/WsprEncoded
+
+# In CMakeLists.txt
+
+add_subdirectory(third-party/WsprEncoded)
+
+target_link_libraries(YourExecutable WsprEncoded)
+
+#### Option 3: External Directory
+
+# If WsprEncoded is in a sibling directory
+
+add_subdirectory(../WsprEncoded WsprEncoded)
+
+target_link_libraries(YourExecutable WsprEncoded)
+
+## API Reference
+
+### Core Headers
+
+#include <WsprEncoded/TelemetryBasic.h> // Basic telemetry types
+
+#include <WsprEncoded/TelemetryExtended.h> // User-defined telemetry
+
+#include <WsprEncoded/ChannelMap.h> // Channel mapping utilities
+
+### Basic Telemetry API
+
+#### Common Measurement Types
+
+namespace WsprEncoded {
+
+// Predefined measurement types
+
+struct AltitudeMeasurement {
+
+static constexpr uint16_t min_value = 0;
+
+static constexpr uint16_t max_value = 21000; // meters
+
+static constexpr uint16_t resolution = 20; // 20m steps
+
+};
+
+struct VoltageMeasurement {
+
+static constexpr uint16_t min_value = 0;
+
+static constexpr uint16_t max_value = 5000; // millivolts
+
+static constexpr uint16_t resolution = 10; // 10mV steps
+
+};
+
+struct TemperatureMeasurement {
+
+static constexpr int16_t min_value = -40;
+
+static constexpr int16_t max_value = 80; // celsius
+
+static constexpr uint16_t resolution = 1; // 1°C steps
+
+};
+
+}
+
+#### Encoding Functions
+
+class BasicTelemetryEncoder {
+
+public:
+
+// Encode single measurement
+
+template<typename MeasurementType>
+
+static bool encode(uint16_t value, uint8_t& encoded_index);
+
+// Encode multiple measurements into WSPR message
+
+static bool encodeToWSPR(
+
+const uint16_t* values,
+
+const uint8_t* measurement_types,
+
+uint8_t count,
+
+WSPRMessage& message
+
+);
+
+// Decode from WSPR message
+
+static bool decodeFromWSPR(
+
+const WSPRMessage& message,
+
+uint16_t* values,
+
+uint8_t* measurement_types,
+
+uint8_t& count
+
+);
+
+};
+
+#### Usage Example
+
+#include <WsprEncoded/TelemetryBasic.h>
+
+void encodeBasicTelemetry() {
+
+using namespace WsprEncoded;
+
+// Prepare measurements
+
+uint16_t altitude = 1200; // meters
+
+uint16_t voltage = 3300; // millivolts
+
+int16_t temperature = 25; // celsius
+
+// Create encoder
+
+BasicTelemetryEncoder encoder;
+
+WSPRMessage message;
+
+// Encode measurements
+
+uint16_t values[] = {altitude, voltage, temperature};
+
+uint8_t types[] = {
+
+MeasurementType::ALTITUDE,
+
+MeasurementType::VOLTAGE,
+
+MeasurementType::TEMPERATURE
+
+};
+
+if (encoder.encodeToWSPR(values, types, 3, message)) {
+
+// Success - message ready for transmission
+
+printf("Encoded WSPR: %s %s %dn",
+
+message.callsign, message.grid, message.power);
+
+}
+
+}
+
+### Extended Telemetry API
+
+#### Custom Field Definition
+
+class ExtendedTelemetryEncoder {
+
+public:
+
+// Define custom measurement field
+
+struct FieldDefinition {
+
+uint16_t min_value;
+
+uint16_t max_value;
+
+uint16_t resolution;
+
+uint8_t bit_count;
+
+};
+
+// Add field to encoder
+
+bool addField(const FieldDefinition& field);
+
+// Encode custom telemetry
+
+bool encode(const uint16_t* values, uint8_t count, WSPRMessage&
+message);
+
+// Decode custom telemetry
+
+bool decode(const WSPRMessage& message, uint16_t* values, uint8_t&
+count);
+
+};
+
+#### Custom Telemetry Example
+
+#include <WsprEncoded/TelemetryExtended.h>
+
+void encodeCustomTelemetry() {
+
+using namespace WsprEncoded;
+
+ExtendedTelemetryEncoder encoder;
+
+// Define custom pressure field (800-1200 hPa, 1 hPa resolution)
+
+ExtendedTelemetryEncoder::FieldDefinition pressure_field = {
+
+.min_value = 800,
+
+.max_value = 1200,
+
+.resolution = 1,
+
+.bit_count = 9 // 2^9 = 512 values (enough for 400 hPa range)
+
+};
+
+// Define custom humidity field (0-100%, 1% resolution)
+
+ExtendedTelemetryEncoder::FieldDefinition humidity_field = {
+
+.min_value = 0,
+
+.max_value = 100,
+
+.resolution = 1,
+
+.bit_count = 7 // 2^7 = 128 values (enough for 100% range)
+
+};
+
+// Add fields to encoder
+
+encoder.addField(pressure_field);
+
+encoder.addField(humidity_field);
+
+// Encode measurements
+
+uint16_t values[] = {1013, 65}; // 1013 hPa, 65% humidity
+
+WSPRMessage message;
+
+if (encoder.encode(values, 2, message)) {
+
+// Success - custom telemetry encoded
+
+printf("Custom telemetry encoded successfullyn");
+
+}
+
+}
+
+### Channel Map API
+
+#### Channel Information
+
+class ChannelMap {
+
+public:
+
+struct ChannelInfo {
+
+uint8_t channel_id;
+
+uint8_t start_minute; // Minute within 2-hour window
+
+uint32_t frequency_hz; // Exact frequency in Hz
+
+uint8_t band; // Amateur radio band
+
+};
+
+// Get channel info by band and channel
+
+static bool getChannelInfo(uint8_t band, uint8_t channel, ChannelInfo&
+info);
+
+// Get all channels for a band
+
+static uint8_t getChannelsForBand(uint8_t band, ChannelInfo* channels,
+uint8_t max_count);
+
+// Find optimal channel for current time
+
+static bool findOptimalChannel(uint8_t band, uint8_t current_minute,
+ChannelInfo& info);
+
+};
+
+#### Channel Map Example
+
+#include <WsprEncoded/ChannelMap.h>
+
+void useChannelMap() {
+
+using namespace WsprEncoded;
+
+// Get 20m band, channel 13 information
+
+ChannelMap::ChannelInfo info;
+
+if (ChannelMap::getChannelInfo(20, 13, info)) {
+
+printf("Channel 13: Start minute %d, Frequency %lu Hzn",
+
+info.start_minute, info.frequency_hz);
+
+}
+
+// Find optimal channel for current time (assuming minute 15)
+
+ChannelMap::ChannelInfo optimal;
+
+if (ChannelMap::findOptimalChannel(20, 15, optimal)) {
+
+printf("Optimal channel: %d at %lu Hzn",
+
+optimal.channel_id, optimal.frequency_hz);
+
+}
+
+}
+
+## Complete Integration Example
+
+### Arduino Tracker Implementation
+
+#include <WsprEncoded/TelemetryBasic.h>
+
+#include <WsprEncoded/ChannelMap.h>
+
+class WSPRTracker {
+
+private:
+
+WsprEncoded::BasicTelemetryEncoder encoder;
+
+WsprEncoded::ChannelMap channelMap;
+
+public:
+
+bool transmitTelemetry(uint16_t altitude, uint16_t voltage, int16_t
+temp) {
+
+// Encode telemetry
+
+WsprEncoded::WSPRMessage message;
+
+uint16_t values[] = {altitude, voltage, temp};
+
+uint8_t types[] = {
+
+WsprEncoded::MeasurementType::ALTITUDE,
+
+WsprEncoded::MeasurementType::VOLTAGE,
+
+WsprEncoded::MeasurementType::TEMPERATURE
+
+};
+
+if (!encoder.encodeToWSPR(values, types, 3, message)) {
+
+return false;
+
+}
+
+// Find optimal transmission channel.
+
+// Usually a tracker will be configured to use a single channel.
+
+WsprEncoded::ChannelMap::ChannelInfo channel;
+
+uint8_t current_minute = getCurrentMinute();
+
+if (!channelMap.findOptimalChannel(20, current_minute, channel)) {
+
+return false;
+
+}
+
+// Transmit WSPR message
+
+return transmitWSPR(message, channel.frequency_hz);
+
+}
+
+private:
+
+bool transmitWSPR(const WsprEncoded::WSPRMessage& msg, uint32_t freq) {
+
+// Platform-specific WSPR transmission implementation
+
+// ...
+
+return true;
+
+}
+
+uint8_t getCurrentMinute() {
+
+// Get current minute within 2-hour WSPR window
+
+// ...
+
+return 0;
+
+}
+
+};
+
+### Desktop Application Integration
+
+#include <WsprEncoded/TelemetryExtended.h>
+
+#include <iostream>
+
+int main() {
+
+using namespace WsprEncoded;
+
+// Create extended telemetry encoder for weather station
+
+ExtendedTelemetryEncoder encoder;
+
+// Define weather measurements
+
+ExtendedTelemetryEncoder::FieldDefinition pressure = {800, 1200, 1, 9};
+
+ExtendedTelemetryEncoder::FieldDefinition humidity = {0, 100, 1, 7};
+
+ExtendedTelemetryEncoder::FieldDefinition wind_speed = {0, 200, 1, 8};
+
+encoder.addField(pressure);
+
+encoder.addField(humidity);
+
+encoder.addField(wind_speed);
+
+// Simulate weather readings
+
+uint16_t readings[] = {1013, 65, 12}; // 1013 hPa, 65%, 12 km/h
+
+WSPRMessage message;
+
+if (encoder.encode(readings, 3, message)) {
+
+std::cout << "Weather telemetry encoded: "
+
+<< message.callsign << " " << message.grid << " " <<
+message.power
+
+<< std::endl;
+
+}
+
+return 0;
+
+}
+
+## Error Handling
+
+### Common Error Codes
+
+namespace WsprEncoded {
+
+enum class ErrorCode {
+
+SUCCESS = 0,
+
+INVALID_RANGE, // Value outside measurement range
+
+INSUFFICIENT_BITS, // Not enough bits for encoding
+
+DECODE_FAILED, // Decoding operation failed
+
+INVALID_CHANNEL, // Channel not found
+
+MEMORY_FULL // No more fields can be added
+
+};
+
+}
 
 ### Best Practices
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Always check return values from encoding/decoding functions
+- Always check return values from encoding/decoding functions
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Validate measurement values are within defined ranges
+- Validate measurement values are within defined ranges
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Handle bit capacity limitations gracefully
+- Handle bit capacity limitations gracefully
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Use appropriate measurement resolutions to optimize data usage
+- Use appropriate measurement resolutions to optimize data usage
 
-## <span id="__RefHeading___Toc2397_1057631513"></span>Performance Notes
+## Performance Notes
 
-### <span id="__RefHeading___Toc2399_1057631513"></span>Memory Usage
+### Memory Usage
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Header-only library adds minimal overhead
+- Header-only library adds minimal overhead
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>No dynamic allocations - all memory usage is compile-time determined
+- No dynamic allocations - all memory usage is compile-time determined
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Typical memory footprint: < 1KB for basic telemetry, < 2KB for extended
+- Typical memory footprint: < 1KB for basic telemetry, < 2KB for
+  extended
 
-### <span id="__RefHeading___Toc2401_1057631513"></span>Processing Speed
+### Processing Speed
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Encoding/decoding operations are O(n) where n is number of measurements
+- Encoding/decoding operations are O(n) where n is number of
+  measurements
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Optimized for embedded systems with limited CPU resources
+- Optimized for embedded systems with limited CPU resources
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>Typical encoding time: < 1ms on Arduino-class processors
+- Typical encoding time: < 1ms on Arduino-class processors
 
-## <span id="__RefHeading___Toc2403_1057631513"></span>Platform Support
+## Platform Support
 
-### <span id="__RefHeading___Toc2405_1057631513"></span>Tested Platforms
+### Tested Platforms
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Arduino</span>**: Uno, Nano, ESP32, ESP8266
+- **Arduino**: Uno, Nano, ESP32, ESP8266
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Desktop</span>**: Windows, Linux, macOS
+- **Desktop**: Windows, Linux, macOS
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Embedded</span>**: ARM Cortex-M, AVR, PIC32
+- **Embedded**: ARM Cortex-M, AVR, PIC32
 
-### <span id="__RefHeading___Toc2407_1057631513"></span>Compiler Requirements
+### Compiler Requirements
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Minimum</span>**: C++11 support
+- **Minimum**: C++11 support
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Recommended</span>**: C++14 or later for better template support
+- **Recommended**: C++14 or later for better template support
 
-<span style="font-family:Symbol">·<span style="font:7.0pt &quot;Times New Roman&quot;">      </span></span>**<span style="font-family:&quot;Liberation Serif&quot;,sans-serif">Tested</span>**: GCC 4.9+, Clang 3.5+, MSVC 2015+
+- **Tested**: GCC 4.9+, Clang 3.5+, MSVC 2015+
 
- 
 
- 
 
- 
 
- 
 
- 
 
-</div>
+
+
+
+
+
+
+
+
+
+
+
 
