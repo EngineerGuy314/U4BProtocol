@@ -372,25 +372,15 @@ std::string full_grid = wspr_grid_4char + grid5_char + grid6_char;
 #### Usage
 
 ```uint16_t encodeAltitude(uint16_t altitude_meters) {
-
 // Rollover at 21340m.
-
 // Trackers may optionally clamp to min/max range
-
 // Negative numbers should also be filtered, in case of bad gps data
-
 altitude_meters = altitude_meters % 21340;
-
 // Quantize to 20m steps
-
 return altitude_meters / 20;
-
 }
-
 uint16_t decodeAltitude(uint16_t encoded_value) {
-
 return encoded_value * 20; // Convert back to meters
-
 }```
 
 ### Temperature Measurement
@@ -2097,6 +2087,7 @@ MEMORY_FULL // No more fields can be added
 - **Recommended**: C++14 or later for better template support
 
 - **Tested**: GCC 4.9+, Clang 3.5+, MSVC 2015+
+
 
 
 
