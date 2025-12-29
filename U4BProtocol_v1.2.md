@@ -12,10 +12,15 @@ WsprEncoded Library v4.3.2
 
 - [U4BProtocol &WsprEncoded C/Python Libraries Specification
 ](#u4bprotocol-specification)
+
 - [Intent](#intent)
+  
 - [Updates](#updates)
+  
 - [History](#history)
+  
 - [License](#license)
+  
 - [Basic Telemetry](#basic-telemetry)
 
 - [Overview](#overview)
@@ -2263,6 +2268,7 @@ MEMORY_FULL // No more fields can be added
 - **Recommended**: C++14 or later for better template support
 
 - **Tested**: GCC 4.9+, Clang 3.5+, MSVC 2015+
+
 
 
 
