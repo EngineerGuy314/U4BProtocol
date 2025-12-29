@@ -312,10 +312,8 @@ allocations:
 **Field Mapping:**
 
 - **Callsign**: Encodes Grid5, Grid6, and Altitude
-
 - **Grid**: Encodes Temperature, Voltage, Speed, GPS validity, and
   telemetry type
-
 - **Power**: Part of the encoding scheme
 
 ## Telemetry Fields
@@ -2118,6 +2116,7 @@ MEMORY_FULL // No more fields can be added
 - **Recommended**: C++14 or later for better template support
 
 - **Tested**: GCC 4.9+, Clang 3.5+, MSVC 2015+
+
 
 
 
