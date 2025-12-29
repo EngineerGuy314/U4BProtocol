@@ -382,60 +382,47 @@ return altitude_meters / 20;
 }
 uint16_t decodeAltitude(uint16_t encoded_value) {
 return encoded_value * 20; // Convert back to meters
-}```
+}
+```
 
 ### Temperature Measurement
 
 #### Specification
 
 - **Source**: Environmental sensor or onboard temperature sensor
-
 - **Range**: -50°C to +39°C
-
 - **Resolution**: 1°C steps
-
 - **Encoding**: Offset binary with rollover
 
 #### Rollover Behavior
 
-int16_t encodeTemperature(int16_t temp_celsius) {
-
+```int16_t encodeTemperature(int16_t temp_celsius) {
 // Apply offset and rollover.
-
 // Trackers should filter for negative results and do something (clamp?)
-
 return (temp_celsius - (-50)) % 90;
-
 }
-
 int16_t decodeTemperature(uint16_t encoded_value) {
-
 // Note: Rollover means ambiguous decoding
-
 return encoded_value + (-50);
-
 }
+```
 
 #### Rollover Example
 
-// Both -45°C and +45°C encode to the same value (5)
-
+```// Both -45°C and +45°C encode to the same value (5)
 int16_t temp1 = -45; // encodes to: (-45 - (-50)) % 90 = 5
-
 int16_t temp2 = 45; // encodes to: (45 - (-50)) % 90 = 5
+```
 
 ### Voltage Measurement
 
 #### Specification
 
 - **Source**: System input voltage monitoring
-
 - **Range**: 3.0 to 4.95v is considered the standard range, although a
   tracker can do continual wraparound, so there is no range limits, or
   pick a different 1.95v range
-
 - **Resolution**: 0.05V steps
-
 - **Purpose**: Monitor solar panel or battery performance
 
 #### Standard Rollover Ranges
@@ -454,84 +441,60 @@ non-configurable range that websites should report.
 Possible examples:
 
 - 2.0V to 3.95V
-
 - 4.0V to 5.95V
-
 - 6.0V to 7.95V
 
 #### Encoding
 
-uint16_t encodeVoltage(float voltage) {
-
+```uint16_t encodeVoltage(float voltage) {
 uint16_t range = (uint16_t)((voltage - 2.0) / 2.0);
-
 float range_offset = voltage - (2.0 + range * 2.0);
-
 // Quantize within range
-
 uint16_t step = (uint16_t)(range_offset / 0.05);
-
 return step % 40; // Rollover within 40 possible values
-
 }
+```
 
 #### Alternative Encoding example for only 3.0 to 4.95v with clamping
 
-uint16_t encodeVoltage(float voltage) {
-
+```uint16_t encodeVoltage(float voltage) {
 // voltage encodings:
-
 // 20 to 39, 0 to 19 for 3.00 to 4.95V with a resolution of 0.05V
-
 // 0 to 39 encodings
-
 if (voltage > 4.95) voltage = 4.95;
-
 else if (voltage < 3.00) voltage = 3.00;
-
 // should only be 3 to 4.95
-
 uint16_t voltageNum = (int)(round ((voltage - 3.00) / .05) + 20) % 40;
-
 return voltageNum
-
 }
+```
 
 #### Decoding voltage assuming it represents 3.0 to 4.95v range at original measurement
 
-uint16_t decodedVoltage(float encoded_value) {
-
+```uint16_t decodedVoltage(float encoded_value) {
 voltage = round((encoded_value * 0.05) + 2.00, 2)
-
 return voltage
-
 }
+```
 
 ### Speed Measurement
 
 #### Specification
 
 - **Source**: GPS-derived ground speed
-
 - **Range**: 0 to 82 knots
-
 - **Resolution**: 2-knot steps
-
 - **Encoding**: Linear quantization with rollover
 
 #### Usage
 
-uint16_t encodeSpeed(uint16_t speed_knots) {
-
+```uint16_t encodeSpeed(uint16_t speed_knots) {
 return (speed_knots / 2) % 42; // Rollover support
-
 }
-
 uint16_t decodeSpeed(uint16_t encoded_value) {
-
 return encoded_value * 2; // Convert back to knots
-
 }
+```
 
 ### GPS Validity Flag
 
@@ -547,14 +510,13 @@ GPS is not valid.
 #### Values
 
 - **0 (false)**: GPS lock not available, position/speed data invalid
-
 - **1 (true)**: GPS lock acquired, position/speed data valid
 
 #### Usage
 
-bool gps_valid = hasGpsLock();
-
+```bool gps_valid = hasGpsLock();
 uint8_t gps_flag = gps_valid ? 1 : 0;
+```
 
 ### Telemetry Type Header
 
@@ -565,12 +527,12 @@ Identifies the telemetry format version.
 #### Values
 
 - **0**: Reserved
-
 - **1**: Standard Basic Telemetry format
 
 #### Usage
 
-const uint8_t TELEMETRY_TYPE_STANDARD = 1;
+```const uint8_t TELEMETRY_TYPE_STANDARD = 1;
+```
 
 ## Encoding examples
 
@@ -2088,6 +2050,7 @@ MEMORY_FULL // No more fields can be added
 - **Recommended**: C++14 or later for better template support
 
 - **Tested**: GCC 4.9+, Clang 3.5+, MSVC 2015+
+
 
 
 
