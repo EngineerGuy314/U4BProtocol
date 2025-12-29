@@ -342,12 +342,11 @@ precision.
 #### Resolution Improvement
 
 - **4-character grid**: 70 × 140 miles resolution
-
 - **6-character grid**: 3 × 3 miles resolution
 
 #### Encoding
 
-// Grid5 and Grid6 encode characters A-X (values 0-23)
+```// Grid5 and Grid6 encode characters A-X (values 0-23)
 
 char grid5_char = 'A' + grid5_value; // grid5_value: 0-23
 
@@ -355,7 +354,7 @@ char grid6_char = 'A' + grid6_value; // grid6_value: 0-23
 
 // Complete 6-character grid formation
 
-std::string full_grid = wspr_grid_4char + grid5_char + grid6_char;
+std::string full_grid = wspr_grid_4char + grid5_char + grid6_char;```
 
 #### Example
 
@@ -2105,6 +2104,7 @@ MEMORY_FULL // No more fields can be added
 - **Recommended**: C++14 or later for better template support
 
 - **Tested**: GCC 4.9+, Clang 3.5+, MSVC 2015+
+
 
 
 
