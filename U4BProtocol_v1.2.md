@@ -15,297 +15,295 @@ WsprEncoded Library v4.3.2
 - [Intent](#intent)
 - [Updates](#updates)
 - [History](#history)
+- [License](#license)
+- [Basic Telemetry](#basic-telemetry)
 
-[License](#license)
+- [Overview](#overview)
 
-[Basic Telemetry](#basic-telemetry)
+- [Message Format](#message-format)
 
-[Overview](#overview)
+- [Telemetry Fields](#telemetry-fields)
 
-[Message Format](#message-format)
+- [Field Specifications](#field-specifications)
 
-[Telemetry Fields](#telemetry-fields)
+- [Grid Position Enhancement (Grid5 & Grid6)](#grid-position-enhancement-grid5-grid6)
 
-[Field Specifications](#field-specifications)
+- [Purpose](#purpose)
 
-[Grid Position Enhancement (Grid5 & Grid6)](#grid-position-enhancement-grid5-grid6)
+- [Resolution Improvement](#resolution-improvement)
 
-[Purpose](#purpose)
+- [Encoding](#encoding)
 
-[Resolution Improvement](#resolution-improvement)
+- [Example](#example)
 
-[Encoding](#encoding)
+- [Altitude Measurement](#altitude-measurement)
 
-[Example](#example)
+- [Specification](#specification)
 
-[Altitude Measurement](#altitude-measurement)
+- [Usage](#usage)
 
-[Specification](#specification)
+- [Temperature Measurement](#temperature-measurement)
 
-[Usage](#usage)
+- [Specification](#specification-1)
 
-[Temperature Measurement](#temperature-measurement)
+- [Rollover Behavior](#rollover-behavior)
 
-[Specification](#specification-1)
+- [Rollover Example](#rollover-example)
 
-[Rollover Behavior](#rollover-behavior)
+- [Voltage Measurement](#voltage-measurement)
 
-[Rollover Example](#rollover-example)
+- [Specification](#specification-2)
 
-[Voltage Measurement](#voltage-measurement)
+- [Standard Rollover Ranges](#standard-rollover-ranges)
 
-[Specification](#specification-2)
+- [Encoding](#encoding-1)
 
-[Standard Rollover Ranges](#standard-rollover-ranges)
+- [Alternative Encoding example for only 3.0 to 4.95v with clamping](#alternative-encoding-example-for-only-3.0-to-4.95v-with-clamping)
 
-[Encoding](#encoding-1)
-
-[Alternative Encoding example for only 3.0 to 4.95v with clamping](#alternative-encoding-example-for-only-3.0-to-4.95v-with-clamping)
-
-[Decoding voltage assuming it represents 3.0 to 4.95v range at original
+- [Decoding voltage assuming it represents 3.0 to 4.95v range at original
 measurement](#decoding-voltage-assuming-it-represents-3.0-to-4.95v-range-at-original-measurement)
 
-[Speed Measurement](#speed-measurement)
+- [Speed Measurement](#speed-measurement)
 
-[Specification](#specification-3)
+- [Specification](#specification-3)
 
-[Usage](#usage-1)
+- [Usage](#usage-1)
 
-[GPS Validity Flag](#gps-validity-flag)
+- [GPS Validity Flag](#gps-validity-flag)
 
-[Purpose](#purpose-1)
+- [Purpose](#purpose-1)
 
-[Values](#values)
+- [Values](#values)
 
-[Usage](#usage-2)
+- [Usage](#usage-2)
 
-[Telemetry Type Header](#telemetry-type-header)
+- [Telemetry Type Header](#telemetry-type-header)
 
-[Purpose](#purpose-2)
+- [Purpose](#purpose-2)
 
-[Values](#values-1)
+- [Values](#values-1)
 
-[Usage](#usage-3)
+- [Usage](#usage-3)
 
-[Encoding examples](#encoding-examples)
+- [Encoding examples](#encoding-examples)
 
-[encodeBasicTelemetry()](#encodebasictelemetry)
+- [encodeBasicTelemetry()](#encodebasictelemetry)
 
-[decodeBasicTelemetry()](#decodebasictelemetry)
+- [decodeBasicTelemetry()](#decodebasictelemetry)
 
-[Complete Example](#complete-example)
+- [Complete Example](#complete-example)
 
-[Encoding Architecture](#encoding-architecture)
+- [Encoding Architecture](#encoding-architecture)
 
-[Two-Stage Encoding Process](#two-stage-encoding-process)
+- [Two-Stage Encoding Process](#two-stage-encoding-process)
 
-[Stage 1: Callsign Encoding](#stage-1-callsign-encoding)
+- [Stage 1: Callsign Encoding](#stage-1-callsign-encoding)
 
-[Stage 2: Grid+Power Encoding](#stage-2-gridpower-encoding)
+- [Stage 2: Grid+Power Encoding](#stage-2-gridpower-encoding)
 
-[Rollover Considerations](#rollover-considerations)
+- [Rollover Considerations](#rollover-considerations)
 
-[Advantages](#advantages)
+- [Advantages](#advantages)
 
-[Disadvantages](#disadvantages)
+- [Disadvantages](#disadvantages)
 
-[Best Practices](#best-practices)
+- [Best Practices](#best-practices)
 
-[Implementation-Specific Behavior](#implementation-specific-behavior)
+- [Implementation-Specific Behavior](#implementation-specific-behavior)
 
-[Example:](#example-1)
+- [Example:](#example-1)
 
-[Voltage Range Restriction](#voltage-range-restriction)
+- [Voltage Range Restriction](#voltage-range-restriction)
 
-[Behavior Differences](#behavior-differences)
+- [Behavior Differences](#behavior-differences)
 
-[Transmission Scheduling](#transmission-scheduling)
+- [Transmission Scheduling](#transmission-scheduling)
 
-[Channel Selection](#channel-selection)
+- [Channel Selection](#channel-selection)
 
-[Integration with Channel Map](#integration-with-channel-map)
+- [Integration with Channel Map](#integration-with-channel-map)
 
-[Error Handling](#error-handling)
+- [Error Handling](#error-handling)
 
-[Validation Functions](#validation-functions)
+- [Validation Functions](#validation-functions)
 
-[Error Codes](#error-codes)
+- [Error Codes](#error-codes)
 
-[Performance Characteristics](#performance-characteristics)
+- [Performance Characteristics](#performance-characteristics)
 
-[Encoding Efficiency](#encoding-efficiency)
+- [Encoding Efficiency](#encoding-efficiency)
 
-[Precision Trade-offs](#precision-trade-offs)
+- [Precision Trade-offs](#precision-trade-offs)
 
-[ChannelMap Specification](#channelmap-specification)
+- [ChannelMap Specification](#channelmap-specification)
 
-[Overview](#overview-1)
+- [Overview](#overview-1)
 
-[Core Concepts](#core-concepts)
+- [Core Concepts](#core-concepts)
 
-[Message Types](#message-types)
+- [Message Types](#message-types)
 
-[Channel Identification](#channel-identification)
+- [Channel Identification](#channel-identification)
 
-[Data Structures](#data-structures)
+- [Data Structures](#data-structures)
 
-[Channel Object](#channel-object)
+- [Channel Object](#channel-object)
 
-[Telemetry Message Structure](#telemetry-message-structure)
+- [Telemetry Message Structure](#telemetry-message-structure)
 
-[Identification Methods](#identification-methods)
+- [Identification Methods](#identification-methods)
 
-[1. ID13 Encoding](#id13-encoding)
+- [1. ID13 Encoding](#id13-encoding)
 
-[Example](#example-2)
+- [Example](#example-2)
 
-[2. Time Slot Identification](#time-slot-identification)
+- [2. Time Slot Identification](#time-slot-identification)
 
-[3. Frequency Matching](#frequency-matching)
+- [3. Frequency Matching](#frequency-matching)
 
-[Target Frequency](#target-frequency)
+- [Target Frequency](#target-frequency)
 
-[Frequency Fingerprinting, Frequency binning or other mechanisms](#frequency-fingerprinting-frequency-binning-or-other-mechanisms)
+- [Frequency Fingerprinting, Frequency binning or other mechanisms](#frequency-fingerprinting-frequency-binning-or-other-mechanisms)
 
-[Implementation Notes](#implementation-notes)
+- [Implementation Notes](#implementation-notes)
 
-[Receiver Calibration Challenges](#receiver-calibration-challenges)
+- [Receiver Calibration Challenges](#receiver-calibration-challenges)
 
-[Fingerprinting Algorithm](#fingerprinting-algorithm)
+- [Fingerprinting Algorithm](#fingerprinting-algorithm)
 
-[Performance Considerations](#performance-considerations)
+- [Performance Considerations](#performance-considerations)
 
-[Channel Map Integration](#channel-map-integration)
+- [Channel Map Integration](#channel-map-integration)
 
-[Extended Telemetry Specification](#extended-telemetry-specification)
+- [Extended Telemetry Specification](#extended-telemetry-specification)
 
-[Overview](#overview-2)
+- [Overview](#overview-2)
 
-[Key Features](#key-features)
+- [Key Features](#key-features)
 
-[Message Architecture](#message-architecture)
+- [Message Architecture](#message-architecture)
 
-[Message Structure](#message-structure)
+- [Message Structure](#message-structure)
 
-[Header Fields](#header-fields)
+- [Header Fields](#header-fields)
 
-[Header Field Details](#header-field-details)
+- [Header Field Details](#header-field-details)
 
-[Message Types](#message-types-1)
+- [Message Types](#message-types-1)
 
-[Planned Enumerated Types (Examples)](#planned-enumerated-types-examples)
+- [Planned Enumerated Types (Examples)](#planned-enumerated-types-examples)
 
-[Time Slot Management](#time-slot-management)
+- [Time Slot Management](#time-slot-management)
 
-[10-Minute Window Structure](#minute-window-structure)
+- [10-Minute Window Structure](#minute-window-structure)
 
-[Transmission Patterns](#transmission-patterns)
+- [Transmission Patterns](#transmission-patterns)
 
-[Backward Compatible](#backward-compatible)
+- [Backward Compatible](#backward-compatible)
 
-[Extended Only](#extended-only)
+- [Extended Only](#extended-only)
 
-[Mixed Mode](#mixed-mode)
+- [Mixed Mode](#mixed-mode)
 
-[Encoding Specification](#encoding-specification)
+- [Encoding Specification](#encoding-specification)
 
-[Data Encoding](#data-encoding)
+- [Data Encoding](#data-encoding)
 
-[Packing Order](#packing-order)
+- [Packing Order](#packing-order)
 
-[Value Processing](#value-processing)
+- [Value Processing](#value-processing)
 
-[Example Implementation](#example-implementation)
+- [Example Implementation](#example-implementation)
 
-[GPS Stats Message (Hypothetical)](#gps-stats-message-hypothetical)
+- [GPS Stats Message (Hypothetical)](#gps-stats-message-hypothetical)
 
-[Packing Example](#packing-example)
+- [Packing Example](#packing-example)
 
-[Integration Guidelines](#integration-guidelines)
+- [Integration Guidelines](#integration-guidelines)
 
-[Receiver Implementation](#receiver-implementation)
+- [Receiver Implementation](#receiver-implementation)
 
-[Sender Implementation](#sender-implementation)
+- [Sender Implementation](#sender-implementation)
 
-[Fingerprinting Logic](#fingerprinting-logic)
+- [Fingerprinting Logic](#fingerprinting-logic)
 
-[Error Handling](#error-handling-1)
+- [Error Handling](#error-handling-1)
 
-[Invalid Messages](#invalid-messages)
+- [Invalid Messages](#invalid-messages)
 
-[Backward Compatibility](#backward-compatibility)
+- [Backward Compatibility](#backward-compatibility)
 
-[Future Extensions](#future-extensions)
+- [Future Extensions](#future-extensions)
 
-[WsprEncoded C++ Library](#wsprencoded-c-library)
+- [WsprEncoded C++ Library](#wsprencoded-c-library)
 
-[Overview](#overview-3)
+- [Overview](#overview-3)
 
-[Features](#features)
+- [Features](#features)
 
-[Core Capabilities](#core-capabilities)
+- [Core Capabilities](#core-capabilities)
 
-[Design Principles](#design-principles)
+- [Design Principles](#design-principles)
 
-[Installation](#installation)
+- [Installation](#installation)
 
-[Arduino Library Manager](#arduino-library-manager)
+- [Arduino Library Manager](#arduino-library-manager)
 
-[CMake Integration](#cmake-integration)
+- [CMake Integration](#cmake-integration)
 
-[Option 1: FetchContent (Recommended)](#option-1-fetchcontent-recommended)
+- [Option 1: FetchContent (Recommended)](#option-1-fetchcontent-recommended)
 
-[Option 2: Git Submodules](#option-2-git-submodules)
+- [Option 2: Git Submodules](#option-2-git-submodules)
 
-[Option 3: External Directory](#option-3-external-directory)
+- [Option 3: External Directory](#option-3-external-directory)
 
-[API Reference](#api-reference)
+- [API Reference](#api-reference)
 
-[Core Headers](#core-headers)
+- [Core Headers](#core-headers)
 
-[Basic Telemetry API](#basic-telemetry-api)
+- [Basic Telemetry API](#basic-telemetry-api)
 
-[Common Measurement Types](#common-measurement-types)
+- [Common Measurement Types](#common-measurement-types)
 
-[Encoding Functions](#encoding-functions)
+- [Encoding Functions](#encoding-functions)
 
-[Usage Example](#usage-example)
+- [Usage Example](#usage-example)
 
-[Extended Telemetry API](#extended-telemetry-api)
+- [Extended Telemetry API](#extended-telemetry-api)
 
-[Custom Field Definition](#custom-field-definition)
+- [Custom Field Definition](#custom-field-definition)
 
-[Custom Telemetry Example](#custom-telemetry-example)
+- [Custom Telemetry Example](#custom-telemetry-example)
 
-[Channel Map API](#channel-map-api)
+- [Channel Map API](#channel-map-api)
 
-[Channel Information](#channel-information)
+- [Channel Information](#channel-information)
 
-[Channel Map Example](#channel-map-example)
+- [Channel Map Example](#channel-map-example)
 
-[Complete Integration Example](#complete-integration-example)
+- [Complete Integration Example](#complete-integration-example)
 
-[Arduino Tracker Implementation](#arduino-tracker-implementation)
+- [Arduino Tracker Implementation](#arduino-tracker-implementation)
 
-[Desktop Application Integration](#desktop-application-integration)
+- [Desktop Application Integration](#desktop-application-integration)
 
-[Error Handling](#error-handling-2)
+- [Error Handling](#error-handling-2)
 
-[Common Error Codes](#common-error-codes)
+- [Common Error Codes](#common-error-codes)
 
-[Best Practices](#best-practices-1)
+- [Best Practices](#best-practices-1)
 
-[Performance Notes](#performance-notes)
+- [Performance Notes](#performance-notes)
 
-[Memory Usage](#memory-usage)
+- [Memory Usage](#memory-usage)
 
-[Processing Speed](#processing-speed)
+- [Processing Speed](#processing-speed)
 
-[Platform Support](#platform-support)
+- [Platform Support](#platform-support)
 
-[Tested Platforms](#tested-platforms)
+- [Tested Platforms](#tested-platforms)
 
-[Compiler Requirements](#compiler-requirements)
+- [Compiler Requirements](#compiler-requirements)
 
 # Intent
 
@@ -2265,6 +2263,7 @@ MEMORY_FULL // No more fields can be added
 - **Recommended**: C++14 or later for better template support
 
 - **Tested**: GCC 4.9+, Clang 3.5+, MSVC 2015+
+
 
 
 
