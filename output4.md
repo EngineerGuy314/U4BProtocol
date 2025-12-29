@@ -346,7 +346,8 @@ precision.
 
 #### Encoding
 
-```// Grid5 and Grid6 encode characters A-X (values 0-23)
+```
+// Grid5 and Grid6 encode characters A-X (values 0-23)
 char grid5_char = 'A' + grid5_value; // grid5_value: 0-23
 char grid6_char = 'A' + grid6_value; // grid6_value: 0-23
 
@@ -356,7 +357,8 @@ std::string full_grid = wspr_grid_4char + grid5_char + grid6_char;
 
 #### Example
 
-```// WSPR Type 1 grid: "FN31"
+```
+// WSPR Type 1 grid: "FN31"
 // Grid5 = 12 (M), Grid6 = 7 (H)
 // Complete grid: "FN31MH"
 ```
@@ -372,7 +374,8 @@ std::string full_grid = wspr_grid_4char + grid5_char + grid6_char;
 
 #### Usage
 
-```uint16_t encodeAltitude(uint16_t altitude_meters) {
+```
+uint16_t encodeAltitude(uint16_t altitude_meters) {
 // Rollover at 21340m.
 // Trackers may optionally clamp to min/max range
 // Negative numbers should also be filtered, in case of bad gps data
@@ -396,7 +399,8 @@ return encoded_value * 20; // Convert back to meters
 
 #### Rollover Behavior
 
-```int16_t encodeTemperature(int16_t temp_celsius) {
+```
+int16_t encodeTemperature(int16_t temp_celsius) {
 // Apply offset and rollover.
 // Trackers should filter for negative results and do something (clamp?)
 return (temp_celsius - (-50)) % 90;
@@ -409,7 +413,8 @@ return encoded_value + (-50);
 
 #### Rollover Example
 
-```// Both -45°C and +45°C encode to the same value (5)
+```
+// Both -45°C and +45°C encode to the same value (5)
 int16_t temp1 = -45; // encodes to: (-45 - (-50)) % 90 = 5
 int16_t temp2 = 45; // encodes to: (45 - (-50)) % 90 = 5
 ```
@@ -446,7 +451,8 @@ Possible examples:
 
 #### Encoding
 
-```uint16_t encodeVoltage(float voltage) {
+```
+uint16_t encodeVoltage(float voltage) {
 uint16_t range = (uint16_t)((voltage - 2.0) / 2.0);
 float range_offset = voltage - (2.0 + range * 2.0);
 // Quantize within range
@@ -457,7 +463,8 @@ return step % 40; // Rollover within 40 possible values
 
 #### Alternative Encoding example for only 3.0 to 4.95v with clamping
 
-```uint16_t encodeVoltage(float voltage) {
+```
+uint16_t encodeVoltage(float voltage) {
 // voltage encodings:
 // 20 to 39, 0 to 19 for 3.00 to 4.95V with a resolution of 0.05V
 // 0 to 39 encodings
@@ -488,7 +495,8 @@ return voltage
 
 #### Usage
 
-```uint16_t encodeSpeed(uint16_t speed_knots) {
+```
+uint16_t encodeSpeed(uint16_t speed_knots) {
 return (speed_knots / 2) % 42; // Rollover support
 }
 uint16_t decodeSpeed(uint16_t encoded_value) {
@@ -514,7 +522,8 @@ GPS is not valid.
 
 #### Usage
 
-```bool gps_valid = hasGpsLock();
+```
+bool gps_valid = hasGpsLock();
 uint8_t gps_flag = gps_valid ? 1 : 0;
 ```
 
@@ -2051,6 +2060,7 @@ MEMORY_FULL // No more fields can be added
 - **Recommended**: C++14 or later for better template support
 
 - **Tested**: GCC 4.9+, Clang 3.5+, MSVC 2015+
+
 
 
 
